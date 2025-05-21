@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        
+        <!-- Form view for "model" -->
+        <record id="view_l10n_bo_country_form" model="ir.ui.view">
+            <field name="name">view_l10n_bo_country_form</field>
+            <field name="model">res.country</field>
+             <field name="inherit_id" ref="base.view_country_form" />
+            <field name="arch" type="xml">
+                
+                <xpath expr="//field[@name='code']" position="before">
+                    
+                    <field name="l10n_bo_country_id" options="{'no_create': True, 'no_open': True}"/>
+                    
+                </xpath>
+                
+            </field>
+        </record>
+        
+        
+
+
+
+        <record id="view_l10n_bo_bolivian_invoice_res_partner_form" model="ir.ui.view">
+            <field name="name">l10n.res.partner.move.form</field>
+            <field name="model">res.partner</field>
+            <field name="priority" eval="40"/>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='vat']" position="before">
+                    <field name="enable_bo_edi" invisible="1" />
+                </xpath>
+
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='vat']" position="attributes">
+                    <attribute name="invisible">enable_bo_edi</attribute>
+                    <attribute name="string">Identificación fiscal</attribute>
+                </xpath>
+                
+                
+                
+                
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='vat']" position="after" >
+                    
+                    <field name="code" invisible="not enable_bo_edi"/>
+                    
+                </xpath>
+                <xpath expr="//field[@name='code']" position="before" >
+                    <span class="o_form_label o_td_label" name="address_name" invisible="not enable_bo_edi">
+                        <b>NIT/CI</b>
+                    </span>
+                    <div class="o_address_format">
+                                <field name="identification_type_id" class="o_address_street" invisible="not enable_bo_edi" readonly="parent_id" options="{'no_create': True, 'no_open': True}"/>
+                                <field name="vat" placeholder="NIT/CI" class="o_address_city" invisible="not enable_bo_edi" readonly="parent_id"/>
+                                <field name="identification_code" invisible="1"/>
+                                <field name="complement" class="o_address_state" placeholder="Complemento" readonly="parent_id" invisible="identification_code not in [1] or not enable_bo_edi"/>
+                                <field name="nit_state" class="o_address_zip" invisible="identification_code not in [5] or not enable_bo_edi"/>                         
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

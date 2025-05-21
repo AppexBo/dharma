@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="l10n_bo_account_move_form" model="ir.ui.view">
+            <field name="name">l10n.bo.account.move.form</field>
+            <field name="model">account.move</field>
+            <field name="priority" eval="17"/>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+
+                
+                <xpath expr="//button[@name='action_reverse']" position="attributes">                    
+                    <attribute name="invisible">move_type not in ('out_invoice', 'in_invoice') or state != 'posted' or is_gift_card or document_type_code in [3,8]</attribute>
+                    
+                </xpath>
+                
+                
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='partner_id']" position="after">
+                    <field name="edi_bo_invoice" invisible="1" />
+                    <field name="many_pos" invisible="1" />
+                    <field name="nit_state" invisible="1" />
+                    <field name="document_type_code" invisible="1" />
+                    
+                    
+                    <field name="force_send" widget="boolean_toggle" invisible="not edi_bo_invoice" readonly="state != 'draft'"/>
+                    <field name="meridies" invisible="1" />
+                    
+
+                    <field 
+                        name="branch_office_id" 
+                        options="{'no_create': True,'no_open': True}" 
+                        invisible ="branch_office_id or not edi_bo_invoice"
+                        required="edi_bo_invoice"
+                        readonly="state != 'draft'"
+                    />
+
+                    <field 
+                        name="pos_id" 
+                        options="{'no_create': True,'no_open': True}" 
+                        invisible ="not edi_bo_invoice"
+                        required="edi_bo_invoice"
+                        readonly="state != 'draft'"
+                        domain="[('branch_office_id','=',branch_office_id)]"
+                    />
+                    
+                    <field 
+                        name="document_type_id" 
+                        options="{'no_create': True,'no_open': True}" 
+                        invisible ="not edi_bo_invoice"
+                        required="edi_bo_invoice"
+                        readonly="state != 'draft'"
+                        
+                        domain="[('pos_id', '=', pos_id)]"
+                        
+                    />
+                    <field 
+                        name="payment_type_id" 
+                        options="{'no_create': True,'no_open': True}" 
+                        invisible ="not edi_bo_invoice"
+                        required="edi_bo_invoice"
+                        readonly="state != 'draft'"
+                    />
+                    
+                    <field name="is_gift_card" invisible="1" />
+                    <field name="is_card" invisible="1" />
+                    
+                    <field 
+                        name="card" 
+                        invisible="not edi_bo_invoice or not is_card"
+                        required="is_card"
+                        readonly="state != 'draft'"
+                    />
+
+                    
+                </xpath>
+
+
+
+                
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/label[@for='invoice_date']" position="attributes">
+                    <attribute name="invisible">move_type not in ['out_invoice', 'out_refund', 'out_receipt'] or edi_bo_invoice</attribute>
+                </xpath>
+
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='invoice_date']" position="attributes">
+                    <attribute name="invisible">move_type not in ['out_invoice', 'out_refund', 'in_invoice', 'in_refund', 'out_receipt', 'in_receipt'] or edi_bo_invoice</attribute>
+                </xpath>
+                
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='invoice_date']" position="after">
+                    <field name="invoice_date_edi" invisible="not edi_bo_invoice" required="edi_bo_invoice" readonly="state != 'draft'" />                    
+                </xpath>
+                
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='currency_id']" position="after">
+                    <field name="edi_state" invisible="not edi_state or not edi_bo_invoice"/>
+                </xpath>
+
+                <xpath expr="//field[@name='invoice_incoterm_id']" position="attributes">
+                    <attribute name="required">document_type_code in [3]</attribute>
+                </xpath>
+                
+                
+                <xpath expr="//notebook" position="inside">
+                    <page name="exportation_data" string="Datos de exportación (BO)" invisible="document_type_code not in [28,3,4]" >
+                        <group>
+                            <group>
+                                <field name="country_id" string="Lugar de destino" readonly="state != 'draft'" required="document_type_code in [28,3,4]"  options="{'no_create': True,'no_open': True}" />
+                                <field name="country_state_id" string="Puerto destino" domain="[('country_id', '=', country_id)]" invisible="document_type_code not in [3,4]" readonly="state != 'draft'" required="document_type_code in [3,4]"  options="{'no_create': True,'no_open': True}" />
+                            </group>
+                            <group>
+                                <field name="destination_address" required="document_type_code in [28,3]" invisible="document_type_code not in [28,3]" />
+                            </group>
+                        </group>
+                        <!--
+                        <separator string="Costo gastos nacionales" colspan="4" invisible="document_type_code not in [3]" />
+                        <field name="cost_expense_national_ids" invisible="document_type_code not in [3]"/>
+                        
+                        <separator string="Costo gastos internacionales" colspan="4" invisible="document_type_code not in [3]"/>
+                        <field name="cost_expense_international_ids" invisible="document_type_code not in [3]"/>
+                        -->
+                        <separator string="Descripcion paquetes - bultos" colspan="4" invisible="document_type_code not in [3]"/>
+                        <field name="aditional_description" placeholder="Cuatro cajas de repuestos, 2 injectores,..." invisible="document_type_code not in [3]"/>
+                        
+                    </page>
+                    
+                    
+                    
+                    <page string="Factura (BO)" invisible="not edi_bo_invoice" readonly="state != 'draft'" >
+                        
+                        <group>
+                            
+                            <field name="legend_id"  options="{'no_create': True,'no_open': True}" readonly="state != 'draft'" />
+                            
+                        </group>
+
+                        <group>
+                            <group>
+                                
+                                <field name="invoice_number" />
+                                <field name="url" widget="url" />
+                                <field name="transaccion" invisible="1" />
+                            </group>
+                            <group>
+                                <field name="cuf" />
+                                <field name="edi_str" invisible="1" />
+                                <field name="error"  invisible="not error or transaccion"/>
+                            </group>
+                        </group>
+                        <separator string="Observaciones (BO)" colspan="4" />
+                        <field name="messagesList_ids">
+                            <tree   create="false" >
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="description"/>
+                                
+                            </tree>
+                            
+                        </field>
+                    </page>
+                </xpath>
+
+                <!-- BASE CUSTOMISE -->
+                <xpath expr="//button[@name='button_draft']" position="attributes">
+                    <attribute name="invisible">not show_reset_to_draft_button or edi_bo_invoice</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        
+    </data>
+</odoo>

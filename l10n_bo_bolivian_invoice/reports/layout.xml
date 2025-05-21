@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+        <template id="external_layout_invoice">
+            <t t-if="not o" t-set="o" t-value="doc" />
+            <t t-if="not company">
+                <t t-if="company_id">
+                    <t t-set="company" t-value="company_id" />
+                </t>
+                <t t-elif="o and 'company_id' in o">
+                    <t t-set="company" t-value="o.company_id.sudo()" />
+                </t>
+                <t t-else="else">
+                    <t t-set="company" t-value="res_company" />
+                </t>
+            </t>
+            <t t-call="l10n_bo_bolivian_invoice.custom_external_layout_invoice">
+                <t t-raw="0" />
+            </t>
+        </template>
+
+        <template id="custom_external_layout_invoice">
+            <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+                t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <t t-call="web.address_layout" />
+                <t t-raw="0" />
+            </div>
+            <div class="footer">
+                <div style="font-size: 12px; text-align: right;">
+                    <ul class="list-inline">
+                        <li>
+                            <span class="page" />/
+                            <span class="topage" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </template>
+
+        <template id="l10n_invoice_document">
+            <t t-call="l10n_bo_bolivian_invoice.external_layout_invoice">
+                <head>
+                    <meta charset="UTF-8"/>
+                    <style>
+                        
+                        .table1{
+                        
+                            border: 1px solid white; width: 300px !important; top:10px;
+                        }
+                        
+                        
+                        .center{
+                        text-align: center;
+                        }
+                        th{
+                        vertical-align: middle;
+                        }
+                    </style>    
+                </head>
+                <t t-set="doc" t-value="o.with_context(lang=o.partner_id.lang)"/>
+                <div class="page" style="font-size:15px; font-family: 'Times New Roman';">
+
+                    <div>
+                        <span t-if="o.state == 'cancel'" style="-webkit-transform: rotate(-40deg);-moz-transform: rotate(-40deg); color: rgba(255, 0, 0, 0.5);font-size:80px;top:400px;position:absolute;text-align:center;width:100%;">
+                            <b>ANULADO</b>
+                        </span>
+                        <span t-if="o.code_environment == '2'" style="color: rgba(128, 128, 128, 0.5);font-size:80px;top:80px;position:absolute;text-align:center;width:100%;">
+                            <i>
+                                <b>SIN VALOR LEGAL</b>
+                            </i>
+                        </span>
+                    </div>
+                    <t t-if="o.document_type_id.getCode() == 1">
+                        <t t-call="l10n_bo_bolivian_invoice.l10n_bo_invoice_purchase_sale_template" t-lang="o.partner_id.lang"/>
+                    </t>
+                    <t t-if="o.document_type_id.getCode() == 3">
+                        <t t-call="l10n_bo_bolivian_invoice.l10n_bo_comercial_export_template" t-lang="o.partner_id.lang"/>
+                    </t>
+                    <t t-if="o.document_type_id.getCode() == 8">
+                        <t t-call="l10n_bo_bolivian_invoice.l10n_bo_cero_rate_template" t-lang="o.partner_id.lang"/>
+                    </t>
+                    
+                    
+                    <t t-if="o.document_type_id.getCode() == 14">
+                        <t t-call="l10n_bo_bolivian_invoice.l10n_bo_ice_template" t-lang="o.partner_id.lang"/>
+                    </t>
+                    
+                    <t t-elif="o.document_type_id.getCode() == 24">
+                        <t t-call="l10n_bo_bolivian_invoice.l10n_bo_invoice_credit_debit_note_template" t-lang="o.partner_id.lang"/>
+                    </t>
+                    
+                    <!--
+                        <t t-call="l10n_bo_bolivian_invoice.l10n_bo_invoice_credit_debit_note_template" t-lang="o.partner_id.lang"/>
+                        ...
+                    -->
+
+                </div>
+            </t>
+        </template>
+
+        <template id="custom_external_layout_invoice_roll">
+            <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+                t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <t t-call="web.address_layout" />
+                <t t-raw="0" />
+            </div>
+            <div class="footer">
+                <div style="font-size: 12px; text-align: right;">
+                    <ul class="list-inline">
+                        <li>
+                            <span class="page" />/
+                            <span class="topage" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </template>
+
+        <template id="l10n_invoice_document_roll">
+            <t t-call="l10n_bo_bolivian_invoice.custom_external_layout_invoice_roll">
+                <head>
+                    <meta charset="UTF-8"/>
+                    <style>
+                        
+                    </style>    
+
+                </head>
+                <t t-set="doc" t-value="o.with_context(lang=o.partner_id.lang)"/>
+                <div class="page" style="font-size:15px; font-family: 'Times New Roman';">
+
+                    <div>
+                        <span t-if="o.state == 'cancel'" style="-webkit-transform: rotate(-45deg);-moz-transform: rotate(-45deg); color: rgba(255, 0, 0, 0.5); font-size:60px; top:400px; position:absolute; text-align:center; width:300px;">
+                            <b>ANULADO</b>
+                        </span>
+                        <span t-if="o.code_environment == '2'" style="color: rgba(128, 128, 128, 0.5);font-size:35px;top:70px;position:absolute;text-align:center;width:335px;">
+                            <b>SIN VALOR LEGAL</b>
+                        </span>
+
+                        
+                    </div>
+                    <t t-if="o.document_type_id.getCode() == 1">
+                        <t t-call="l10n_bo_bolivian_invoice.l10n_bo_invoice_purchase_sale_roll_template" t-lang="o.partner_id.lang"/>
+                    </t>
+                    
+                    <t t-elif="o.document_type_id.getCode() == 3">
+                        <span>Factura de rollo exportacion</span>
+                    </t>
+                    
+                    <t t-elif="o.document_type_id.getCode() == 24">
+                        <span>Nota de rollo nota de credito debito</span>
+                    </t>
+                    
+                    <!--
+                        ...
+                    -->
+
+                </div>
+            </t>
+        </template>
+
+
+
+
+    </data>
+</odoo>

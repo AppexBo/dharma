@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_l10n_bo_package" model="ir.actions.act_window">
+        <field name="name">Paquetes (BO)</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.package</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer package (BO)
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_package_tree" model="ir.ui.view">
+        <field name="name">view_l10n_bo_package_tree</field>
+        <field name="model">l10n.bo.package</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_l10n_bo_package_form" model="ir.ui.view">
+        <field name="name">view_l10n_bo_package_form</field>
+        <field name="model">l10n.bo.package</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    
+                    <!--<button name="get_invoices" type="object" string="Generar Facturas" icon="fa-play-circle"/>-->
+                    <button name="prepare_packages" type="object" string="Crear paquetes" icon="fa-cubes"/>
+                    
+                    <button name="send_edi_documents" type="object" string="Enviar facturas" icon="fa-play-circle"/>
+                    <button name="validate_documents" type="object" string="Validar facturas" icon="fa-play-circle"/>
+                    <!--
+                    <button name="test_siat_connection" type="object" string="VERIFICAR CONECCION" icon="fa-play-circle"/>
+                    -->
+                </header>
+                <sheet>
+                    <group>
+                        <group>  
+                            <field name="name"/>
+                            <!--
+                            <field name="document_type_id"/>
+                            -->
+                            <field name="event_id" domain="[('pos_id', '=', pos_id)]"/>
+                        </group>
+                        <group>
+                            <field name="pos_id"/>
+                        </group>
+                    </group>
+                    
+                    
+                    <group string="INFORMACION DEL ESTADO DEL PAQUETE">
+                        <group string="Estado de envio" >
+                            <field name="reception_code"   invisible="not reception_code"/>
+                            
+                        </group>
+                        <group string="Estado de validación">
+                            
+                            <field name="description_code" invisible="not description_code"/>
+                            <field name="validation_code" invisible=" not validation_code"/>
+                            <field name="state_code" invisible="state_code == 0"/>
+                            <field name="error" invisible="not error"/>
+                            
+                        </group>
+                    </group>
+                    <notebook>
+                        
+                        <page string="Paquetes">
+                            <field name="package_line_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="document_type_id" options="{'no_create': True, 'no_open': True}"/>
+                                    
+                                    <field name="transaccion" />
+                                    <field name="description_code" />
+                                    <field name="reception_code"   />
+                                    <field name="state_code"   />
+                                    <field name="fechaEnvio"   />
+                                    
+                                    <field name="error"/>  
+                                    
+                                    
+                                    
+                                    <button name="send_edi_documents"
+                                            type="object"
+                                            icon="fa-paper-plane"
+                                    />
+                                                                      
+                                </tree>
+                            </field>
+                        </page>
+                        
+                        
+                        <page string="Facturas">
+                            <field name="package_invoice_line_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="package_line_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+</odoo>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="PartnerDetailsEdit" t-inherit="point_of_sale.PartnerDetailsEdit" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('partner-details-box')]/div[5]" position="before">
+            <t t-if="pos.pos_config.enable_bo_edi">
+                <div class="partner-detail col">    
+                    <label class="form-label label" for="identification_type_id_id">Tipo documento</label>
+                    <select class="detail form-select" name="identification_type_id" t-model="changes.identification_type_id" id="identification_type_id_id">
+                        <option value="">None</option>
+                        <t t-foreach="pos.identification_types" t-as="identification_type" t-key="identification_type.id">
+                            <option t-att-value="identification_type.id">
+                                <t t-esc="identification_type.name"/>
+                            </option>
+                        </t>
+                    </select>
+                </div>
+            </t>
+        </xpath>
+        <xpath expr="//div[hasclass('partner-details-box')]/div[5]" position="after">
+            <t t-if="pos.pos_config.enable_bo_edi">
+                <div class="partner-detail col">    
+                    <span class="form-label label" for="nit_state">Estado NIT</span>
+                    <input  name="nit_state" id="nit_state" t-model="changes.nit_state" class="detail vat form-control solo-lectura" />
+                </div>
+                <div class="partner-detail col">
+                    <span class="form-label label" for="complement">COMPLEMENTO</span>
+                    <input  name="complement" id="complement" t-model="changes.complement" class="detail vat form-control" />
+                </div>
+                <div class="partner-detail col">
+                    <span class="form-label label" for="exception">Excepcion </span>
+                    <label class="switch">
+                        <input type="checkbox" name="exception" id="exception" t-model="changes.exception"/>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </t>
+        </xpath>
+    </t>
+</templates>

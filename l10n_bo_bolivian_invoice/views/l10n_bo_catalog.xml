@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--#################   SINCRONIZACION DE CATALOGOS    #################-->
+    <record id="view_l10n_bo_catalog_request" model="ir.actions.act_window">
+        <field name="name">Sinrconizacion de catalogos</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.catalog.request</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer sinrconización
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_catalog_request_tree" model="ir.ui.view">
+        <field name="name">l10n.bo.catalog.request.tree</field>
+        <field name="model">l10n.bo.catalog.request</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_l10n_bo_catalog_request_form" model="ir.ui.view">
+        <field name="name">l10n.bo.catalog.request.form</field>
+        <field name="model">l10n.bo.catalog.request</field>
+        <field name="arch" type="xml">
+            <form duplicate="false">
+                <header>
+                    <button name="get_l10n_bo_catalog_sync_ids" type="object" string="Obtener catalogos" invisible="1" />
+                    <button name="button_process_all_siat" type="object" string="Sincronzar catalogos" icon="fa-play-circle" />
+                    <field name="state" widget="statusbar"/>
+                    
+                </header>
+                <sheet>
+                    <group string="Informacion" >
+                        <group string="Nombre">  
+                            <field name="name"/>
+                        </group>
+                        
+                        <group string="Sincronización por sucursal" >
+                            <field name="branch_office_id" options="{ 'no_open': True, 'no_create': True}"/>
+                            <field name="pos_id" options="{ 'no_open': True, 'no_create': True}" domain="[('branch_office_id','=',branch_office_id)]"/>
+                            
+                        </group>
+                        
+                        
+                    </group>
+                    <notebook>
+                        <page string="Catalogos">
+                            <field name="catalog_status_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="state"/>
+                                    <field name="transaccion" invisible="1" />
+                                    <field name="error" invisible="transaccion" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--#################   TIPOS DE ACTIVIDADES    #################-->
+    <record id="view_l10n_bo_activity" model="ir.actions.act_window">
+        <field name="name">Tipos de actividades</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.activity</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer tipo de actividad
+            </p>
+        </field>
+    </record>
+
+    <record id="view_l10n_bo_activity_tree" model="ir.ui.view">
+        <field name="model">l10n.bo.activity</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="false" >
+                <field name="codigoCaeb"/>
+                <field name="tipoActividad"/>
+                <field name="descripcion"/>           
+            </tree>
+        </field>
+    </record>
+
+    <!--#################   FECHA Y HORA    #################-->
+
+    <record id="view_l10n_bo_datetime" model="ir.actions.act_window">
+        <field name="name">Fechas y horas</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.datetime</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer fecha y hora SIAT
+            </p>
+        </field>
+    </record>
+
+    <record id="view_l10n_bo_datetime_tree" model="ir.ui.view">
+        <field name="model">l10n.bo.datetime</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="false">
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <!--#################   DOCUMENTO SECTOR    #################-->
+
+    <record id="view_l10n_bo_activity_document_sector" model="ir.actions.act_window">
+        <field name="name">Documentos de sector</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.activity.document.sector</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer documento sector
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_activity_document_sector_tree" model="ir.ui.view">
+        <field name="model">l10n.bo.activity.document.sector</field>
+        <field name="arch" type="xml">
+            <!-- create="false"-->
+            <tree editable="top"  >
+                <field name="codigoDocumentoSector"/>
+                <field name="tipoDocumentoSector"/>
+                <field name="codigoActividad"/>            
+            </tree>
+        </field>
+    </record>
+
+    <!--#################   CODIGO DE LEYENDAS    #################-->
+
+    <record id="view_l10n_bo_legend_code" model="ir.actions.act_window">
+        <field name="name">Leyendas</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.legend.code</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer leyenda
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_legend_code_tree" model="ir.ui.view">
+        <field name="model">l10n.bo.legend.code</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="false" >
+                <field name="codigoActividad"/>
+                <field name="descripcionLeyenda"/>
+            </tree>
+        </field>
+    </record>
+    
+
+    <!--#################   CODIGO DE MENSAJES    #################-->
+
+    <record id="view_l10n_bo_message_service" model="ir.actions.act_window">
+        <field name="name">Codigos de mensajes</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.message.service</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer codigo de mensaje
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_message_service_tree" model="ir.ui.view">
+        <field name="name">l10n.bo.message.service.tree</field>
+        <field name="model">l10n.bo.message.service</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="false" >
+                <field name="codigoClasificador"/>
+                <field name="descripcion"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!--#################   SERVICIO DE PRODUCTOS    #################-->
+
+    <record id="view_l10n_bo_product_service" model="ir.actions.act_window">
+        <field name="name">Servicios de productos</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.product.service</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer servicio de producto
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_product_service_tree" model="ir.ui.view">
+        <field name="model">l10n.bo.product.service</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="false" >
+                <field name="codigoActividad"/>
+                <field name="codigoProducto"/>
+                <field name="descripcionProducto"/>
+                <field name="manytowmany_nandina_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!--#################   CODIGOS NANDINA    #################-->
+
+    <record id="view_l10n_bo_product_service_nandina" model="ir.actions.act_window">
+        <field name="name">Codigos nandina</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.product.service.nandina</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer codigo nandina
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_product_service_nandina_tree" model="ir.ui.view">
+        <field name="model">l10n.bo.product.service.nandina</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="false" >
+                <field name="name"/>
+                <field name="l10n_bo_product_service_id"/>
+                <field name="ratio" />
+                <field name="fixed_rate"/>
+                <field name="percentage_rate"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!--#################   EVENTOS SIGNIFICATIVOS    #################-->
+
+    <record id="view_l10n_bo_significant_event" model="ir.actions.act_window">
+        <field name="name">Eventos significativos</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.significant.event</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer evento significativo
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_significant_event_tree" model="ir.ui.view">
+        <field name="model">l10n.bo.significant.event</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="false" >
+                <field name="codigoClasificador"/>
+                <field name="descripcion"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--#################   RAZON DE CANCELACION    #################-->
+
+    <record id="view_l10n_bo_cancellation_reason" model="ir.actions.act_window">
+        <field name="name">Razon de cancelacion</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.cancellation.reason</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu razon de cancelacion
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_cancellation_reason_tree" model="ir.ui.view">
+        <field name="model">l10n.bo.cancellation.reason</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="false" >
+                <field name="codigoClasificador"/>
+                <field name="descripcion"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--#################   Codigos de paises    #################-->
+
+    <record id="view_l10n_bo_origin_country" model="ir.actions.act_window">
+        <field name="name">Codigos de paises</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.origin.country</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer codigo de pais
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_origin_country_tree" model="ir.ui.view">
+        <field name="model">l10n.bo.origin.country</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="false" >
+                <field name="codigoClasificador"/>
+                <field name="descripcion"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--#################   Codigos de documento de identidad    #################-->
+
+    <record id="view_l10n_bo_type_document_identity" model="ir.actions.act_window">
+        <field name="name">Codigos documento de indentidad</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.type.document.identity</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer codigo de documento de indentidad
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_type_document_identity_tree" model="ir.ui.view">
+        <field name="model">l10n.bo.type.document.identity</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="false" >
+                <field name="codigoClasificador"/>
+                <field name="descripcion"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--#################   Codigos de tipo documento    #################-->
+
+    <record id="view_l10n_bo_document_type" model="ir.actions.act_window">
+        <field name="name">Codigos de tipo de documento</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.document.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer codigo de tipo de documento
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_document_type_tree" model="ir.ui.view">
+        <field name="model">l10n.bo.document.type</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="false" >
+                <field name="name"/>
+                <field name="invoice_type_id" options="{ 'no_open': True, 'no_create': True}"/>
+                <field name="sector_document_id" options="{ 'no_open': True, 'no_create': True}"/>
+                <field name="use" widget="boolean_toggle"/>
+                
+            </tree>
+        </field>
+    </record>
+
+    <!--#################   Codigos de tipo de emision    #################-->
+
+    <record id="view_l10n_bo_type_emision" model="ir.actions.act_window">
+        <field name="name">Codigos de tipo de emision</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.type.emision</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer codigo de tipo de emision
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_type_emision_tree" model="ir.ui.view">
+        <field name="model">l10n.bo.type.emision</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="false" >
+                <field name="codigoClasificador" />
+                <field name="descripcion" />
+                <field name="legend" />
+
+            </tree>
+        </field>
+    </record>
+    
+    <!--#################   Codigos de tipo de habitacion    #################-->
+
+    <record id="view_l10n_bo_type_room" model="ir.actions.act_window">
+        <field name="name">Codigos de tipo de habitacion</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.type.room</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer codigo de tipo de habitacion
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_type_room_tree" model="ir.ui.view">
+        <field name="name">Tipos de habitacion</field>
+        <field name="model">l10n.bo.type.room</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="false" >
+                <field name="codigoClasificador" />
+                <field name="descripcion" />
+            </tree>
+        </field>
+    </record>
+    
+    <!--#################   Codigos de tipo de pago    #################-->
+
+    <record id="view_l10n_bo_type_payment" model="ir.actions.act_window">
+        <field name="name">Codigos de tipo de pago</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.type.payment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer codigo de tipo de pago
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_type_payment_tree" model="ir.ui.view">
+        <field name="name">Tipos de pago</field>
+        <field name="model">l10n.bo.type.payment</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="false" >
+                <field name="codigoClasificador" />
+                <field name="descripcion" />
+            </tree>
+        </field>
+    </record>
+    
+    <!--#################   Codigos de tipo de moneda    #################-->
+
+    <record id="view_l10n_bo_type_currency" model="ir.actions.act_window">
+        <field name="name">Codigos de tipo de moneda</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.type.currency</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer codigo de tipo de moneda
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_type_currency_tree" model="ir.ui.view">
+        <field name="name">Tipos de moneda</field>
+        <field name="model">l10n.bo.type.currency</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="false" >
+                <field name="codigoClasificador" />
+                <field name="descripcion" />
+            </tree>
+        </field>
+    </record>
+    
+    <!--#################   Codigos de tipo de POS    #################-->
+
+    <record id="view_l10n_bo_type_point_sale" model="ir.actions.act_window">
+        <field name="name">Codigos de tipo de POS</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.type.point.sale</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer codigo de tipo de POS
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_type_point_sale_tree" model="ir.ui.view">
+        <field name="name">Tipos de POS</field>
+        <field name="model">l10n.bo.type.point.sale</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="false" >
+                <field name="codigoClasificador" />
+                <field name="descripcion" />
+            </tree>
+        </field>
+    </record>
+    
+    <!--#################   Codigos de tipo de POS    #################-->
+
+    <record id="view_l10n_bo_type_invoice" model="ir.actions.act_window">
+        <field name="name">Codigos de tipo factura</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.type.invoice</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer codigo de tipo factura
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_type_invoice_tree" model="ir.ui.view">
+        <field name="name">Tipos de factura</field>
+        <field name="model">l10n.bo.type.invoice</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="false" >
+                <field name="codigoClasificador" />
+                <field name="descripcion" />
+                
+            </tree>
+        </field>
+    </record>
+    
+    <!--#################   Codigos de tipo de UDM    #################-->
+
+    <record id="view_l10n_bo_type_unit_measurement" model="ir.actions.act_window">
+        <field name="name">Codigos de UDM</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.type.unit.measurement</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer codigo de UDM
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_type_unit_measurement_tree" model="ir.ui.view">
+        <field name="name">Tipos de UDM</field>
+        <field name="model">l10n.bo.type.unit.measurement</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="false" >
+                <field name="codigoClasificador" />
+                <field name="descripcion" />
+            </tree>
+        </field>
+    </record>
+    
+</odoo>

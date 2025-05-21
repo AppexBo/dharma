@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="l10n_bo_invoice_credit_debit_note_template">
+                <div class="row">
+                    <div class="col-5 mb4">
+                        <div class="text-center">
+                            <table class="table1">
+                                <tr>
+                                    <td>
+                                        <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height: 40px;" alt="Logo"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong t-esc="o.company_id.name"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong t-field="o.pos_id.branch_office_id.name" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            No.
+                                            <t t-esc="o.pos_id.name"/>
+                                        </strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span t-esc="o.pos_id.address"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>
+                                            Teléfono: <t t-esc="o.company_id.phone"/>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span t-field="o.company_id.municipality_id.name"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-6 mr-7" style="margin-left:140px !important; font-size:13px;">
+                        <div class="row  m-0 p-0" >
+                            <div class="col-6 m-0 p-0 text-left">
+                                <strong>NIT</strong>
+                            </div>
+                            <div class="col-6  m-0 p-0 text-left">
+                                <t t-esc="o.company_id.vat"/>
+                            </div>
+                        </div>
+                        <div class="row  m-0 p-0">
+                            <div class="col-6 m-0 p-0 text-left">
+                                <strong>Nota N°</strong>
+                            </div>
+                            <div class="col-6  m-0 p-0 text-left">
+                                <t t-esc="o.invoice_number"/>
+                            </div>
+                        </div>
+                        <div class="row  m-0 p-0">
+                            <div class="col-6 m-0 p-0 text-left">
+                                <strong>CÓD. AUTORIZACIÓN</strong>
+                            </div>
+                            <div class="col-4  m-0 p-0 text-left">
+                                <t t-esc="o.cuf"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="center" style="display: block; padding-top: 30px; ">
+                    <div><b style="font-size: 23px;">NOTA CRÉDITO - DÉBITO</b></div>
+                </div>
+
+
+                <table style="width: 1000px; font-size: 16px; font-family: sans-serif; border: 1px solid white;">
+                    <tr>
+                        <td><b>Fecha:</b></td>
+                        <td class="text-left"><span t-esc="o.get_formatted_datetime()"/> <span t-field="o.meridies"/></td>    
+                        <td style="text-align: right;"><b>NIT/CI/CEX:</b></td>
+                        <td style="text-aling:left; padding-left:15px;"><span t-field="o.partner_id.vat"/> <span t-if="o.partner_id.complement"> - <span t-field="o.partner_id.complement"/> </span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Nombre/Razón Social:</b></td>
+                        <td class="text-left"><span t-field="o.partner_id.name"/></td>
+                        <td style="text-align: right;"><b>Cod. Cliente:</b></td>
+                        <td style="text-aling:left; padding-left:15px;"><span t-field="o.partner_id.code"/></td>
+                    </tr>
+
+                    <tr>
+                        <td style="width: 200px;"> <b>N° Factura:</b> </td>
+                        <td style="text-align: left; width: 250px;"> <span t-field="o.reversed_entry_id.invoice_number"/> </td>
+                        <td style="text-align: right; width: 300px;"> <b>Fecha Factura:</b> </td>
+                        <td style="text-align: left; padding-left:15px;"> <span t-esc="o.reversed_entry_id.get_formatted_datetime()"/> <span t-field="o.reversed_entry_id.meridies"/></td>
+                        
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: right;"><b>N° Autorización/CUF:</b></td>
+                        <td style="padding-left:15px; width: 240px;  display: block; line-height: 1.2;"><span t-field="o.reversed_entry_id.cuf"/></td>
+                    </tr>
+                </table>
+
+                <div style="display: block; padding-top: 30px; ">
+                    <div><b style="font-size: 16px;">DATOS FACTURA ORIGINAL</b></div>
+                </div>
+
+                <table style="width:100%; border: 1px solid black; font-size: 13px;">
+                        <tr style="border: 1px solid black; height: 60px; background-color: #f7f7f7;" >
+                            <th style="width:130px;  border: 1px solid black;">CÓDIGO PRODUCTO / SERVICIO</th>
+                            <th style="width:110px;  border: 1px solid black;">CANTIDAD</th>
+                            <th style="width:100px;  border: 1px solid black;">UNIDAD DE MEDIDA</th>
+                            <th style="width:240px;  border: 1px solid black;">DESCRIPCIÓN</th>
+                            <th style="width:120px;  border: 1px solid black;">PRECIO UNITARIO</th>
+                            <th style="width:130px;  border: 1px solid black;">DESCUENTO</th>
+                            <th style="border: 1px solid black;">SUBTOTAL</th>
+                        </tr>
+                    <tbody>
+                        <t t-foreach="o.reversed_entry_id.invoice_line_ids" t-as="line">
+                        <t t-set="numeric_amount">
+                            <t t-esc="line.getSubTotal()" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                        </t>
+                        <tr t-if="line.display_type == 'product' and line.product_id.gif_product == False" > 
+                            <td style="padding-left:10px; border: 1px solid black;"><span t-field="line.product_id.default_code"/></td> 
+                            <td style="text-align: right; padding-right:10px; border: 1px solid black;"><span t-field="line.quantity"/></td> 
+                            <td style="padding-left:10px; border: 1px solid black;"><span t-field="line.product_uom_id.siat_udm_id.descripcion"/></td> 
+                            <td style="padding-left:10px; border: 1px solid black;"><span t-field="line.name"/></td> 
+                            <td style="text-align: right; padding-right:10px; border: 1px solid black;"><span t-esc="line.getPriceUnit()" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/></td> 
+                            <td style="text-align: right; padding-right:10px; border: 1px solid black;"><span t-esc="line.prorated_line_discount" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/></td> 
+                            <td style="text-align: right; padding-right:10px; border: 1px solid black;"><span t-esc="numeric_amount"/></td> 
+                        </tr>
+                        
+                        </t>
+                    </tbody>
+                </table>
+
+                <div class="clearfix">
+                    <div id="total">
+                        <table class="table table-sm" style="width:100%; border: 1px solid white; font-size: 11px;">
+                            <tr>
+                                <td style="color: white; border-top: 1px solid white; width:580px;">.</td>
+                                <td style="width:250px; text-align: right; padding-right:10px; border: 1px solid black;"><b>MONTO TOTAL ORIGINAL Bs</b></td>
+                                <td style="text-align: right; padding-right:10px; border: 1px solid black;"> <span t-esc="o.reversed_entry_id.getAmountTotal()" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/> </td>
+                            </tr>
+                        </table>
+                            
+                    </div>
+                </div>
+                
+                <br/>
+
+                <div style="display: block; padding-top: 30px; ">
+                    <div><b style="font-size: 16px;">DATOS DE LA DEVOLUCIÓN O RESCISIÓN</b></div>
+                </div>
+
+                <table style="width:100%; border: 1px solid black; font-size: 13px;">
+                        <tr style="border: 1px solid black; height: 60px; background-color: #f7f7f7;" >
+                            <th style="width:130px;  border: 1px solid black;">CÓDIGO PRODUCTO / SERVICIO</th>
+                            <th style="width:110px;  border: 1px solid black;">CANTIDAD</th>
+                            <th style="width:100px;  border: 1px solid black;">UNIDAD DE MEDIDA</th>
+                            <th style="width:240px;  border: 1px solid black;">DESCRIPCIÓN</th>
+                            <th style="width:120px;  border: 1px solid black;">PRECIO UNITARIO</th>
+                            <th style="width:130px;  border: 1px solid black;">DESCUENTO</th>
+                            <th style="border: 1px solid black;">SUBTOTAL</th>
+                        </tr>
+                    <tbody>
+                        <t t-foreach="o.invoice_line_ids" t-as="line">
+                        <t t-set="numeric_amount">
+                            <t t-esc="line.getSubTotal()" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                        </t>
+                        <tr t-if="line.display_type == 'product'and line.product_id.gif_product == False" > 
+                            <td style="padding-left:10px; border: 1px solid black;"><span t-field="line.product_id.default_code"/></td> 
+                            <td style="text-align: right; padding-right:10px; border: 1px solid black;"><span t-field="line.quantity"/></td> 
+                            <td style="padding-left:10px; border: 1px solid black;"><span t-field="line.product_uom_id.siat_udm_id.descripcion"/></td> 
+                            <td style="padding-left:10px; border: 1px solid black;"><span t-field="line.name"/></td> 
+                            <td style="text-align: right; padding-right:10px; border: 1px solid black;"><span t-esc="line.getPriceUnit()" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}" /></td> 
+                            <td style="text-align: right; padding-right:10px; border: 1px solid black;"><span t-esc="line.getAmountDiscount()" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}" /></td> 
+                            <td style="text-align: right; padding-right:10px; border: 1px solid black;"><span t-esc="numeric_amount"/></td> 
+                        </tr>
+                        
+                        </t>
+                    </tbody>
+                </table>
+
+                <div class="clearfix">
+                    <div id="total">
+                        <table class="table table-sm" style="width:100%; border: 1px solid white; font-size: 11px;">
+                            <tr>
+                                <td rowspan="2" style="width:580px; vertical-align: middle;"><b>Son: <span t-esc="o.getBolivianLiteral()"/> Bolivianos</b></td>
+                                <td style=" width:250px; text-align: right; padding-right:10px; border: 1px solid black;"><b>MONTO TOTAL DEVUELTO Bs</b></td>
+                                <td style="text-align: right; padding-right:10px; border: 1px solid black;"> <span t-esc="o.getAmountTotal()" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/> </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right; padding-right:10px; border: 1px solid black;"><b>MONTO EFECTIVO DÉBITO-CRÉDITO Bs</b></td>
+                                <td style="text-align: right; padding-right:10px; border: 1px solid black;"> <span t-esc="o.getAmountEffective()" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/> </td>
+                            </tr>
+                        </table>
+                            
+                    </div>
+                </div>
+
+                
+                <div class="clearfix">
+                    <div id="total">
+                        <table class="table table-sm" style="font-size: 11px; width:100%; border: 1px solid white; text-align: center;  margin-top:40px; page-break-before: auto; page-break-inside: avoid; page-break-after: auto;">
+                            <tr>
+                                <td>ESTA FACTURA CONTRIBUYE AL DESARROLLO DEL PAÍS, EL USO ILÍCITO SERÁ SANCIONADO PENALMENTE DE ACUERDO A LEY</td>
+                                <td rowspan="4" style="width: 20%;">
+                                <img t-att-src="'data:image/png;base64,' + str(o.generate_qr())" width="120" height="120"/></td>
+                            </tr>
+                            <tr>
+                                <td><span t-field="o.legend_id.descripcionLeyenda"/></td>
+                            </tr>
+                            <tr>
+                                <td><span t-field="o.pos_id.emision_id.legend"/></td>
+                            </tr>
+                        </table>
+                    </div>  
+                </div>
+        
+    </template>
+</odoo>

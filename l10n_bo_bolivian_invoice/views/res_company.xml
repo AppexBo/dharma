@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        
+        
+        <record id="view_l10n_bo_bolivian_invoice_res_company_form" model="ir.ui.view">
+            <field name="name">Vista Facturacion boliviana.</field>
+            <field name="model">res.company</field>
+            <field name="priority" eval="100" />
+            <field name="inherit_id" ref="base.view_company_form" />
+            <field name="arch" type="xml">
+
+
+                <xpath expr="//field[@name='street2']" position="attributes">
+                    <attribute name="invisible">enable_bo_edi and edi_company_adm_user</attribute>
+                </xpath>
+                <xpath expr="//field[@name='city']" position="attributes">
+                    <attribute name="invisible">enable_bo_edi and edi_company_adm_user</attribute>
+                </xpath>
+                <xpath expr="//field[@name='state_id']" position="attributes">
+                    <attribute name="invisible">enable_bo_edi and edi_company_adm_user</attribute>
+                </xpath>
+                <xpath expr="//field[@name='zip']" position="attributes">
+                    <attribute name="invisible">enable_bo_edi and edi_company_adm_user</attribute>
+                </xpath>
+                <xpath expr="//field[@name='country_id']" position="attributes">
+                    <attribute name="invisible">enable_bo_edi and edi_company_adm_user</attribute>
+                </xpath>
+
+                
+                <xpath expr="//field[@name='vat']" position="before">
+                    <field name="country_id" options="{'no_create': True, 'no_open': True}"  required='enable_bo_edi' invisible='not enable_bo_edi or not edi_company_adm_user' />
+                    <field name="state_id" options="{'no_create': True, 'no_open': True}" required='enable_bo_edi' invisible='not enable_bo_edi or not edi_company_adm_user' />
+                    <field name="province_id" options="{'no_create': True, 'no_open': True}" required='enable_bo_edi' invisible='not enable_bo_edi or not edi_company_adm_user' domain="[('state_id','=',state_id)]"/>
+                    <field name="municipality_id" options="{'no_create': True, 'no_open': True}" required='enable_bo_edi' invisible='not enable_bo_edi or not edi_company_adm_user' domain="[('city_id','=',province_id)]"/>
+                </xpath>
+                
+                
+                <xpath expr="//field[@name='vat']" position="attributes">
+                    <attribute name="invisible">enable_bo_edi and edi_company_adm_user</attribute>
+                    <attribute name="string">Tax ID</attribute>
+                </xpath>
+
+                
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="vat" invisible="not enable_bo_edi or not edi_company_adm_user or parent_company_id" required="enable_bo_edi and not parent_company_id" />
+                </xpath>
+
+                <xpath expr="//field[@name='email']" position="attributes">
+                    <attribute name="required">enable_bo_edi</attribute>
+                </xpath>
+                <xpath expr="//field[@name='phone']" position="attributes">
+                    <attribute name="required">enable_bo_edi</attribute>
+                </xpath>
+                <xpath expr="//field[@name='street']" position="attributes">
+                    <attribute name="required">enable_bo_edi</attribute>
+                </xpath>
+
+                
+                
+                
+                
+                <xpath expr="//field[@name='color']" position="after">
+                    <field name="enable_bo_edi" widget="boolean_toggle" invisible='not enable_bo_edi and not edi_company_adm_user and not user_admin_bo'/>
+                    <field name="edi_company_adm_user" invisible="1"/>
+                    <field name="parent_company_id" invisible="1"/>
+                    <field name="user_admin_bo" invisible="1"/>
+                    
+                </xpath>
+
+                
+                
+
+                <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                    <page string="Facturación (BO)" invisible="not enable_bo_edi and not user_admin_bo">
+                        <group>
+                            <group>
+                                <field name="l10n_bo_code_environment" invisible="not enable_bo_edi or parent_company_id" required="enable_bo_edi and not parent_company_id" />
+                                <field name="l10n_bo_code_modality" invisible="not enable_bo_edi or parent_company_id" required="enable_bo_edi and not parent_company_id" />
+                                <field name="l10n_bo_code_system" invisible="not enable_bo_edi or parent_company_id" required="enable_bo_edi and not parent_company_id"/>
+                                <field name="branch_office_id"  />
+                                
+                                <button name="set_formats"
+                                        string="Formatear registros"
+                                        type="object"
+                                        help="Formatear catalodos siat con odoo"
+                                        invisible="not enable_bo_edi" 
+                                />
+                                
+                            </group>
+                            <group>
+                                <field name="l10n_bo_delegate_token" invisible="not enable_bo_edi or parent_company_id"  required="enable_bo_edi  and not parent_company_id"/>
+                                <field name="l10n_bo_edi_certificate_id" required="l10n_bo_code_modality == '1'" invisible="l10n_bo_code_modality != '1'"/>
+                            </group>
+                        </group>
+                          
+                    </page>
+                </xpath>
+
+                
+            </field>
+        </record>
+        
+        
+
+    </data>
+</odoo>

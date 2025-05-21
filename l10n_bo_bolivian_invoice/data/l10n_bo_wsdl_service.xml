@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="l10n_bo_wsdl_data_syncronization_service_1" model="l10n.bo.wsdl">
+            <field name="name">SERVICIO DE SINCRONIZACIÓN DE DATOS (PRODUCCION)</field>
+            <field name="wsdl">https://siatrest.impuestos.gob.bo/v2/FacturacionSincronizacion?wsdl</field>
+            <field name="environment_type">1</field>
+            <field name="service_type">FacturacionSincronizacion</field>
+        </record>
+        
+        <record id="l10n_bo_wsdl_data_syncronization_service_2" model="l10n.bo.wsdl">
+            <field name="name">SERVICIO DE SINCRONIZACIÓN DE DATOS (PRUEBA)</field>
+            <field name="wsdl">https://pilotosiatservicios.impuestos.gob.bo/v2/FacturacionSincronizacion?wsdl</field>
+            <field name="environment_type">2</field>
+            <field name="service_type">FacturacionSincronizacion</field>
+        </record>
+
+
+
+        <record id="l10n_bo_wsdl_operations_services_1" model="l10n.bo.wsdl">
+            <field name="name">SERVICIO DE OPERACIONES (PRODUCCION)</field>
+            <field name="wsdl">https://siatrest.impuestos.gob.bo/v2/FacturacionOperaciones?wsdl</field>
+            <field name="environment_type">1</field>
+            <field name="service_type">FacturacionOperaciones</field>
+        </record>
+        
+        <record id="l10n_bo_wsdl_operations_services_2" model="l10n.bo.wsdl">
+            <field name="name">SERVICIO DE OPERACIONES (PRUEBA)</field>
+            <field name="wsdl">https://pilotosiatservicios.impuestos.gob.bo/v2/FacturacionOperaciones?wsdl</field>
+            <field name="environment_type">2</field>
+            <field name="service_type">FacturacionOperaciones</field>
+        </record>
+
+
+        
+        <record id="l10n_bo_wsdl_code_obtaining_service_1" model="l10n.bo.wsdl">
+            <field name="name">SERVICIO DE OBTENCIÓN DE CÓDIGOS (PRODUCCION)</field>
+            <field name="wsdl">https://siatrest.impuestos.gob.bo/v2/FacturacionCodigos?wsdl</field>
+            <field name="environment_type">1</field>
+            <field name="service_type">FacturacionCodigos</field>
+        </record>
+
+        <record id="l10n_bo_wsdl_code_obtaining_service_2" model="l10n.bo.wsdl">
+            <field name="name">SERVICIO DE OBTENCIÓN DE CÓDIGOS (PRUEBA)</field>
+            <field name="wsdl">https://pilotosiatservicios.impuestos.gob.bo/v2/FacturacionCodigos?wsdl</field>
+            <field name="environment_type">2</field>
+            <field name="service_type">FacturacionCodigos</field>
+        </record>
+        
+
+
+        <record id="l10n_bo_wsdl_purchase_sale_invoice_1" model="l10n.bo.wsdl">
+            <field name="name">FACTURA COMPRA-VENTA (PRODUCCION)</field>
+            <field name="wsdl">https://siatrest.impuestos.gob.bo/v2/ServicioFacturacionCompraVenta?wsdl</field>
+            <field name="environment_type">1</field>
+            <field name="service_type">ServicioFacturacionCompraVenta</field>
+        </record>
+
+        <record id="l10n_bo_wsdl_purchase_sale_invoice_2" model="l10n.bo.wsdl">
+            <field name="name">FACTURA COMPRA-VENTA (PRUEBA)</field>
+            <field name="wsdl">https://pilotosiatservicios.impuestos.gob.bo/v2/ServicioFacturacionCompraVenta?wsdl</field>
+            <field name="environment_type">2</field>
+            <field name="service_type">ServicioFacturacionCompraVenta</field>
+        </record>
+        
+
+
+        <record id="l10n_bo_wsdl_url_1" model="l10n.bo.wsdl">
+            <field name="name">QR (PRODUCCION)</field>
+            <field name="wsdl">https://siat.impuestos.gob.bo/consulta/QR</field>
+            <field name="environment_type">1</field>
+            <field name="service_type">qr</field>
+        </record>
+
+        <record id="l10n_bo_wsdl_url_2" model="l10n.bo.wsdl">
+            <field name="name">QR (PRUEBA)</field>
+            <field name="wsdl">https://pilotosiat.impuestos.gob.bo/consulta/QR</field>
+            <field name="environment_type">2</field>
+            <field name="service_type">qr</field>
+        </record>
+
+        <record id="l10n_bo_wsdl_credit_debit_invoice_1" model="l10n.bo.wsdl">
+            <field name="name">NOTA DE CREDITO DEBITO (PRODUCCION)</field>
+            <field name="wsdl">https://siatrest.impuestos.gob.bo/v2/ServicioFacturacionDocumentoAjuste?wsdl</field>
+            <field name="environment_type">1</field>
+            <field name="service_type">ServicioFacturacionDocumentoAjuste</field>
+        </record>
+
+        <record id="l10n_bo_wsdl_credit_debit_invoice_2" model="l10n.bo.wsdl">
+            <field name="name">NOTA DE CREDITO DEBITO (PRUEBA)</field>
+            <field name="wsdl">https://pilotosiatservicios.impuestos.gob.bo/v2/ServicioFacturacionDocumentoAjuste?wsdl</field>
+            <field name="environment_type">2</field>
+            <field name="service_type">ServicioFacturacionDocumentoAjuste</field>
+        </record>
+
+        <record id="l10n_bo_wsdl_electronic_invoice_2" model="l10n.bo.wsdl">
+            <field name="name">FACTURACION ELECTRONICA (PRUEBA)</field>
+            <field name="wsdl">https://pilotosiatservicios.impuestos.gob.bo/v2/ServicioFacturacionElectronica?wsdl</field>
+            <field name="environment_type">2</field>
+            <field name="service_type">ServicioFacturacionElectronica</field>
+            <field name="modality_type">1</field>
+        </record>
+
+        <record id="l10n_bo_wsdl_computerized_invoice_2" model="l10n.bo.wsdl">
+            <field name="name">FACTURACION COMPUTARIZADA (PRUEBA)</field>
+            <field name="wsdl">https://pilotosiatservicios.impuestos.gob.bo/v2/ServicioFacturacionComputarizada?wsdl</field>
+            <field name="environment_type">2</field>
+            <field name="service_type">ServicioFacturacionComputarizada</field>
+            <field name="modality_type">2</field>
+        </record>
+
+        
+        
+
+    </data>
+</odoo>

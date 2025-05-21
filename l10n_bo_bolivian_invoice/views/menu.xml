@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem
+        id="l10n_bo_invoice_root"
+        name="Facturación (BO)"
+        sequence="1"
+        parent="base.menu_administration"
+        groups="l10n_bo_bolivian_invoice.group_adm_invoice_edi"
+        />
+        <menuitem 
+            id="wsdl_dates"
+            name="Servicios (BO)"
+            parent="l10n_bo_invoice_root"
+            sequence="1"
+            />
+            <menuitem 
+                id="l10n_bo_wsdl_service"
+                name="Wsdl SIAT"
+                parent="wsdl_dates"
+                action="view_l10n_bo_wsdl_service_tree_form"
+                sequence="1"
+            />
+            <menuitem 
+                id="l10n_bo_wsdl_operation_service"
+                name="Wsdl Operaciones"
+                parent="wsdl_dates"
+                action="view_operation_service"
+                sequence="2"
+            />
+            
+
+            
+
+        <menuitem 
+            id="my_company_dates"
+            name="Compañia"
+            parent="l10n_bo_invoice_root"
+            sequence="2"
+            />
+            
+            <menuitem 
+                id="l10n_bo_branch_office"
+                name="Sucursales"
+                parent="my_company_dates"
+                action="view_l10n_bo_branch_office"
+                sequence="1"
+            />
+
+            <menuitem 
+                id="l10n_bo_pos"
+                name="Puntos de venta"
+                parent="my_company_dates"
+                action="view_l10n_bo_pos"
+                sequence="2"
+            />
+            
+            <menuitem 
+                id="view_l10n_bo_catalog_request_menu"
+                name="Sincronizacion de catalogos"
+                parent="my_company_dates"
+                action="view_l10n_bo_catalog_request"
+                sequence="3"
+            />
+            <menuitem 
+                id="view_significant_event_menu"
+                name="Eventos significativos"
+                parent="my_company_dates"
+                action="view_significant_event"
+                sequence="4"
+            />
+            <menuitem 
+                id="view_l10n_bo_package_menu"
+                name="Paquetes"
+                parent="my_company_dates"
+                action="view_l10n_bo_package"
+                sequence="5"
+            />
+            
+
+            
+
+        <menuitem 
+            id="siat_catalogs"
+            name="Catalogos SIAT"
+            parent="l10n_bo_invoice_root"
+            sequence="3"
+            />
+            <menuitem 
+                id="view_l10n_bo_activity_menu"
+                name="Codigos de actividad"
+                parent="siat_catalogs"
+                action="view_l10n_bo_activity"
+                sequence="1"
+            />
+
+            <menuitem 
+                id="view_l10n_bo_datetime_menu"
+                name="Fecha y hora SIAT"
+                parent="siat_catalogs"
+                action="view_l10n_bo_datetime"
+                sequence="2"
+            />
+            <menuitem 
+                id="view_l10n_bo_activity_document_sector_menu"
+                name="Codigos de documento sector"
+                parent="siat_catalogs"
+                action="view_l10n_bo_activity_document_sector"
+                sequence="3"
+            />            
+
+            <menuitem 
+                id="view_l10n_bo_legend_code_menu"
+                name="Codigos de leyendas"
+                parent="siat_catalogs"
+                action="view_l10n_bo_legend_code"
+                sequence="4"
+            />            
+
+            <menuitem 
+                id="view_l10n_bo_message_service_menu"
+                name="Codigos de mensajes"
+                parent="siat_catalogs"
+                action="view_l10n_bo_message_service"
+                sequence="5"
+            />
+            
+            <menuitem 
+                id="view_l10n_bo_product_service_nandina_root"
+                name="Codigos de productos - nandinas"
+                parent="siat_catalogs"
+                action="view_l10n_bo_product_service"
+                sequence="6"
+                />
+
+
+                <menuitem 
+                    id="view_l10n_bo_product_service_menu"
+                    name="Codigos de productos"
+                    parent="view_l10n_bo_product_service_nandina_root"
+                    action="view_l10n_bo_product_service"
+                    sequence="1"
+                />
+
+                <menuitem 
+                    id="view_l10n_bo_product_service_nandina_menu"
+                    name="Codigos nandina"
+                    parent="view_l10n_bo_product_service_nandina_root"
+                    action="view_l10n_bo_product_service_nandina"
+                    sequence="2"
+                />
+
+            <menuitem 
+                id="view_l10n_bo_significant_event_menu"
+                name="Codigos de Eventos significativos"
+                parent="siat_catalogs"
+                action="view_l10n_bo_significant_event"
+                sequence="7"
+            />
+
+            <menuitem 
+                id="view_l10n_bo_cancellation_reason_menu"
+                name="Codigos de cancelacion"
+                parent="siat_catalogs"
+                action="view_l10n_bo_cancellation_reason"
+                sequence="8"
+            />
+
+            <menuitem 
+                id="view_l10n_bo_origin_country_menu"
+                name="Codigos de paises"
+                parent="siat_catalogs"
+                action="view_l10n_bo_origin_country"
+                sequence="9"
+            />
+
+            <menuitem 
+                id="view_l10n_bo_type_document_identity_menu"
+                name="Codigos de documento de indentidad"
+                parent="siat_catalogs"
+                action="view_l10n_bo_type_document_identity"
+                sequence="10"
+            />
+
+            <menuitem 
+                id="view_l10n_bo_document_type_menu"
+                name="Codigos de tipo documento"
+                parent="siat_catalogs"
+                action="view_l10n_bo_document_type"
+                sequence="11"
+            />
+
+            <menuitem 
+                id="view_l10n_bo_type_emision_menu"
+                name="Codigos de emision"
+                parent="siat_catalogs"
+                action="view_l10n_bo_type_emision"
+                sequence="12"
+            />
+
+            <menuitem 
+                id="view_l10n_bo_type_room_menu"
+                name="Codigos de habitacion"
+                parent="siat_catalogs"
+                action="view_l10n_bo_type_room"
+                sequence="13"
+            />
+
+            <menuitem 
+                id="view_l10n_bo_type_payment_menu"
+                name="Codigos de pago"
+                parent="siat_catalogs"
+                action="view_l10n_bo_type_payment"
+                sequence="14"
+            />
+
+            <menuitem 
+                id="view_l10n_bo_type_currency_menu"
+                name="Codigos de moneda"
+                parent="siat_catalogs"
+                action="view_l10n_bo_type_currency"
+                sequence="15"
+            />
+
+            <menuitem 
+                id="view_l10n_bo_type_point_sale_menu"
+                name="Codigos de punto de venta"
+                parent="siat_catalogs"
+                action="view_l10n_bo_type_point_sale"
+                sequence="16"
+            />
+
+            <menuitem 
+                id="view_l10n_bo_type_invoice_menu"
+                name="Codigos de tipo factura"
+                parent="siat_catalogs"
+                action="view_l10n_bo_type_invoice"
+                sequence="17"
+            />
+
+            <menuitem 
+                id="view_l10n_bo_type_unit_measurement_menu"
+                name="Codigos de Unidad de Medida"
+                parent="siat_catalogs"
+                action="view_l10n_bo_type_unit_measurement"
+                sequence="18"
+            />
+</odoo>

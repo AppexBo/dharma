@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_significant_event" model="ir.actions.act_window">
+        <field name="name">Eventos significativos</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">significant.event</field>
+        <field name="view_mode">tree</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer evento significativo
+            </p>
+        </field>
+    </record>
+
+    <record id="view_significant_event_tree" model="ir.ui.view">
+        <field name="model">significant.event</field>
+        <field name="arch" type="xml">
+            <tree editable="top"   decoration-info="state == 'draft'" decoration-success="state == 'send'" decoration-danger="state == 'cancel'">
+                <button name="wizard_significant_event_form"
+                        type="object"
+                        icon="fa-eye"
+                />
+                <field name="name" />
+                <field name="pos_id" readonly="state =='send'"/>
+                <field name="event_id" readonly="state =='send'"/>
+                <field name="date_init" readonly="state =='send'"/>      
+                <field name="date_end" readonly="state =='send'"/>
+                <field name="cufd_on_event_id" readonly="state =='send'" domain="[('pos_id', '=', pos_id)]" />
+                <field name="cufd_on_event" optional="hide" readonly="state =='send'"/>
+                <field name="cufd" column_invisible="True" readonly="state =='send'"/>
+                
+                <field name="state" widget="badge"/>
+                <button name="register_event"
+                        type="object"
+                        icon="fa-send"
+                />
+                
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="view_significant_event_form" model="ir.ui.view">
+        <field name="name">view_significant_event_form</field>
+        <field name="model">significant.event</field>
+        <field name="arch" type="xml">
+            <form duplicate="false">
+                <header>
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group string="Informacion" >
+                        <group>  
+                            <field name="event_id" readonly="state =='send'"/>
+                        
+                            <field name="cufd_on_event" readonly="1"/>
+                            <field name="cufd" />
+                            
+                            <field name="codeRecepcion"/>
+                        </group>
+                        
+                        <group>
+                            <field name="transaccion" widget="boolean_toggle"/>
+                        </group>
+
+                        <group>
+                            <field name="error" />
+                        </group>
+                        
+                        
+                    </group>
+                    <notebook >
+                        <page string="Respuestas (BO)">
+                            <field name="messagesList"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

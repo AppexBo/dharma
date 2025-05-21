@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_l10n_bo_pos" model="ir.actions.act_window">
+        <field name="name">Puntos de venta</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.pos</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer Punto de venta
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_pos_tree" model="ir.ui.view">
+        <field name="name">l10n.bo.pos.tree</field>
+        <field name="model">l10n.bo.pos</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="not messagesList"  decoration-danger="messagesList" >
+
+                <control>
+                    <button name="wizard_add_pos" string="Agregar punto de venta" type="object" />                  
+                </control>                
+
+                
+                <field name="priority" widget="handle"/>
+                
+                <field name="name"/>
+                <field name="online" widget="boolean_toggle" />
+                <field name="cuis_active" widget="boolean_toggle" />
+                <field name="cufd_active" widget="boolean_toggle" />
+                <field name="pos_type_id" options="{'no_create': True, 'no_open': True}"/>
+                
+                
+                <button name="button_update_cufd"
+                        icon="fa-retweet"
+                        type="object"
+                        string="Cufd"
+                />
+
+                <field name="messagesList" optional="show" widget="many2many_tags"/>
+                
+            </tree>
+
+
+        </field>
+    </record>
+    
+    <record id="view_l10n_bo_pos_form" model="ir.ui.view">
+        <field name="name">l10n.bo.pos.form</field>
+        <field name="model">l10n.bo.pos</field>
+        <field name="arch" type="xml">
+            <form duplicate="false">
+                <header>
+                    <button name="cuis_request" type="object" string="Solicitar cuis" icon="fa-play-circle" />
+                    <button name="button_update_cufd" type="object" string="Solicitar cufd" icon="fa-play-circle" />
+                    <button name="test_siat_connection" type="object" string="Verificar conexión con siat" icon="fa-play-circle" />
+                    <button name="open_pos_request" type="object" string="Abrir en siat" icon="fa-play-circle" invisible="transaccion" />
+                    <button name="delete_to_siat" type="object" string="Cerrar en siat" icon="fa-play-circle" invisible="not transaccion" />
+                    
+                    <button name="generateSequence" type="object" string="CREAR SECUENCIA" icon="fa-play-circle" invisible="not cufd_active" />
+                    <button name="action_offline" type="object" string="Fuera de linea" icon="fa-play-circle" invisible="emision_code ==2 or not emision_code"  />
+                    <button name="action_online" type="object" string="En linea" icon="fa-play-circle" invisible="emision_code ==1 or not emision_code"  />
+
+                    
+                    
+                </header>
+                <sheet>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    
+                    <group>
+                        <group>  
+                            <field name="code" required="1"/>
+                            <field name="emision_id"/>
+                            <field name="event_id" options="{'no_create': True}" invisible=" not emision_id or emision_code == 1 "/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="emision_code" invisible="1"/>
+                            <field name="pos_type_id" options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                       <group>
+                            <field name="branch_office_id" invisible="1"/>
+                            <field name="cuis_id"/>
+                            <field name="cufd_id"/>
+                            <field name="cufd_active" invisible="1"/>
+                            
+                        </group>
+                    </group>
+                    <group>    
+                        <group>
+                            <field name="address"/>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                
+                            <field name="transaccion" invisible="1"/>
+                        </group>
+                        
+                    </group>
+                    <notebook>
+                        <page string="Secuencias">
+                            <field name="sequence_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="sequence" />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Ajustes adicionales" >
+                            <group>
+                                <group>
+                                    <field name="paper_format_type"/>
+                                </group>
+                                <group>
+                                    <field name="zero_rate_type"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Mensajes" >
+                            <field name="messagesList" />
+                        </page>
+
+                        <page string="CUFD'S" >
+                            <group>
+                                <group>
+                                    <field name="limit_cufds" />
+                                </group>
+                            </group>
+                            <field name="cufd_ids"/>
+                        </page>
+                        
+                    </notebook>
+                    
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+</odoo>

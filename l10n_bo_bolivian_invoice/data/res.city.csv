@@ -1,0 +1,113 @@
+"id","country_id:id","state_id:id","name","code"
+l10n_bo_province_0101,base.bo,l10n_bo_state_01,Oropeza,0101
+l10n_bo_province_0102,base.bo,l10n_bo_state_01,Azurduy,0102
+l10n_bo_province_0103,base.bo,l10n_bo_state_01,Zudañez,0103
+l10n_bo_province_0104,base.bo,l10n_bo_state_01,Tomina,0104
+l10n_bo_province_0105,base.bo,l10n_bo_state_01,Hernando Siles,0105
+l10n_bo_province_0106,base.bo,l10n_bo_state_01,Yamparáez,0106
+l10n_bo_province_0107,base.bo,l10n_bo_state_01,Nor Cinti,0107
+l10n_bo_province_0108,base.bo,l10n_bo_state_01,Belisario Boeto,0108
+l10n_bo_province_0109,base.bo,l10n_bo_state_01,Sud Cinti,0109
+l10n_bo_province_0110,base.bo,l10n_bo_state_01,Luis Calvo,0110
+l10n_bo_province_0201,base.bo,l10n_bo_state_02,Murillo,0201
+l10n_bo_province_0202,base.bo,l10n_bo_state_02,Omasuyos,0202
+l10n_bo_province_0203,base.bo,l10n_bo_state_02,Pacajes,0203
+l10n_bo_province_0204,base.bo,l10n_bo_state_02,Camacho,0204
+l10n_bo_province_0205,base.bo,l10n_bo_state_02,Muñecas,0205
+l10n_bo_province_0206,base.bo,l10n_bo_state_02,Larecaja,0206
+l10n_bo_province_0207,base.bo,l10n_bo_state_02,Franz Tamayo,0207
+l10n_bo_province_0208,base.bo,l10n_bo_state_02,Ingavi,0208
+l10n_bo_province_0209,base.bo,l10n_bo_state_02,Loayza,0209
+l10n_bo_province_0210,base.bo,l10n_bo_state_02,Inquisivi,0210
+l10n_bo_province_0211,base.bo,l10n_bo_state_02,Sur Yungas,0211
+l10n_bo_province_0212,base.bo,l10n_bo_state_02,Los Andes,0212
+l10n_bo_province_0213,base.bo,l10n_bo_state_02,Aroma,0213
+l10n_bo_province_0214,base.bo,l10n_bo_state_02,Nor Yungas,0214
+l10n_bo_province_0215,base.bo,l10n_bo_state_02,Abel Iturralde,0215
+l10n_bo_province_0216,base.bo,l10n_bo_state_02,Bautista Saavedra,0216
+l10n_bo_province_0217,base.bo,l10n_bo_state_02,Manco Kapac,0217
+l10n_bo_province_0218,base.bo,l10n_bo_state_02,Gualberto Villarroel,0218
+l10n_bo_province_0219,base.bo,l10n_bo_state_02,General José Manuel,0219
+l10n_bo_province_0220,base.bo,l10n_bo_state_02,Caranavi,0220
+l10n_bo_province_0301,base.bo,l10n_bo_state_03,Cercado,0301
+l10n_bo_province_0302,base.bo,l10n_bo_state_03,Campero,0302
+l10n_bo_province_0303,base.bo,l10n_bo_state_03,Ayopaya,0303
+l10n_bo_province_0304,base.bo,l10n_bo_state_03,Esteban Arce,0304
+l10n_bo_province_0305,base.bo,l10n_bo_state_03,Arani,0305
+l10n_bo_province_0306,base.bo,l10n_bo_state_03,Arque,0306
+l10n_bo_province_0307,base.bo,l10n_bo_state_03,Capinota,0307
+l10n_bo_province_0308,base.bo,l10n_bo_state_03,Germán Jordán,0308
+l10n_bo_province_0309,base.bo,l10n_bo_state_03,Quillacollo,0309
+l10n_bo_province_0310,base.bo,l10n_bo_state_03,Chapare,0310
+l10n_bo_province_0311,base.bo,l10n_bo_state_03,Tapacarí,0311
+l10n_bo_province_0312,base.bo,l10n_bo_state_03,Carrasco,0312
+l10n_bo_province_0313,base.bo,l10n_bo_state_03,Mizque,0313
+l10n_bo_province_0314,base.bo,l10n_bo_state_03,Punata,0314
+l10n_bo_province_0315,base.bo,l10n_bo_state_03,Bolivar,0315
+l10n_bo_province_0316,base.bo,l10n_bo_state_03,Tiraque,0316
+l10n_bo_province_0401,base.bo,l10n_bo_state_04,Cercado,0401
+l10n_bo_province_0402,base.bo,l10n_bo_state_04,Abaroa,0402
+l10n_bo_province_0403,base.bo,l10n_bo_state_04,Carangas,0403
+l10n_bo_province_0404,base.bo,l10n_bo_state_04,Sajama,0404
+l10n_bo_province_0405,base.bo,l10n_bo_state_04,Litoral,0405
+l10n_bo_province_0406,base.bo,l10n_bo_state_04,Poopó,0406
+l10n_bo_province_0407,base.bo,l10n_bo_state_04,Pantaleon Dalence,0407
+l10n_bo_province_0408,base.bo,l10n_bo_state_04,Ladislao Cabrera,0408
+l10n_bo_province_0409,base.bo,l10n_bo_state_04,Sabaya,0409
+l10n_bo_province_0410,base.bo,l10n_bo_state_04,Saucarí,0410
+l10n_bo_province_0411,base.bo,l10n_bo_state_04,Tomás Barrón,0411
+l10n_bo_province_0412,base.bo,l10n_bo_state_04,Sur Carangas,0412
+l10n_bo_province_0413,base.bo,l10n_bo_state_04,San Pedro De Totora,0413
+l10n_bo_province_0414,base.bo,l10n_bo_state_04,Sebastián Pagador,0414
+l10n_bo_province_0415,base.bo,l10n_bo_state_04,Mejillones,0415
+l10n_bo_province_0416,base.bo,l10n_bo_state_04,Nor Carangas,0416
+l10n_bo_province_0501,base.bo,l10n_bo_state_05,Tomás Frías,0501
+l10n_bo_province_0502,base.bo,l10n_bo_state_05,Rafael Bustillo,0502
+l10n_bo_province_0503,base.bo,l10n_bo_state_05,Cornelio Saavedra,0503
+l10n_bo_province_0504,base.bo,l10n_bo_state_05,Chayanta,0504
+l10n_bo_province_0505,base.bo,l10n_bo_state_05,Charcas,0505
+l10n_bo_province_0506,base.bo,l10n_bo_state_05,Nor Chichas,0506
+l10n_bo_province_0507,base.bo,l10n_bo_state_05,Alonzo de Ibañez,0507
+l10n_bo_province_0508,base.bo,l10n_bo_state_05,Sur Chichas,0508
+l10n_bo_province_0509,base.bo,l10n_bo_state_05,Nor Lipez,0509
+l10n_bo_province_0510,base.bo,l10n_bo_state_05,Sur Lipez,0510
+l10n_bo_province_0511,base.bo,l10n_bo_state_05,José María Linares,0511
+l10n_bo_province_0512,base.bo,l10n_bo_state_05,Antonio Quijarro,0512
+l10n_bo_province_0513,base.bo,l10n_bo_state_05,General Bernardino Bilbao,0513
+l10n_bo_province_0514,base.bo,l10n_bo_state_05,Daniel Campos,0514
+l10n_bo_province_0515,base.bo,l10n_bo_state_05,Modesto Omiste,0515
+l10n_bo_province_0516,base.bo,l10n_bo_state_05,Enrique Baldiviezo,0516
+l10n_bo_province_0601,base.bo,l10n_bo_state_06,Cercado,0601
+l10n_bo_province_0602,base.bo,l10n_bo_state_06,Arce,0602
+l10n_bo_province_0603,base.bo,l10n_bo_state_06,Gran Chaco,0603
+l10n_bo_province_0604,base.bo,l10n_bo_state_06,Avilez,0604
+l10n_bo_province_0605,base.bo,l10n_bo_state_06,Mendez,0605
+l10n_bo_province_0606,base.bo,l10n_bo_state_06,Burnet O'Connor,0606
+l10n_bo_province_0701,base.bo,l10n_bo_state_07,Andrés Ibañez,0701
+l10n_bo_province_0702,base.bo,l10n_bo_state_07,Warnes,0702
+l10n_bo_province_0703,base.bo,l10n_bo_state_07,Velasco,0703
+l10n_bo_province_0704,base.bo,l10n_bo_state_07,Ichilo,0704
+l10n_bo_province_0705,base.bo,l10n_bo_state_07,Chiquitos,0705
+l10n_bo_province_0706,base.bo,l10n_bo_state_07,Sara,0706
+l10n_bo_province_0707,base.bo,l10n_bo_state_07,Cordillera,0707
+l10n_bo_province_0708,base.bo,l10n_bo_state_07,Vallegrande,0708
+l10n_bo_province_0709,base.bo,l10n_bo_state_07,Florida,0709
+l10n_bo_province_0710,base.bo,l10n_bo_state_07,Obispo Santiestevan,0710
+l10n_bo_province_0711,base.bo,l10n_bo_state_07,Ñuflo de Chavez,0711
+l10n_bo_province_0712,base.bo,l10n_bo_state_07,Angel Sandoval,0712
+l10n_bo_province_0713,base.bo,l10n_bo_state_07,Caballero,0713
+l10n_bo_province_0714,base.bo,l10n_bo_state_07,German Busch,0714
+l10n_bo_province_0715,base.bo,l10n_bo_state_07,Guarayos,0715
+l10n_bo_province_0801,base.bo,l10n_bo_state_08,Cercado,0801
+l10n_bo_province_0802,base.bo,l10n_bo_state_08,Vaca Diez,0802
+l10n_bo_province_0803,base.bo,l10n_bo_state_08,General José Ballivián,0803
+l10n_bo_province_0804,base.bo,l10n_bo_state_08,Yacuma,0804
+l10n_bo_province_0805,base.bo,l10n_bo_state_08,Moxos,0805
+l10n_bo_province_0806,base.bo,l10n_bo_state_08,Marban,0806
+l10n_bo_province_0807,base.bo,l10n_bo_state_08,Mamore,0807
+l10n_bo_province_0808,base.bo,l10n_bo_state_08,Itenez,0808
+l10n_bo_province_0901,base.bo,l10n_bo_state_09,Nicolas Suarez,0901
+l10n_bo_province_0902,base.bo,l10n_bo_state_09,Manuripi,0902
+l10n_bo_province_0903,base.bo,l10n_bo_state_09,Madre de Dios,0903
+l10n_bo_province_0904,base.bo,l10n_bo_state_09,Abuna,0904
+l10n_bo_province_0905,base.bo,l10n_bo_state_09,Federico Román,0905

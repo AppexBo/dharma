@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="l10n_bo_catalog_sincronizaractividades" model="l10n.bo.catalog">
+            <field name="name">Códigos de Actividades</field>
+            <field name="code">sincronizarActividades</field>
+            <field name="description">Método por el cual el Sistema Informático de Facturación autorizado realiza la
+                sincronización del catálogo de actividades que deben incluirse en las Facturas.
+            </field>
+            <field name="model">l10n.bo.activity</field>
+            <field name="discriminate" eval="True" />
+        </record>
+        <record id="l10n_bo_catalog_sincronizarfechahora" model="l10n.bo.catalog">
+            <field name="name">Fecha y Hora</field>
+            <field name="code">sincronizarFechaHora</field>
+            <field name="description">Este proceso tiene como objetivo sincronizar la fecha y hora del Sistema de
+                Facturación del Contribuyente con los datos proporcionadas por el SIN.
+            </field>
+            <field name="model">l10n.bo.datetime</field>
+        </record>
+        <record id="l10n_bo_catalog_sincronizarlistaactividadesdocumentosector" model="l10n.bo.catalog">
+            <field name="name">Códigos de Actividades Documento Sector</field>
+            <field name="code">sincronizarListaActividadesDocumentoSector</field>
+            <field name="description">Método por el cual el Sistema Informático de Facturación autorizado realiza la
+                sincronización del catálogo de actividades económicas por documento sector .
+            </field>
+            <field name="model">l10n.bo.activity.document.sector</field>
+            <field name="discriminate" eval="True" />
+        </record>
+        <record id="l10n_bo_catalog_sincronizarlistaleyendasfactura" model="l10n.bo.catalog">
+            <field name="name">Códigos de Leyendas Facturas Actividades</field>
+            <field name="code">sincronizarListaLeyendasFactura</field>
+            <field name="description">Método por el cual el Sistema Informático de Facturación autorizado realiza la
+                sincronización del catálogo de leyendas que deben incluirse en las Facturas de manera aleatoria de
+                acuerdo a su actividad económica.
+            </field>
+            <field name="model">l10n.bo.legend.code</field>
+            <field name="discriminate" eval="True" />
+        </record>
+        <record id="l10n_bo_catalog_sincronizarlistamensajesservicios" model="l10n.bo.catalog">
+            <field name="name">Códigos de Mensajes Servicios</field>
+            <field name="code">sincronizarListaMensajesServicios</field>
+            <field name="description">Método por el cual el Sistema Informático de Facturación autorizado realiza la
+                sincronización del catálogo de mensajes que los servicios devuelven producto de verificaciones
+                realizadas.
+            </field>
+            <field name="model">l10n.bo.message.service</field>
+        </record>
+        <record id="l10n_bo_catalog_sincronizarlistaproductosservicios" model="l10n.bo.catalog">
+            <field name="name">Códigos de Productos y Servicios Actividades</field>
+            <field name="code">sincronizarListaProductosServicios</field>
+            <field name="description">Método por el cual el Sistema Informático de Facturación autorizado realiza la
+                sincronización del catálogo de Productos y Servicios utilizado en el Servicio de Impuestos Nacionales en
+                función a la actividad económica, de tal manera que, con el universo de códigos proporcionados al Sujeto
+                Pasivo, este pueda homologar sus productos con los de la Administración Tributaria.
+            </field>
+            <field name="model">l10n.bo.product.service</field>
+            <field name="discriminate" eval="True" />
+        </record>
+        <record id="l10n_bo_catalog_sincronizarparametricaeventossignificativos" model="l10n.bo.catalog">
+            <field name="name">Códigos de Eventos Significativos</field>
+            <field name="code">sincronizarParametricaEventosSignificativos</field>
+            <field name="description">Método por el cual el Sistema Informático de Facturación autorizado realiza la
+                sincronización del catálogo de eventos significativos para el registro de eventos que ocurren en el
+                Sistema Informático de Facturación.
+            </field>
+            <field name="model">l10n.bo.significant.event</field>
+        </record>
+        <record id="l10n_bo_catalog_sincronizarparametricamotivoanulacion" model="l10n.bo.catalog">
+            <field name="name">Códigos de Motivos Anulación</field>
+            <field name="code">sincronizarParametricaMotivoAnulacion</field>
+            <field name="description">Método por el cual el Sistema Informático de Facturación autorizado realiza la
+                sincronización del catálogo de motivos de anulación que deben incluirse en la solicitud de anulación de
+                las Facturas.
+            </field>
+            <field name="model">l10n.bo.cancellation.reason</field>
+        </record>
+        <record id="l10n_bo_catalog_sincronizarparametricapaisorigen" model="l10n.bo.catalog">
+            <field name="name">Códigos de País Origen</field>
+            <field name="code">sincronizarParametricaPaisOrigen</field>
+            <field name="description">Método por el cual el Sistema Informático de Facturación autorizado realiza la
+                sincronización del catálogo de países origen que deben incluirse en las Facturas correspondientes.
+            </field>
+            <field name="model">l10n.bo.origin.country</field>
+        </record>
+        <record id="l10n_bo_catalog_sincronizarparametricatipodocumentoidentidad" model="l10n.bo.catalog">
+            <field name="name">Códigos de Tipo Documento Identidad</field>
+            <field name="code">sincronizarParametricaTipoDocumentoIdentidad</field>
+            <field name="description">Método por el cual el Sistema Informático de Facturación autorizado realiza la
+                sincronización del catálogo de documentos identidad que deben incluirse en las Facturas
+                correspondientes.
+            </field>
+            <field name="model">l10n.bo.type.document.identity</field>
+        </record>
+        <record id="l10n_bo_catalog_sincronizarparametricatipodocumentosector" model="l10n.bo.catalog">
+            <field name="name">Códigos de Tipo Documento Sector</field>
+            <field name="code">sincronizarParametricaTipoDocumentoSector</field>
+            <field name="description">Método por el cual el Sistema Informático de Facturación autorizado realiza la
+                sincronización del catálogo de documentos sector que se incluyen en los Servicios Web publicados.
+            </field>
+            <field name="model">l10n.bo.document.type</field>
+            <field name="required_format" eval="True" />
+        </record>
+        <record id="l10n_bo_catalog_sincronizarparametricatipoemision" model="l10n.bo.catalog">
+            <field name="name">Códigos de Tipo Emisión</field>
+            <field name="code">sincronizarParametricaTipoEmision</field>
+            <field name="description">Método por el cual el Sistema informático de Facturación autorizado realiza la
+                sincronización del catálogo de tipo emisión que deben incluirse en los Servicios Web publicados.
+            </field>
+            <field name="model">l10n.bo.type.emision</field>
+            <field name="required_format" eval="True" />
+        </record>
+        <record id="l10n_bo_catalog_sincronizarparametricatipohabitacion" model="l10n.bo.catalog">
+            <field name="name">Códigos de Tipo Habitación</field>
+            <field name="code">sincronizarParametricaTipoHabitacion</field>
+            <field name="description">Método por el cual el Sistema Informático de Facturación autorizado realiza la
+                sincronización del catálogo de tipos de habitación que deben incluirse en los Servicios Web publicados.
+            </field>
+            <field name="model">l10n.bo.type.room</field>
+        </record>
+        <record id="l10n_bo_catalog_sincronizarparametricatipometodopago" model="l10n.bo.catalog">
+            <field name="name">Códigos de Tipo Método Pago</field>
+            <field name="code">sincronizarParametricaTipoMetodoPago</field>
+            <field name="description">Método por el cual el Sistema Informático de Facturación autorizado realiza la
+                sincronización del catálogo de métodos de pago que se incluyen en las Facturas correspondientes.
+            </field>
+            <field name="model">l10n.bo.type.payment</field>
+        </record>
+        <record id="l10n_bo_catalog_sincronizarparametricatipomoneda" model="l10n.bo.catalog">
+            <field name="name">Códigos de Tipo Moneda</field>
+            <field name="code">sincronizarParametricaTipoMoneda</field>
+            <field name="description">Método por el cual el Sistema Informático de Facturación autorizado realiza la
+                sincronización del catálogo de monedas que deben incluirse en las Facturas correspondientes.
+            </field>
+            <field name="model">l10n.bo.type.currency</field>
+            <field name="required_format" eval="True" />
+        </record>
+        <record id="l10n_bo_catalog_sincronizarparametricatipopuntoventa" model="l10n.bo.catalog">
+            <field name="name">Códigos de Tipo Punto de Venta</field>
+            <field name="code">sincronizarParametricaTipoPuntoVenta</field>
+            <field name="description">Método por el cual el Sistema Informático de Facturación autorizado realiza la
+                sincronización del catálogo de tipos de punto de venta que deben incluirse en los Servicios Web
+                publicados.
+            </field>
+            <field name="model">l10n.bo.type.point.sale</field>
+        </record>
+        <record id="l10n_bo_catalog_sincronizarparametricatiposfactura" model="l10n.bo.catalog">
+            <field name="name">Códigos de Tipo Factura</field>
+            <field name="code">sincronizarParametricaTiposFactura</field>
+            <field name="description">Método por el cual el Sistema Informático de Facturación autorizado realiza la
+                sincronización del catálogo de Facturas que deben incluirse en los Servicios Web publicados.
+            </field>
+            <field name="model">l10n.bo.type.invoice</field>
+            <field name="required_format" eval="True" />
+        </record>
+        <record id="l10n_bo_catalog_sincronizarparametricaunidadmedida" model="l10n.bo.catalog">
+            <field name="name">Códigos de Unidad de Medida</field>
+            <field name="code">sincronizarParametricaUnidadMedida</field>
+            <field name="description">Método por el cual el Sistema Informático de Facturación autorizado realiza la
+                sincronización del catálogo de unidades de medida que deben incluirse en las Facturas correspondientes.
+            </field>
+            <field name="model">l10n.bo.type.unit.measurement</field>
+            <field name="required_format" eval="True" />
+        </record>
+    </data>
+</odoo>

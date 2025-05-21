@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="l10n_bo_send_gmail_template" model="mail.template">
+            <field name="name">Factura registrada (BO)</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="subject">{{ object.display_name }}</field>
+            <field name="email_from">{{ (object.invoice_user_id.email_formatted or user.email_formatted) }}</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="subject">{{ object.company_id.name }} Factura registrada</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p>Estimado
+                                    <strong t-esc="object.partner_id.name"/>
+                                    <br/>
+                                    <br/>
+                                    Le notificamos que se emitio la factura #<strong t-esc="object.invoice_number"/>
+                                    con codigo de autorizacion
+                                    <strong t-esc="object.cuf"/>
+                                    por la empresa
+                                    <strong t-esc="object.company_id.name"/>
+                                    y fue registrada por el SIN (Servicio de Impuestos Naciones de Bolivia).
+                                    <br/>
+                                    Gracias por su cooperacion.
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                    </p>
+                </div>
+            </field>
+            <field name="lang">${object.company_id.partner.lang}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+        <record id="l10n_bo_cancel_gmail_template" model="mail.template">
+            <field name="name">Factura anulada (BO)</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="subject">{{ object.display_name }}</field>
+            <field name="email_from">{{ (object.invoice_user_id.email_formatted or user.email_formatted) }}</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="subject">{{ object.company_id.name }} Factura anulada</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    Estimado
+                    <strong t-esc="object.partner_id.name"/>
+                    <br/>
+                    <br/>
+                    Le notificamos que se anulo la factura #
+                    <strong t-esc="object.invoice_number"/>
+                    con codigo de autorizacion
+                    <strong t-esc="object.cuf"/>
+                    por la empresa
+                    <strong t-esc="object.company_id.name"/>
+                    y fue registrada por el SIN (Sistema de Impuestos Naciones de Bolivia).
+                    <br/>
+                    Gracias por su cooperacion.
+                    <br/>
+                </div>
+            </field>
+            <field name="lang">${object.company_id.partner.lang}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+    </data>
+</odoo>

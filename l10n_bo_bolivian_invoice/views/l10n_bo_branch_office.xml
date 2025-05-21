@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_l10n_bo_branch_office" model="ir.actions.act_window">
+        <field name="name">Sucursales</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">l10n.bo.branch.office</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer sucursal
+            </p>
+        </field>
+    </record>
+    <record id="view_l10n_bo_branch_office_tree" model="ir.ui.view">
+        <field name="name">l10n.bo.branch.office.tree</field>
+        <field name="model">l10n.bo.branch.office</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="code"/>
+                
+                
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_l10n_bo_branch_office_form" model="ir.ui.view">
+        <field name="name">l10n.bo.branch.office.form</field>
+        <field name="model">l10n.bo.branch.office</field>
+        <field name="arch" type="xml">
+            <form duplicate="false">
+                <header>
+                    <button name="update_pos_from_siat" type="object" string="ACTUALIZAR POS(S)" icon="fa-play-circle" />
+                    <button name="cuis_massive_request" type="object" string="ACTUALIZAR CUIS(S)" icon="fa-play-circle" />
+                    <button name="cufd_massive_request" type="object" string="ACTUALIZAR CUFD(S)" icon="fa-play-circle" />
+                    
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" class="oe_inline"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="company_id" />    
+                            <field name="code"/>
+                            
+                        </group>
+                        <group>
+                            <field name="address"/>
+                        </group>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Puntos de venta">
+                            <field name="l10n_bo_pos_ids" invisible="not l10n_bo_pos_ids" />
+                            
+                            <button name="wizard_add_pos"
+                                    string="Agregar punto de venta"
+                                    type="object"
+                                    invisible="l10n_bo_pos_ids"
+                            />
+                            
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+</odoo>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- Tree view for "model" -->
+        <record id="view_l10n_bo_bolivian_point_of_sale_invoice_l10n_bo_pos_tree" model="ir.ui.view">
+            <field name="name">view_l10n_bo_bolivian_point_of_sale_invoice_l10n_bo_pos_tree</field>
+            <field name="model">l10n.bo.pos</field>
+            <field name="priority" eval="16" />
+            <field name="inherit_id" ref="l10n_bo_bolivian_invoice.view_l10n_bo_pos_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='paper_format_type']" position="after">
+                    <field name="auxiliar_card"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

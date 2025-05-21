@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="model_l10n_bo_branch_office_rule" model="ir.rule">
+        <field name="name">Surcursales (BO)</field>
+        <field name="model_id" ref="model_l10n_bo_branch_office"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+
+    <record id="model_l10n_bo_pos_rule" model="ir.rule">
+        <field name="name">Puntos de venta (BO)</field>
+        <field name="model_id" ref="model_l10n_bo_pos"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="model_l10n_bo_catalog_request_rule" model="ir.rule">
+        <field name="name">sincronización (BO)</field>
+        <field name="model_id" ref="model_l10n_bo_catalog_request"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="model_L10nBoActivity_rule" model="ir.rule">
+        <field name="name">Codigos de actividad (BO)</field>
+        <field name="model_id" ref="model_l10n_bo_activity"/>
+        <field name="domain_force">['|','|', ('company_id','=',False),('company_id', 'in', company_ids), ('company_ids', 'in', company_ids)]</field>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="model_L10nBoActivityDocumentSector_rule" model="ir.rule">
+        <field name="name">Códigos de Tipo Documento Sector (BO)</field>
+        <field name="model_id" ref="model_l10n_bo_activity_document_sector"/>
+        <field name="domain_force">['|','|', ('company_id','=',False),('company_id', 'in', company_ids), ('company_ids', 'in', company_ids)]</field>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="model_LegendCodesInvoices_rule" model="ir.rule">
+        <field name="name">Códigos de Leyendas Facturas (BO)</field>
+        <field name="model_id" ref="model_l10n_bo_legend_code"/>
+        <field name="domain_force">['|','|', ('company_id','=',False),('company_id', 'in', company_ids), ('company_ids', 'in', company_ids)]</field>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="model_ProductService_rule" model="ir.rule">
+        <field name="name">Productos de servicio SIAT (BO)</field>
+        <field name="model_id" ref="model_l10n_bo_product_service"/>
+        <field name="domain_force">['|','|', ('company_id','=',False),('company_id', 'in', company_ids), ('company_ids', 'in', company_ids)]</field>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="model_ProductServiceNandina_rule" model="ir.rule">
+        <field name="name">Códigos de producto servicio nandina (BO)</field>
+        <field name="model_id" ref="model_l10n_bo_product_service_nandina"/>
+        <field name="domain_force">['|','|', ('company_id','=',False),('company_id', 'in', company_ids), ('company_ids', 'in', company_ids)]</field>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="model_significant_event_rule" model="ir.rule">
+        <field name="name">Eventos significativos (BO)</field>
+        <field name="model_id" ref="model_significant_event"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    
+    <record id="model_L10nBoPackage_rule" model="ir.rule">
+        <field name="name">Paquetes (BO)</field>
+        <field name="model_id" ref="model_l10n_bo_package"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    
+</odoo>

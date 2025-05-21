@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="view_l10n_bo_bolivian_point_of_sale_invoice_pos_config_form" model="ir.ui.view">
+            <field name="name">view_l10n_bo_bolivian_point_of_sale_invoice_pos_config_form</field>
+            <field name="model">pos.config</field>
+            <field name="priority" eval="17" />
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/div[4]/setting[3]" position="after">
+                        <setting string="Ajustes (BO)" help="Habilitar punto de venta fiscal" invisible="not adm_edi">
+                                <field name="enable_bo_edi"/>
+                                <div class="content-group pos_iot_config" invisible="not enable_bo_edi">
+                                    <div class="row iot_barcode_scanner" invisible="branch_office_id">
+                                        <label string="Sucursal" for="branch_office_id" class="col-lg-4 o_light_label"/>
+                                        <field name="branch_office_id" options="{ 'no_open': True, 'no_create': True}" required="enable_bo_edi" />
+                                    </div>
+                                    <div class="row" invisible="not branch_office_id">
+                                        <label string="Punto de venta" for="pos_id" class="col-lg-4 o_light_label"/>
+                                        <field name="pos_id" options="{ 'no_open': True, 'no_create': True}" domain="[('branch_office_id', '=', branch_office_id)]" required="branch_office_id" />
+                                    </div>
+                                    <div class="row" invisible="not pos_id">
+                                        <label string="Tipo documento" for="document_type_id" class="col-lg-4 o_light_label"/>
+                                        <field name="document_type_id" options="{ 'no_open': True, 'no_create': True}" domain="[('pos_id', '=', pos_id)]" required="pos_id" />
+                                    </div>
+                                    
+                                    <div class="row" invisible="1">
+                                        <label string="Administrador EDI" for="adm_edi" class="col-lg-4 o_light_label"/>
+                                        <field name="adm_edi" />
+                                    </div>
+                                    
+                                </div>
+                        </setting>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

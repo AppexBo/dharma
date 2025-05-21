@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+
+        
+        <!-- VIEWS: "Human readable name"
+        
+            - Model·········: model
+            - _rec_name·····: name
+            - Domain········: []
+            - Context·······: \{}
+            - Parent menu ··: base.menu_custom
+            - View priority·: 16    
+            - Sequence····..: 10
+            - Action help···: Something about model
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        
+        <!-- Tree view for "model" -->
+        <record id="view_l10n_bo_wsdl_tree" model="ir.ui.view">
+            <field name="name">view_l10n_bo_base_tree</field>
+            <field name="model">l10n.bo.wsdl</field>
+            <field name="type">tree</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <tree create="false" delete="false" duplicate="false">
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Form view for "model" -->
+        <record id="view_l10n_bo_wsdl_form" model="ir.ui.view">
+            <field name="name">view.l10n.bo.base.form</field>
+            <field name="model">l10n.bo.wsdl</field>
+            <field name="type">form</field>
+            <field name="mode">primary</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <form string="model_form" create="false" delete="false" edit="true" duplicate="false">
+                    <header>
+                        
+                        <button name="operation_service_soap"
+                                string="OBTENER SERVICIOS"
+                                type="object"
+                                icon="fa-list"
+                        />
+                        
+                    </header>
+                    <sheet>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        
+                        <group>
+                            <group>
+                                <field name="wsdl" />
+                            </group>
+                          
+                        </group>
+                        <notebook>
+                            <page string="Operaciones WSDL" >
+                                <field name="wsdl_operation_ids" />
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+
+        <record id="view_l10n_bo_wsdl_service_tree_form" model="ir.actions.act_window">
+            <field name="name">Servicios (BO)</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">l10n.bo.wsdl</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crea tu primer servicio (BO)
+                </p>
+            </field>
+        </record>
+        
+
+        
+
+    </data>
+</odoo>

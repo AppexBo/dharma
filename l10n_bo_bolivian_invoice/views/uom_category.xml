@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="l10n_bo_uom_tree" model="ir.ui.view">
+        <field name="name">l10n.bo.uom.tree</field>
+        <field name="model">uom.category</field>
+        <field name="inherit_id" ref="uom.product_uom_categ_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='active']" position="after">
+                <field name="enable_bo_edi" invisible="1" />
+                <field name="siat_udm_id" options="{ 'no_open': True, 'no_create': True}"  attrs="{'invisible' : [('enable_bo_edi','=',False)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="l10n_bo_standard_sale_id" model="l10n.bo.standard.sale">
+            <field name="name">Registro de ventas (BO)</field>
+        </record>
+    </data>
+</odoo>

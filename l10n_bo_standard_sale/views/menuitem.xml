@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <menuitem 
+            id="l10n_bo_standard_sale_menu"
+            name="Registro de ventas (BO)"
+            parent="account.menu_finance_reports"
+            sequence="5"
+            action="view_l10n_bo_standard_sale"
+            groups="group_model_l10n_bo_standard_sale_adm"
+        />
+
+    </data>
+</odoo>

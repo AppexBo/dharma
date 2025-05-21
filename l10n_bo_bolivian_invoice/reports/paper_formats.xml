@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+        
+        <record id="paperformat_letter_size" model="report.paperformat" >
+            <field name="name">Tamaño carta A4 (BO)</field>
+            <field name="default" eval="False" />
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">15</field>
+            <field name="margin_bottom">25</field>
+            <field name="margin_left">5.00</field>
+            <field name="margin_right">5.00</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">20</field>
+            <field name="code">2</field>
+        </record>
+
+        
+        <record id="paperformat_roll" model="report.paperformat" >
+            <field name="name">Tamaño rollo (BO)</field>
+            <field name="default" eval="False" />
+            <field name="format">custom</field>
+            <field name="orientation">Portrait</field>
+            <field name="page_height">300</field>
+            <field name="page_width">85</field>
+            <field name="margin_top">11</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">2</field>
+            <field name="margin_right">2</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">2</field>
+            <field name="code">1</field>
+        </record>
+        
+    </data>
+</odoo>

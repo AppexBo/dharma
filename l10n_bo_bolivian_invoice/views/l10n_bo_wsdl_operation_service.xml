@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+
+            <record id="view_operation_service" model="ir.actions.act_window">
+                <field name="name">Operaciones de servicio (BO)</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">l10n.bo.operacion.service</field>
+                <field name="view_mode">tree,form</field>
+                <field name="help" type="html">
+                    <p class="o_view_nocontent_smiling_face">
+                        Crea tu primer operacion de servicio (BO)
+                    </p>
+                </field>
+            </record>
+
+            <record id="view_operation_service_tree" model="ir.ui.view">
+                <field name="model">l10n.bo.operacion.service</field>
+                <field name="arch" type="xml">
+                    <tree editable="top" create="false" >
+                        <field name="environment_type"/>
+                        <field name="modality_type"/>
+                        <field name="name"/>
+                        <field name="input"/>
+                        <field name="output"/>           
+                        <field name="service_type"/>           
+                        
+                    </tree>
+                </field>
+            </record>
+
+
+    </data>
+</odoo>
