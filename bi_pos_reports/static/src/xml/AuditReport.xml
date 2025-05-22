@@ -117,7 +117,7 @@
 		<div class="pos-receipt">
 			<t t-set="obj" t-value="props.order"/>
 			<t t-log="obj"/>
-			
+
 			<t t-log="pos"/>
 			<!--
 			<img t-attf-src="/web/image?model=res.company&amp;id={{pos.company.id}}&amp;field=logo" alt="Logo" class="pos-receipt-logo"/>
@@ -188,6 +188,7 @@
 				</div><br />
 			</t>
 			<br />
+			<!--
 			<table class='orderlines' style="margin: 0px auto;">
 				<colgroup>
 					<col width='40%' />
@@ -216,6 +217,7 @@
 				</tr>
 				</tbody>
 			</table>
+			-->
 			<hr style="border-bottom: 2px solid black;"/>
 		</div>
 	</t>

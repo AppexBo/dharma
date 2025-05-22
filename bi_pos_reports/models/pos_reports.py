@@ -180,14 +180,17 @@ class LocationSumm(models.Model):
 		res = []
 		prod =[]
 		final_data ={
-			'Abierto por': None,
-			'Punto de Venta': None,
-			'Fecha de Apertura': None,
-			'Fecha de Cierre': None,
-			'Saldo Inicial': None,
-			'Saldo Final': None,
-			'Ordenes': [],
-			'TotProductos': [],
+			'Abierto_por': None,
+			'Punto_de_Venta': None,
+			'Fecha_de_Apertura': None,
+			'Fecha_de_Cierre': None,
+			'Saldo_Inicial': None,
+			'Saldo_Final': None,
+			'Lista_Productos': [],
+			'Lista_Categorias': [],
+			'Detalle_Inpuestos': [],
+			'Metodos_de_Pago': [],
+			'Cantidad_de_Tipos':[],
 		}
 
 		prod_data ={}
@@ -199,12 +202,12 @@ class LocationSumm(models.Model):
 					('state', 'in', ['paid','invoiced','done']),
 					])
 			final_data.update({
-				'Abierto por': session_id.user_id.name,
-				'Punto de Venta': session_id.config_id.name,
-				'Fecha de Apertura': session_id.start_at,
-				'Fecha de Cierre': session_id.stop_at,
-				'Saldo Inicial': session_id.cash_register_balance_start,
-				'Saldo Final': session_id.cash_register_balance_end_real,
+				'Abierto_por': session_id.user_id.name,
+				'Punto_de_Venta': session_id.config_id.name,
+				'Fecha_de_Apertura': session_id.start_at,
+				'Fecha_de_Cierre': session_id.stop_at,
+				'Saldo_Inicial': session_id.cash_register_balance_start,
+				'Saldo_Final': session_id.cash_register_balance_end_real,
 			})
 			_logger.info("Datos que erick recolecto: %s", final_data)
 			for odr in orders:
@@ -241,6 +244,10 @@ class LocationSumm(models.Model):
 								'avail_qty':quants.quantity,
 								'orders_data': odr,
 							}})
+			final_data.update({
+				'Lista_Productos': prod_data,
+			})
+			return final_data
 		else:
 			orders = self.env['pos.order'].search([('state', 'in', ['paid','invoiced','done']),])
 			location_id = int(location)
@@ -277,7 +284,7 @@ class LocationSumm(models.Model):
 									'avail_qty':quants.quantity,
 								}})
 
-		return prod_data
+			return prod_data
 		
 
 
