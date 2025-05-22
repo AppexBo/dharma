@@ -123,8 +123,30 @@
 			<img t-attf-src="/web/image?model=res.company&amp;id={{pos.company.id}}&amp;field=logo" alt="Logo" class="pos-receipt-logo"/>
 	        <br/>
 			-->
+			<div class="">
+				<div style="text-align: center;">
+					<strong>INFORME</strong>
+					<t t-if='pos.company.contact_address'>
+						<div><t t-esc='pos.company.contact_address' /></div>
+					</t>
+					<t t-if='pos.company.phone'>
+						<div>Tel:<t t-esc='pos.company.phone' /></div>
+					</t>
+					<t t-if='pos.company.vat'>
+						<div>VAT:<t t-esc='pos.company.vat' /></div>
+					</t>
+					<t t-if='pos.company.email'>
+						<div><t t-esc='pos.company.email' /></div>
+					</t>
+					<t t-if='pos.company.website'>
+						<div><t t-esc='pos.company.website' /></div>
+					</t>
+					<strong>--------------------------------</strong>
+				</div>
+			</div>
 			<div class="pos-receipt-contact">
 				<div style="text-align: left;">
+					
 					<div>
 						<strong>Impreso por: </strong> <t t-esc='pos.get_cashier().name'/>
 					</div>
@@ -132,52 +154,36 @@
 						<strong>Abierta por: </strong> <t t-esc='obj.loc_summery["Abierto_por"]'/>
 					</div>
 					<div>
-						<strong>Almacen: </strong>
+						<strong>Punto de Venta: </strong> <t t-esc='obj.loc_summery["Abierto_por"]'/>
 					</div>
 					<div>
-						<strong>QQQQQQ: </strong>
+						<strong>Estado: </strong> <t t-esc='obj.loc_summery["Estado"]'/>
 					</div>
 					<div>
-						<strong>F. Apertura: </strong>
+						<strong>F. Apertura: </strong> <t t-esc='obj.loc_summery["Fecha_de_Apertura"]'/>
 					</div>
 					<div>
-						<strong>H. Apertura: </strong>
+						<strong>F. Cierre: </strong> <t t-esc='obj.loc_summery["Fecha_de_Cierre"]'/>
+					</div>
+
+					<div>
+						<strong>Saldo Inicial: </strong> <t t-esc='obj.loc_summery["Saldo_Inicial"]'/>
 					</div>
 					<div>
-						<strong>F. Cierre: </strong>
+						<strong>Saldo Final: </strong> <t t-esc='obj.loc_summery["Saldo_Final"]'/>
 					</div>
 					<div>
-						<strong>H. Cierre: </strong>
+						<strong>Diferencia: </strong> <t t-esc='obj.loc_summery["Saldo_Inicial"] - obj.loc_summery["Saldo_Final"]'/>
+					</div>
+					<div>
+						<strong>Total en Bruto: </strong> <t t-esc='obj.loc_summery["Total_en_Bruto"]'/>
 					</div>
 				</div>
-
-				
-				<t t-if='pos.company.contact_address'>
-					<div><t t-esc='pos.company.contact_address' /></div>
-				</t>
-				<t t-if='pos.company.phone'>
-					<div>Tel:<t t-esc='pos.company.phone' /></div>
-				</t>
-				<t t-if='pos.company.vat'>
-					<div>VAT:<t t-esc='pos.company.vat' /></div>
-				</t>
-				<t t-if='pos.company.email'>
-					<div><t t-esc='pos.company.email' /></div>
-				</t>
-				<t t-if='pos.company.website'>
-					<div><t t-esc='pos.company.website' /></div>
-				</t>
-				<br/>
-				
-				<t t-if='pos.get_cashier()'>
-					<div class='cashier'>
-						<div>--------------------------------</div>
-						<div>Served by <t t-esc='pos.get_cashier().name' /></div>
-					</div>
-				</t>
 			</div>
-			<strong>--------------------------------</strong>
-			<strong>TOTAL RECAUDADO</strong>
+			
+			<div style="text-align: left;">
+				<strong>--------------------------------</strong>
+			</div>
 			<br />
 			<t t-if="obj.ssn">
 				<div class="pos-receipt-center-align">
@@ -191,7 +197,7 @@
 				</div><br />
 			</t>
 			<br />
-			<!--
+			
 			<table class='orderlines' style="margin: 0px auto;">
 				<colgroup>
 					<col width='40%' />
@@ -206,21 +212,21 @@
 					</tr>
 				</thead>
 				<tbody>
-				<tr t-foreach="obj.loc_summery" t-as="product" t-key="product">
+				<tr t-foreach="obj.loc_summery['Lista_Productos']" t-as="product" t-key="product">
 
 					<td style="float: left;">
 						<t t-esc="product"/>	 
 					</td>
 					<td class="text-center">
-						<t t-esc="obj.loc_summery[product]['qty']"/>
+						<t t-esc="obj.loc_summery['Lista_Productos'][product]['qty']"/>
 					</td>
 					<td  style="text-align: center;">
-						<t t-esc="obj.loc_summery[product]['avail_qty']"/>
+						<t t-esc="obj.loc_summery['Lista_Productos'][product]['avail_qty']"/>
 					</td>
 				</tr>
 				</tbody>
 			</table>
-			-->
+			
 			<hr style="border-bottom: 2px solid black;"/>
 		</div>
 	</t>

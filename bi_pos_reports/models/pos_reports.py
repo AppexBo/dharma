@@ -186,6 +186,10 @@ class LocationSumm(models.Model):
 			'Fecha_de_Cierre': None,
 			'Saldo_Inicial': None,
 			'Saldo_Final': None,
+			'Descuento': None,
+			'Total_en_Bruto': None,
+			'Total_en_impuestos': None,
+			'Estado': None,
 			'Lista_Productos': [],
 			'Lista_Categorias': [],
 			'Detalle_Inpuestos': [],
@@ -208,6 +212,8 @@ class LocationSumm(models.Model):
 				'Fecha_de_Cierre': session_id.stop_at,
 				'Saldo_Inicial': session_id.cash_register_balance_start,
 				'Saldo_Final': session_id.cash_register_balance_end_real,
+				'Estado': session_id.state,
+				'Total_en_Bruto': session_id.total_payments_amount,
 			})
 			_logger.info("Datos que erick recolecto: %s", final_data)
 			for odr in orders:
