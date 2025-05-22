@@ -121,14 +121,29 @@
 	        <br/>
 			-->
 			<div class="pos-receipt-contact">
-				<strong>Encargado: </strong>
-				<strong>Almacen: </strong>
-				<strong>QQQQQQ: </strong>
-				<strong>F. Apertura: </strong>
-				<strong>H. Apertura: </strong>
-				<strong>F. Cierre: </strong>
-				<strong>H. Cierre: </strong>
-				
+				<div style="text-align: center;">
+					<div>
+						<strong>Encargado: </strong>
+					</div>
+					<div>
+						<strong>Almacen: </strong>
+					</div>
+					<div>
+						<strong>QQQQQQ: </strong>
+					</div>
+					<div>
+						<strong>F. Apertura: </strong>
+					</div>
+					<div>
+						<strong>H. Apertura: </strong>
+					</div>
+					<div>
+						<strong>F. Cierre: </strong>
+					</div>
+					<div>
+						<strong>H. Cierre: </strong>
+					</div>
+				</div>
 
 				
 				<t t-if='pos.company.contact_address'>
