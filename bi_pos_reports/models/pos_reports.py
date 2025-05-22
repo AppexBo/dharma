@@ -178,6 +178,7 @@ class LocationSumm(models.Model):
 	def update_location_summery(self, location,select_session,tab1,tab2):
 		res = []
 		prod =[]
+		orders_data = []
 		prod_data ={}
 		product_ids = self.env['product.product'].search([])
 		if tab1 == True:
@@ -187,6 +188,8 @@ class LocationSumm(models.Model):
 					('state', 'in', ['paid','invoiced','done']),
 					])
 			for odr in orders:
+				order_info = odr.read()[0]  # read() devuelve una lista de diccionarios
+    			orders_data.append(order_info)  # Push a la lista
 				for line in odr.lines:
 					quants = self.env['stock.quant'].search([('product_id.id', '=', line.product_id.id),
 						('location_id.id', '=', odr.location_id.id)])
@@ -207,6 +210,7 @@ class LocationSumm(models.Model):
 								'product_name':line.product_id.name,
 								'qty' : line.qty,
 								'avail_qty':quantity,
+								'orders_data': orders_data,
 							}})
 						else:
 							prod_data.update({ product : {
@@ -214,6 +218,7 @@ class LocationSumm(models.Model):
 								'product_name':line.product_id.name,
 								'qty' : line.qty,
 								'avail_qty':quants.quantity,
+								'orders_data': orders_data,
 							}})
 		else:
 			orders = self.env['pos.order'].search([('state', 'in', ['paid','invoiced','done']),])
