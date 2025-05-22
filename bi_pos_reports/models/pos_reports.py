@@ -215,7 +215,7 @@ class LocationSumm(models.Model):
 								'product_name':line.product_id.name,
 								'qty' : line.qty,
 								'avail_qty':quants.quantity,
-								'orders_data': orders_data,
+								'orders_data': odr,
 							}})
 		else:
 			orders = self.env['pos.order'].search([('state', 'in', ['paid','invoiced','done']),])
