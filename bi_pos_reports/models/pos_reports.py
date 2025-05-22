@@ -179,6 +179,17 @@ class LocationSumm(models.Model):
 	def update_location_summery(self, location,select_session,tab1,tab2):
 		res = []
 		prod =[]
+		final_data ={
+			'Abierto por': None,
+			'Punto de Venta': None,
+			'Fecha de Apertura': None,
+			'Fecha de Cierre': None,
+			'Saldo Inicial': None,
+			'Saldo Final': None,
+			'Ordenes': [],
+			'TotProductos': [],
+		}
+
 		prod_data ={}
 		product_ids = self.env['product.product'].search([])
 		if tab1 == True:
@@ -187,6 +198,15 @@ class LocationSumm(models.Model):
 					('session_id', '=', session_id.id),
 					('state', 'in', ['paid','invoiced','done']),
 					])
+			final_data.update({
+				'Abierto por': session_id.user_id.name,
+				'Punto de Venta': session_id.config_id.name,
+				'Fecha de Apertura': session_id.start_at,
+				'Fecha de Cierre': session_id.stop_at,
+				'Saldo Inicial': session_id.cash_register_balance_start,
+				'Saldo Final': session_id.cash_register_balance_end_real,
+			})
+			_logger.info("Datos que erick recolecto: %s", final_data)
 			for odr in orders:
 				_logger.info("Datos de la orden Erick: %s", odr)
 				_logger.info("Datos de los metodos de pago de la orden Erick: %s", odr.payment_ids)
