@@ -191,17 +191,21 @@
 			<br />
 			<t t-if="obj.ssn">
 				<div class="pos-receipt-center-align">
-					<strong>Session Summary</strong>
-				</div><br />
+					<strong>DETALLE</strong>
+				</div>
 			</t>
 
 			<t t-if="!obj.ssn">
 				<div class="pos-receipt-center-align">
 					<strong>Location Summary</strong>
-				</div><br />
+				</div>
 			</t>
 			<br />
 			
+			<div style="text-align: center;">
+				<strong>Informe detallado de Productos</strong>
+			</div>
+
 			<table class='orderlines' style="margin: 0px auto;">
 				<colgroup>
 					<col width='70%' />
