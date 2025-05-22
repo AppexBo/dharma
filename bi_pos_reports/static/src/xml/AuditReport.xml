@@ -121,12 +121,12 @@
 	        <br/>
 			-->
 			<div class="pos-receipt-contact">
-				<div style="text-align: center;">
+				<div style="text-align: left;">
 					<div>
-						<strong>Encargado: </strong>
+						<strong>Encargado: </strong> <t t-esc='pos.get_cashier().name'/>
 					</div>
 					<div>
-						<strong>Almacen: </strong>
+						<strong>Almacen: </strong> <t t-esc='obj.session_id'/>
 					</div>
 					<div>
 						<strong>QQQQQQ: </strong>
