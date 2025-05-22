@@ -116,9 +116,21 @@
 	<t t-name="bi_pos_reports.LocationReceipt" owl="1">
 		<div class="pos-receipt">
 			<t t-set="obj" t-value="props.order"/>
-				<img t-attf-src="/web/image?model=res.company&amp;id={{pos.company.id}}&amp;field=logo" alt="Logo" class="pos-receipt-logo"/>
+			<!--
+			<img t-attf-src="/web/image?model=res.company&amp;id={{pos.company.id}}&amp;field=logo" alt="Logo" class="pos-receipt-logo"/>
 	        <br/>
+			-->
 			<div class="pos-receipt-contact">
+				<strong>Encargado: </strong>
+				<strong>Almacen: </strong>
+				<strong>QQQQQQ: </strong>
+				<strong>F. Apertura: </strong>
+				<strong>H. Apertura: </strong>
+				<strong>F. Cierre: </strong>
+				<strong>H. Cierre: </strong>
+				
+
+				
 				<t t-if='pos.company.contact_address'>
 					<div><t t-esc='pos.company.contact_address' /></div>
 				</t>
@@ -143,6 +155,8 @@
 					</div>
 				</t>
 			</div>
+			<strong>--------------------------------</strong>
+			<strong>TOTAL RECAUDADO</strong>
 			<br />
 			<t t-if="obj.ssn">
 				<div class="pos-receipt-center-align">
