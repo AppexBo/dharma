@@ -167,7 +167,11 @@
 						<strong>F. Apertura: </strong> <t t-esc='obj.loc_summery["Fecha_de_Apertura"]'/>
 					</div>
 					<div>
-						<strong>F. Cierre: </strong> <t t-esc='obj.loc_summery["Fecha_de_Cierre"]'/>
+						<strong>F. Cierre: </strong> 
+						<t t-esc="obj.loc_summery.get('Fecha_de_Cierre', '')" />
+						<!--
+						<t t-esc='obj.loc_summery["Fecha_de_Cierre"]'/>
+						-->
 					</div>
 
 					<div>
@@ -188,20 +192,22 @@
 			<div style="text-align: left;">
 				<strong>--------------------------------</strong>
 			</div>
-			<br />
 			<t t-if="obj.ssn">
 				<div class="pos-receipt-center-align">
 					<strong>DETALLE</strong>
 				</div>
 			</t>
-
+			
 			<t t-if="!obj.ssn">
 				<div class="pos-receipt-center-align">
 					<strong>Location Summary</strong>
 				</div>
 			</t>
-			<br />
-			
+
+			<div style="text-align: left;">
+				<strong>--------------------------------</strong>
+			</div>
+
 			<div style="text-align: center;">
 				<strong>Ventas por productos</strong>
 			</div>
