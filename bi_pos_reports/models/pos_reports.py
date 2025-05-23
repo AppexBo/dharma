@@ -216,16 +216,14 @@ class LocationSumm(models.Model):
 				'Estado': session_id.state,
 				'Total_en_Bruto': session_id.total_payments_amount,
 			})
-			_logger.info("Datos que erick recolecto: %s", final_data)
 			for odr in orders:
-				_logger.info("Datos de la orden Erick: %s", odr)
-				_logger.info("Datos de los metodos de pago de la orden Erick: %s", odr.payment_ids)
 				for line in odr.lines:
-					_logger.info("Datos de la linea Erick: %s", line)
 					quants = self.env['stock.quant'].search([('product_id.id', '=', line.product_id.id),
 						('location_id.id', '=', odr.location_id.id)])
 					product = line.product_id.name
 					categories = line.product_id.pos_categ_ids
+					_logger.info("Datos de la linea Erick: %s", categories)
+					
 					if product in prod_data:
 						old_qty = prod_data[product]['qty']
 						prod_data[product].update({
@@ -253,6 +251,7 @@ class LocationSumm(models.Model):
 								'orders_data': odr,
 							}})
 					for category in categories:
+						_logger.info("Caterick de la linea Erick: %s", category)
 						if category in categ_data:
 							old_qty = categ_data[category]['qty']
 							categ_data[category].update({
