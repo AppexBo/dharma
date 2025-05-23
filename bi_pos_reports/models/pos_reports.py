@@ -252,9 +252,9 @@ class LocationSumm(models.Model):
 							}})
 					for category in categories:
 						key_category = category.id
-						if category in categ_data:
-							old_qty = categ_data[category]['qty']
-							categ_data[category].update({
+						if key_category in categ_data:
+							old_qty = categ_data[key_category]['qty']
+							categ_data[key_category].update({
 								'qty' : old_qty+line.qty,
 							})
 							_logger.info("Prod de la linea Erick: %s", old_qty)
