@@ -225,7 +225,7 @@ class LocationSumm(models.Model):
 						]
 					)
 					product = line.product_id.name
-					category = line.product_id.pos_categ_ids
+					categories = line.product_id.pos_categ_ids
 					#_logger.info("Datos de la linea Erick: %s", categories)
 					
 					if product in prod_data:
