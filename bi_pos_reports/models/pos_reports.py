@@ -199,6 +199,8 @@ class LocationSumm(models.Model):
 
 		prod_data ={}
 		categ_data ={}
+		payment_data={}
+		
 		product_ids = self.env['product.product'].search([])
 		if tab1 == True:
 			session_id = self.env['pos.session'].browse(int(select_session))
