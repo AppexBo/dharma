@@ -280,7 +280,7 @@ class LocationSumm(models.Model):
 								}})
 				payments = odr.payment_ids
 				for payment in payments:
-					key_payment = payment.id
+					key_payment = payment.name
 					if key_payment in payment_data:
 						old_amount = payment_data[key_payment]['amount']
 						payment_data[key_payment].update({
