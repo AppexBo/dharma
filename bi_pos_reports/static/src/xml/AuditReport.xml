@@ -203,7 +203,7 @@
 			<br />
 			
 			<div style="text-align: center;">
-				<strong>Informe detallado de Productos</strong>
+				<strong>Ventas por productos</strong>
 			</div>
 
 			<table class='orderlines' style="margin: 0px auto;">
@@ -241,7 +241,7 @@
 				<strong>--------------------------------</strong>
 			</div>
 			<div style="text-align: center;">
-				<strong>Informe detallado de Productos</strong>
+				<strong>Ventas por categoría</strong>
 			</div>
 			<table class='orderlines' style="margin: 0px auto;">
 				<colgroup>
@@ -251,7 +251,7 @@
 				</colgroup>
 				<thead>
 					<tr style="border-bottom: 2px solid black;">
-						<th>Categoria</th>
+						<th>Categoría</th>
 						<th style="text-align: center;">Qty</th>
 						<!--<th class="pos-receipt-right-align">Available qty</th>-->
 					</tr>
@@ -273,7 +273,19 @@
 				</tr>
 				</tbody>
 			</table>
+			<div style="text-align: left;">
+				<strong>--------------------------------</strong>
+			</div>
+			<div style="text-align: center;">
+				<strong>Metodos de pago</strong>
+			</div>
 
+			<div style="text-align: left;">
+				<strong>--------------------------------</strong>
+			</div>
+			<div style="text-align: center;">
+				<strong>Descuentos y cortesías</strong>
+			</div>
 			<hr style="border-bottom: 2px solid black;"/>
 		</div>
 	</t>
