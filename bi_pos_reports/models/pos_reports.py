@@ -218,16 +218,20 @@ class LocationSumm(models.Model):
 			})
 			for odr in orders:
 				for line in odr.lines:
-					quants = self.env['stock.quant'].search([('product_id.id', '=', line.product_id.id),
-						('location_id.id', '=', odr.location_id.id)])
+					quants = self.env['stock.quant'].search(
+						[
+							('product_id.id', '=', line.product_id.id),
+							('location_id.id', '=', odr.location_id.id)
+						]
+					)
 					product = line.product_id.name
-					categories = line.product_id.pos_categ_ids
+					category = line.product_id.pos_categ_ids
 					#_logger.info("Datos de la linea Erick: %s", categories)
 					
 					if product in prod_data:
 						old_qty = prod_data[product]['qty']
 						prod_data[product].update({
-						'qty' : old_qty+line.qty,
+							'qty' : old_qty+line.qty,
 						})
 					else:
 						if len(quants) > 1:
@@ -251,7 +255,7 @@ class LocationSumm(models.Model):
 								'orders_data': odr,
 							}})
 					for category in categories:
-						
+						key_category = category.id
 						if category in categ_data:
 							old_qty = categ_data[category]['qty']
 							categ_data[category].update({
@@ -263,13 +267,13 @@ class LocationSumm(models.Model):
 								for quant in quants:
 									quantity += quant.quantity
 
-								categ_data.update({ category : {
+								categ_data.update({ key_category : {
 									'category_id':category.id,
 									'categ_name':category.name,
 									'qty' : line.qty,
 								}})
 							else:
-								categ_data.update({ category : {
+								categ_data.update({ key_category : {
 									'category_id':category.id,
 									'categ_name':category.name,
 									'qty' : line.qty,
