@@ -219,7 +219,7 @@ class LocationSumm(models.Model):
 				'Total_en_Bruto': session_id.total_payments_amount,
 			})
 			for odr in orders:
-				payments = odr.payment_ids
+				
 				for line in odr.lines:
 					quants = self.env['stock.quant'].search(
 						[
@@ -278,30 +278,31 @@ class LocationSumm(models.Model):
 									'categ_name':category.name,
 									'qty' : line.qty,
 								}})
-					for payment in payments:
-						key_payment = payment.id
-						if key_payment in payment_data:
-							old_amount = payment_data[key_payment]['amount']
-							payment_data[key_payment].update({
-								'amount' : old_amount+payment.amount,
-							})
-						else:
-							if len(quants) > 1:
-								quantity = 0.0
-								for quant in quants:
-									quantity += quant.quantity
+				payments = odr.payment_ids
+				for payment in payments:
+					key_payment = payment.id
+					if key_payment in payment_data:
+						old_amount = payment_data[key_payment]['amount']
+						payment_data[key_payment].update({
+							'amount' : old_amount+payment.amount,
+						})
+					else:
+						if len(quants) > 1:
+							quantity = 0.0
+							for quant in quants:
+								quantity += quant.quantity
 
-								payment_data.update({ key_payment : {
-									'payment_id':payment.id,
-									'payment_name':payment.payment_method_id.name,
-									'amount' : payment.amount,
-								}})
-							else:
-								payment_data.update({ key_payment : {
-									'payment_id':payment.id,
-									'payment_name':payment.payment_method_id.name,
-									'amount' : payment.amount,
-								}})
+							payment_data.update({ key_payment : {
+								'payment_id':payment.id,
+								'payment_name':payment.payment_method_id.name,
+								'amount' : payment.amount,
+							}})
+						else:
+							payment_data.update({ key_payment : {
+								'payment_id':payment.id,
+								'payment_name':payment.payment_method_id.name,
+								'amount' : payment.amount,
+							}})
 			final_data.update({
 				'Lista_Productos': prod_data,
 				'Lista_Categorias': categ_data,
