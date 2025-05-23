@@ -251,7 +251,7 @@ class LocationSumm(models.Model):
 								'orders_data': odr,
 							}})
 					for category in categories:
-						_logger.info("Caterick de la linea Erick: %s", category)
+						_logger.info("Caterick de la linea Erick: %s", categ_data)
 						if category in categ_data:
 							old_qty = categ_data[category]['qty']
 							categ_data[category].update({
@@ -276,7 +276,7 @@ class LocationSumm(models.Model):
 								}})
 			final_data.update({
 				'Lista_Productos': prod_data,
-				'Lista_Categorias': categ_data,
+				#'Lista_Categorias': categ_data,
 			})
 			return final_data
 		else:
