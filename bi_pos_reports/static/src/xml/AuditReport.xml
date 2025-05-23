@@ -168,10 +168,9 @@
 					</div>
 					<div>
 						<strong>F. Cierre: </strong> 
-						<t t-esc="obj.loc_summery.get('Fecha_de_Cierre', '')" />
-						<!--
-						<t t-esc='obj.loc_summery["Fecha_de_Cierre"]'/>
-						-->
+						<t t-if="obj.loc_summery['Fecha_de_Cierre']">
+							<t t-esc='obj.loc_summery["Fecha_de_Cierre"]'/>
+						</t>
 					</div>
 
 					<div>
