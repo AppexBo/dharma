@@ -198,6 +198,7 @@ class LocationSumm(models.Model):
 		}
 
 		prod_data ={}
+		categ_data ={}
 		product_ids = self.env['product.product'].search([])
 		if tab1 == True:
 			session_id = self.env['pos.session'].browse(int(select_session))
@@ -224,6 +225,7 @@ class LocationSumm(models.Model):
 					quants = self.env['stock.quant'].search([('product_id.id', '=', line.product_id.id),
 						('location_id.id', '=', odr.location_id.id)])
 					product = line.product_id.name
+					categories = line.product_id.pos_categ_ids
 					if product in prod_data:
 						old_qty = prod_data[product]['qty']
 						prod_data[product].update({
@@ -250,6 +252,29 @@ class LocationSumm(models.Model):
 								'avail_qty':quants.quantity,
 								'orders_data': odr,
 							}})
+					for category in categories:
+						if category in categ_data:
+							old_qty = categ_data[category]['qty']
+							categ_data[category].update({
+								'qty' : old_qty+line.qty,
+							})
+						else:
+							if len(quants) > 1:
+								quantity = 0.0
+								for quant in quants:
+									quantity += quant.quantity
+
+								categ_data.update({ category : {
+									'category_id':category.id,
+									'categ_name':category.name,
+									'qty' : line.qty,
+								}})
+							else:
+								categ_data.update({ category : {
+									'category_id':category.id,
+									'categ_name':category.name,
+									'qty' : line.qty,
+								}})
 			final_data.update({
 				'Lista_Productos': prod_data,
 			})
