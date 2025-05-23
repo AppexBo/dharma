@@ -226,6 +226,8 @@ class LocationSumm(models.Model):
 					)
 					product = line.product_id.name
 					categories = line.product_id.pos_categ_ids
+					payments = line.payment_ids
+
 					if product in prod_data:
 						old_qty = prod_data[product]['qty']
 						prod_data[product].update({
@@ -257,7 +259,6 @@ class LocationSumm(models.Model):
 							categ_data[key_category].update({
 								'qty' : old_qty+line.qty,
 							})
-							_logger.info("Prod de la linea Erick: %s", old_qty)
 						else:
 							if len(quants) > 1:
 								quantity = 0.0
@@ -275,11 +276,34 @@ class LocationSumm(models.Model):
 									'categ_name':category.name,
 									'qty' : line.qty,
 								}})
-			_logger.info("Prod de la linea Erick: %s", prod_data)
-			_logger.info("Caterick de la linea Erick: %s", categ_data)
+					for payment in payments:
+						key_payment = payment.id
+						if key_payment in payment_data:
+							old_amount = payment_data[key_payment]['amount']
+							payment_data[key_payment].update({
+								'amount' : old_amount+payment.amount,
+							})
+						else:
+							if len(quants) > 1:
+								quantity = 0.0
+								for quant in quants:
+									quantity += quant.quantity
+
+								payment_data.update({ key_payment : {
+									'payment_id':payment.id,
+									'payment_name':payment.name,
+									'amount' : payment.amount,
+								}})
+							else:
+								payment_data.update({ key_payment : {
+									'payment_id':payment.id,
+									'payment_name':payment.name,
+									'amount' : payment.amount,
+								}})
 			final_data.update({
 				'Lista_Productos': prod_data,
 				'Lista_Categorias': categ_data,
+				'Metodos_de_Pago': payment_data,
 			})
 			return final_data
 		else:
