@@ -276,6 +276,7 @@ class LocationSumm(models.Model):
 								}})
 			final_data.update({
 				'Lista_Productos': prod_data,
+				'Lista_Categorias': categ_data,
 			})
 			return final_data
 		else:
