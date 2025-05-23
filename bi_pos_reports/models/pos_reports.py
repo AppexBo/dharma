@@ -226,8 +226,6 @@ class LocationSumm(models.Model):
 					)
 					product = line.product_id.name
 					categories = line.product_id.pos_categ_ids
-					#_logger.info("Datos de la linea Erick: %s", categories)
-					
 					if product in prod_data:
 						old_qty = prod_data[product]['qty']
 						prod_data[product].update({
@@ -244,7 +242,6 @@ class LocationSumm(models.Model):
 								'product_name':line.product_id.name,
 								'qty' : line.qty,
 								'avail_qty':quantity,
-								'orders_data': odr,
 							}})
 						else:
 							prod_data.update({ product : {
@@ -252,7 +249,6 @@ class LocationSumm(models.Model):
 								'product_name':line.product_id.name,
 								'qty' : line.qty,
 								'avail_qty':quants.quantity,
-								'orders_data': odr,
 							}})
 					for category in categories:
 						key_category = category.id
@@ -261,6 +257,7 @@ class LocationSumm(models.Model):
 							categ_data[category].update({
 								'qty' : old_qty+line.qty,
 							})
+							_logger.info("Prod de la linea Erick: %s", old_qty)
 						else:
 							if len(quants) > 1:
 								quantity = 0.0
