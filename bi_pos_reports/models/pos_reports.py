@@ -293,13 +293,13 @@ class LocationSumm(models.Model):
 
 								payment_data.update({ key_payment : {
 									'payment_id':payment.id,
-									'payment_name':payment.name,
+									'payment_name':payment.payment_method_id.name,
 									'amount' : payment.amount,
 								}})
 							else:
 								payment_data.update({ key_payment : {
 									'payment_id':payment.id,
-									'payment_name':payment.name,
+									'payment_name':payment.payment_method_id.name,
 									'amount' : payment.amount,
 								}})
 			final_data.update({
