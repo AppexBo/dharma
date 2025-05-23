@@ -217,6 +217,7 @@ class LocationSumm(models.Model):
 				'Total_en_Bruto': session_id.total_payments_amount,
 			})
 			for odr in orders:
+				payments = odr.payment_ids
 				for line in odr.lines:
 					quants = self.env['stock.quant'].search(
 						[
@@ -226,8 +227,7 @@ class LocationSumm(models.Model):
 					)
 					product = line.product_id.name
 					categories = line.product_id.pos_categ_ids
-					payments = line.payment_ids
-
+					
 					if product in prod_data:
 						old_qty = prod_data[product]['qty']
 						prod_data[product].update({
