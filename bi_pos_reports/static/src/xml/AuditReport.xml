@@ -298,13 +298,13 @@
 					</tr>
 				</thead>
 				<tbody>
-				<tr t-foreach="obj.loc_summery['Lista_Categorias']" t-as="category" t-key="category">
+				<tr t-foreach="obj.loc_summery['Metodos_de_Pago']" t-as="metodo_de_pago" t-key="metodo_de_pago">
 
 					<td style="float: left;">
-						<t t-esc="obj.loc_summery['Lista_Categorias'][category]['categ_name']"/>	 
+						<t t-esc="obj.loc_summery['Metodos_de_Pago'][metodo_de_pago]['payment_name']"/>	 
 					</td>
 					<td class="text-center">
-						<t t-esc="obj.loc_summery['Lista_Categorias'][category]['amount']"/>
+						<t t-esc="obj.loc_summery['Metodos_de_Pago'][metodo_de_pago]['amount']"/>
 					</td>
 					<!--
 					<td  style="text-align: center;">
