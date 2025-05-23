@@ -222,7 +222,7 @@ class LocationSumm(models.Model):
 						('location_id.id', '=', odr.location_id.id)])
 					product = line.product_id.name
 					categories = line.product_id.pos_categ_ids
-					_logger.info("Datos de la linea Erick: %s", categories)
+					#_logger.info("Datos de la linea Erick: %s", categories)
 					
 					if product in prod_data:
 						old_qty = prod_data[product]['qty']
@@ -276,7 +276,7 @@ class LocationSumm(models.Model):
 								}})
 			final_data.update({
 				'Lista_Productos': prod_data,
-				#'Lista_Categorias': categ_data,
+				'Lista_Categorias': categ_data,
 			})
 			return final_data
 		else:
