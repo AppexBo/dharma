@@ -158,7 +158,7 @@
 						<strong>Abierta por: </strong> <t t-esc='obj.loc_summery["Abierto_por"]'/>
 					</div>
 					<div>
-						<strong>Punto de Venta: </strong> <t t-esc='obj.loc_summery["Abierto_por"]'/>
+						<strong>Punto de Venta: </strong> <t t-esc='obj.loc_summery["Punto_de_Venta"]'/>
 					</div>
 					<div>
 						<strong>Estado: </strong> 
@@ -185,17 +185,19 @@
 						<strong>Saldo Final: </strong> <t t-esc='obj.loc_summery["Saldo_Final"]'/>
 					</div>
 					<div>
-						<strong>Diferencia: </strong> <t t-esc='obj.loc_summery["Saldo_Inicial"] - obj.loc_summery["Saldo_Final"]'/>
+						<strong>Diferencia: </strong> <t t-esc='obj.loc_summery["Saldo_Final"] - obj.loc_summery["Saldo_Inicial"]'/>
 					</div>
 					
 					<div>
-						<strong>Tax: </strong> <t t-esc='obj.loc_summery["Tax"]'/>
+						<strong>Total Descuentos: </strong> <t t-esc='obj.loc_summery["Descuento"]'/>
 					</div>
+
 					<div>
-						<strong>Descuento: </strong> <t t-esc='obj.loc_summery["Descuento"]'/>
+						<strong>Total Impuestos: </strong> <t t-esc='obj.loc_summery["Tax"]'/>
 					</div>
+					
 					<div>
-						<strong>Total en Bruto: </strong> <t t-esc='obj.loc_summery["Total_en_Bruto"]'/>
+						<strong>Total Ventas: </strong> <t t-esc='obj.loc_summery["Total_en_Bruto"]'/>
 					</div>
 				</div>
 			</div>
@@ -234,7 +236,7 @@
 					<tr style="border-bottom: 2px solid black;">
 						<th>Producto</th>
 						<th>Qty</th>
-						<th>Remb.</th>
+						<th>Monto.</th>
 						<!--<th class="pos-receipt-right-align">Available qty</th>-->
 					</tr>
 				</thead>
@@ -245,10 +247,10 @@
 						<t t-esc="product"/>	 
 					</td>
 					<td >
-						<t t-esc="obj.loc_summery['Lista_Productos'][product]['qty']"/>
+						<t t-esc="obj.loc_summery['Lista_Productos'][product]['qty'] + obj.loc_summery['Lista_Productos'][product]['qty_remb']"/>
 					</td>
 					<td >
-						<t t-esc="obj.loc_summery['Lista_Productos'][product]['qty_remb']"/>
+						<t t-esc="obj.loc_summery['Lista_Productos'][product]['product_unit_price'] * (obj.loc_summery['Lista_Productos'][product]['qty'] + obj.loc_summery['Lista_Productos'][product]['qty_remb'])"/>
 					</td>
 					<!--
 					<td  style="text-align: center;">

@@ -235,7 +235,7 @@ class LocationSumm(models.Model):
 					categories = line.product_id.pos_categ_ids
 					
 					if product in prod_data:
-						descuentos += line.discount
+						descuentos += line.discount		#presio unitario * cantidad - Subtotal
 						old_qty = prod_data[product]['qty']
 						old_qty_remb = prod_data[product]['qty_remb']
 						if len(odr.refunded_order_ids) > 0:
@@ -247,7 +247,7 @@ class LocationSumm(models.Model):
 								'qty' : old_qty + line.qty,
 							})
 					else:
-						descuentos += line.discount
+						descuentos += line.discount #presio unitario * cantidad - Subtotal
 						if len(quants) > 1:
 							if len(odr.refunded_order_ids) > 0:
 								prod_data.update({ product : {
@@ -255,6 +255,7 @@ class LocationSumm(models.Model):
 									'product_name': line.product_id.name,
 									'qty' : 0,
 									'qty_remb' : line.qty,
+									'product_unit_price': line.product_id.price_line,
 								}})
 							else:
 								prod_data.update({ product : {
@@ -262,6 +263,7 @@ class LocationSumm(models.Model):
 									'product_name':line.product_id.name,
 									'qty' : line.qty,
 									'qty_remb' : 0,
+									'product_unit_price': line.product_id.price_line,
 								}})
 						else:
 							if len(odr.refunded_order_ids) > 0:
@@ -270,6 +272,7 @@ class LocationSumm(models.Model):
 									'product_name':line.product_id.name,
 									'qty' : 0,
 									'qty_remb' : line.qty,
+									'product_unit_price': line.product_id.price_line,
 								}})
 							else:
 								prod_data.update({ product : {
@@ -277,6 +280,7 @@ class LocationSumm(models.Model):
 									'product_name':line.product_id.name,
 									'qty' : line.qty,
 									'qty_remb' : 0,
+									'product_unit_price': line.product_id.price_line,
 								}})
 					for category in categories:
 						key_category = category.id
@@ -292,24 +296,12 @@ class LocationSumm(models.Model):
 									'qty' : old_qty + line.qty,
 								})
 						else:
-							if len(quants) > 1:
-								quantity = 0.0
-								for quant in quants:
-									quantity += quant.quantity
-
-								categ_data.update({ key_category : {
-									'category_id':category.id,
-									'categ_name':category.name,
-									'qty' : line.qty,
-									'qty_remb': line.qty if len(odr.refunded_order_ids) > 0 else 0
-								}})
-							else:
-								categ_data.update({ key_category : {
-									'category_id':category.id,
-									'categ_name':category.name,
-									'qty' : line.qty,
-									'qty_remb': line.qty if len(odr.refunded_order_ids) > 0 else 0
-								}})
+							categ_data.update({ key_category : {
+								'category_id':category.id,
+								'categ_name':category.name,
+								'qty' : line.qty,
+								'qty_remb': line.qty if len(odr.refunded_order_ids) > 0 else 0
+							}})
 				payments = odr.payment_ids
 				
 				for payment in payments:
