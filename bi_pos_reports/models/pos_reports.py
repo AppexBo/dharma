@@ -283,54 +283,53 @@ class LocationSumm(models.Model):
 				payments = odr.payment_ids
 				
 				for payment in payments:
-					if payment.state == 'invoiced':
-						key_payment = payment.name
-						if key_payment in payment_invoice_data:
-							old_amount = payment_invoice_data[key_payment]['amount']
-							payment_invoice_data[key_payment].update({
-								'amount' : old_amount+payment.amount,
-							})
-						else:
-							if len(quants) > 1:
-								quantity = 0.0
-								for quant in quants:
-									quantity += quant.quantity
-
-								payment_invoice_data.update({ key_payment : {
-									'payment_id':payment.id,
-									'payment_name':payment.payment_method_id.name,
-									'amount' : payment.amount,
-								}})
-							else:
-								payment_invoice_data.update({ key_payment : {
-									'payment_id':payment.id,
-									'payment_name':payment.payment_method_id.name,
-									'amount' : payment.amount,
-								}})
+					#if payment.state == 'invoiced':
+					#	key_payment = payment.name
+					#	if key_payment in payment_invoice_data:
+					#		old_amount = payment_invoice_data[key_payment]['amount']
+					#		payment_invoice_data[key_payment].update({
+					#			'amount' : old_amount+payment.amount,
+					#		})
+					#	else:
+					#		if len(quants) > 1:
+					#			quantity = 0.0
+					#			for quant in quants:
+					#				quantity += quant.quantity
+					#			payment_invoice_data.update({ key_payment : {
+					#				'payment_id':payment.id,
+					#				'payment_name':payment.payment_method_id.name,
+					#				'amount' : payment.amount,
+					#			}})
+					#		else:
+					#			payment_invoice_data.update({ key_payment : {
+					#				'payment_id':payment.id,
+					#				'payment_name':payment.payment_method_id.name,
+					#				'amount' : payment.amount,
+					#			}})
+					#else:
+					key_payment = payment.name
+					if key_payment in payment_data:
+						old_amount = payment_data[key_payment]['amount']
+						payment_data[key_payment].update({
+							'amount' : old_amount+payment.amount,
+						})
 					else:
-						key_payment = payment.name
-						if key_payment in payment_data:
-							old_amount = payment_data[key_payment]['amount']
-							payment_data[key_payment].update({
-								'amount' : old_amount+payment.amount,
-							})
-						else:
-							if len(quants) > 1:
-								quantity = 0.0
-								for quant in quants:
-									quantity += quant.quantity
+						if len(quants) > 1:
+							quantity = 0.0
+							for quant in quants:
+								quantity += quant.quantity
 
-								payment_data.update({ key_payment : {
-									'payment_id':payment.id,
-									'payment_name':payment.payment_method_id.name,
-									'amount' : payment.amount,
-								}})
-							else:
-								payment_data.update({ key_payment : {
-									'payment_id':payment.id,
-									'payment_name':payment.payment_method_id.name,
-									'amount' : payment.amount,
-								}})
+							payment_data.update({ key_payment : {
+								'payment_id':payment.id,
+								'payment_name':payment.payment_method_id.name,
+								'amount' : payment.amount,
+							}})
+						else:
+							payment_data.update({ key_payment : {
+								'payment_id':payment.id,
+								'payment_name':payment.payment_method_id.name,
+								'amount' : payment.amount,
+							}})
 			final_data.update({
 				'Lista_Productos': prod_data,
 				'Lista_Categorias': categ_data,
