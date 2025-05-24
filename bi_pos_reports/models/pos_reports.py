@@ -237,10 +237,10 @@ class LocationSumm(models.Model):
 					if product in prod_data:
 						descuentos += line.discount
 						old_qty = prod_data[product]['qty']
+						old_qty_remb = prod_data[product]['qty_remb']
 						if len(odr.refunded_order_ids) > 0:
-							_logger.info("Erick aqui sale un valor: %s", line.qty)
 							prod_data[product].update({
-								'qty_remb' : old_qty + line.qty,
+								'qty_remb' : old_qty_rembolso + line.qty,
 							})
 						else:
 							prod_data[product].update({
@@ -253,7 +253,6 @@ class LocationSumm(models.Model):
 							#for quant in quants:
 							#	quantity += quant.quantity
 							if len(odr.refunded_order_ids) > 0:
-								_logger.info("Erick ---- valor: %s", line.qty)
 								prod_data.update({ product : {
 									'product_id': line.product_id.id,
 									'product_name': line.product_id.name,
@@ -269,7 +268,6 @@ class LocationSumm(models.Model):
 								}})
 						else:
 							if len(odr.refunded_order_ids) > 0:
-								_logger.info("Erick ---- valor: %s", line.qty)
 								prod_data.update({ product : {
 									'product_id':line.product_id.id,
 									'product_name':line.product_id.name,
