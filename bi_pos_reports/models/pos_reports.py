@@ -340,7 +340,7 @@ class LocationSumm(models.Model):
 								'amount' : payment.amount,
 								'qty': 1,
 							}})
-			_logger.info("Erick ---- FINAL: %s", payment_data)
+			_logger.info("Erick ---- FINAL: %s", prod_data)
 			final_data.update({
 				'Lista_Productos': prod_data,
 				'Lista_Categorias': categ_data,
