@@ -287,9 +287,11 @@
 					<td >
 						<t t-esc="obj.loc_summery['Lista_Categorias'][category]['qty']"/>
 					</td>
+					<!--
 					<td >
 						<t t-esc="obj.loc_summery['Lista_Categorias'][product]['qty_remb']"/>
 					</td>
+					-->
 					<!--
 					<td  style="text-align: center;">
 						<t t-esc="obj.loc_summery['Lista_Categorias'][category]['avail_qty']"/>
