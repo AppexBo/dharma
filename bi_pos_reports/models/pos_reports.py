@@ -249,9 +249,6 @@ class LocationSumm(models.Model):
 					else:
 						descuentos += line.discount
 						if len(quants) > 1:
-							#quantity = 0.0
-							#for quant in quants:
-							#	quantity += quant.quantity
 							if len(odr.refunded_order_ids) > 0:
 								prod_data.update({ product : {
 									'product_id': line.product_id.id,
@@ -285,9 +282,15 @@ class LocationSumm(models.Model):
 						key_category = category.id
 						if key_category in categ_data:
 							old_qty = categ_data[key_category]['qty']
-							categ_data[key_category].update({
-								'qty' : old_qty+line.qty,
-							})
+							old_qty_remb = categ_data[key_category]['qty_remb']
+							if len(odr.refunded_order_ids) > 0:
+								categ_data[key_category].update({
+									'qty_remb' : old_qty_remb + line.qty,
+								})
+							else:
+								categ_data[key_category].update({
+									'qty' : old_qty + line.qty,
+								})
 						else:
 							if len(quants) > 1:
 								quantity = 0.0
@@ -298,12 +301,14 @@ class LocationSumm(models.Model):
 									'category_id':category.id,
 									'categ_name':category.name,
 									'qty' : line.qty,
+									'qty_remb': line.qty if len(odr.refunded_order_ids) > 0 else 0
 								}})
 							else:
 								categ_data.update({ key_category : {
 									'category_id':category.id,
 									'categ_name':category.name,
 									'qty' : line.qty,
+									'qty_remb': line.qty if len(odr.refunded_order_ids) > 0 else 0
 								}})
 				payments = odr.payment_ids
 				
