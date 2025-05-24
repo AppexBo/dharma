@@ -256,7 +256,6 @@ class LocationSumm(models.Model):
 									'product_id':line.product_id.id,
 									'product_name':line.product_id.name,
 									'qty' : 0,
-									'avail_qty':quantity,
 									'qty_remb' : line.qty,
 								}})
 							else:
@@ -264,7 +263,6 @@ class LocationSumm(models.Model):
 									'product_id':line.product_id.id,
 									'product_name':line.product_id.name,
 									'qty' : line.qty,
-									'avail_qty':quantity,
 									'qty_remb' : 0,
 								}})
 						else:
@@ -273,7 +271,6 @@ class LocationSumm(models.Model):
 									'product_id':line.product_id.id,
 									'product_name':line.product_id.name,
 									'qty' : 0,
-									'avail_qty':quantity,
 									'qty_remb' : line.qty,
 								}})
 							else:
@@ -281,7 +278,6 @@ class LocationSumm(models.Model):
 									'product_id':line.product_id.id,
 									'product_name':line.product_id.name,
 									'qty' : line.qty,
-									'avail_qty':quants.quantity,
 									'qty_remb' : 0,
 								}})
 					for category in categories:
