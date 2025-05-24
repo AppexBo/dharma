@@ -240,7 +240,7 @@ class LocationSumm(models.Model):
 						old_qty_remb = prod_data[product]['qty_remb']
 						if len(odr.refunded_order_ids) > 0:
 							prod_data[product].update({
-								'qty_remb' : old_qty_rembolso + line.qty,
+								'qty_remb' : old_qty_remb + line.qty,
 							})
 						else:
 							prod_data[product].update({
