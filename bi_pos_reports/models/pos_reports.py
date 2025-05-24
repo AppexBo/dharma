@@ -255,7 +255,7 @@ class LocationSumm(models.Model):
 									'product_name': line.product_id.name,
 									'qty' : 0,
 									'qty_remb' : line.qty,
-									'product_unit_price': line.product_id.price_line,
+									'product_unit_price': line.product_id.price_unit,
 								}})
 							else:
 								prod_data.update({ product : {
@@ -263,7 +263,7 @@ class LocationSumm(models.Model):
 									'product_name':line.product_id.name,
 									'qty' : line.qty,
 									'qty_remb' : 0,
-									'product_unit_price': line.product_id.price_line,
+									'product_unit_price': line.product_id.price_unit,
 								}})
 						else:
 							if len(odr.refunded_order_ids) > 0:
@@ -272,7 +272,7 @@ class LocationSumm(models.Model):
 									'product_name':line.product_id.name,
 									'qty' : 0,
 									'qty_remb' : line.qty,
-									'product_unit_price': line.product_id.price_line,
+									'product_unit_price': line.product_id.price_unit,
 								}})
 							else:
 								prod_data.update({ product : {
@@ -280,7 +280,7 @@ class LocationSumm(models.Model):
 									'product_name':line.product_id.name,
 									'qty' : line.qty,
 									'qty_remb' : 0,
-									'product_unit_price': line.product_id.price_line,
+									'product_unit_price': line.product_id.price_unit,
 								}})
 					for category in categories:
 						key_category = category.id
