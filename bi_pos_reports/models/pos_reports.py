@@ -289,7 +289,7 @@ class LocationSumm(models.Model):
 							old_amount = payment_invoice_data[key_payment]['amount']
 							payment_invoice_data[key_payment].update({
 								'amount' : old_amount+payment.amount,
-								'qty': payment_invoice_data[key_payment]['qty'],
+								'qty': payment_invoice_data[key_payment]['qty'] + 1,
 							})
 						else:
 							payment_invoice_data.update({ key_payment : {
@@ -304,7 +304,7 @@ class LocationSumm(models.Model):
 							old_amount = payment_data[key_payment]['amount']
 							payment_data[key_payment].update({
 								'amount' : old_amount+payment.amount,
-								'qty': payment_data[key_payment]['qty'],
+								'qty': payment_data[key_payment]['qty'] + 1,
 							})
 						else:
 							payment_data.update({ key_payment : {
