@@ -289,47 +289,30 @@ class LocationSumm(models.Model):
 							old_amount = payment_invoice_data[key_payment]['amount']
 							payment_invoice_data[key_payment].update({
 								'amount' : old_amount+payment.amount,
+								'qty': payment_invoice_data[key_payment]['qty'],
 							})
 						else:
-							if len(quants) > 1:
-								quantity = 0.0
-								for quant in quants:
-									quantity += quant.quantity
-								payment_invoice_data.update({ key_payment : {
-									'payment_id':payment.id,
-									'payment_name':payment.payment_method_id.name,
-									'amount' : payment.amount,
-								}})
-							else:
-								payment_invoice_data.update({ key_payment : {
-									'payment_id':payment.id,
-									'payment_name':payment.payment_method_id.name,
-									'amount' : payment.amount,
-								}})
+							payment_invoice_data.update({ key_payment : {
+								'payment_id':payment.id,
+								'payment_name':payment.payment_method_id.name,
+								'amount' : payment.amount,
+								'qty': 0,
+							}})
 					else:
 						key_payment = payment.name
 						if key_payment in payment_data:
 							old_amount = payment_data[key_payment]['amount']
 							payment_data[key_payment].update({
 								'amount' : old_amount+payment.amount,
+								'qty': payment_data[key_payment]['qty'],
 							})
 						else:
-							if len(quants) > 1:
-								quantity = 0.0
-								for quant in quants:
-									quantity += quant.quantity
-
-								payment_data.update({ key_payment : {
-									'payment_id':payment.id,
-									'payment_name':payment.payment_method_id.name,
-									'amount' : payment.amount,
-								}})
-							else:
-								payment_data.update({ key_payment : {
-									'payment_id':payment.id,
-									'payment_name':payment.payment_method_id.name,
-									'amount' : payment.amount,
-								}})
+							payment_data.update({ key_payment : {
+								'payment_id':payment.id,
+								'payment_name':payment.payment_method_id.name,
+								'amount' : payment.amount,
+								'qty': 0,
+							}})
 			final_data.update({
 				'Lista_Productos': prod_data,
 				'Lista_Categorias': categ_data,

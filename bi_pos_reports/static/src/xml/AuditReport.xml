@@ -286,20 +286,24 @@
 			</div>
 			<table class='orderlines' style="margin: 0px auto;">
 				<colgroup>
-					<col width='70%' />
+					<col width='10%' />
+					<col width='60%' />
 					<col width='30%' />
 					<!--<col width='30%' />-->
 				</colgroup>
 				<thead>
 					<tr style="border-bottom: 2px solid black;">
+						<th>Qty</th>
 						<th>Nombre</th>
-						<th style="text-align: center;">Monto</th>
+						<th>Monto</th>
 						<!--<th class="pos-receipt-right-align">Available qty</th>-->
 					</tr>
 				</thead>
 				<tbody>
 				<tr t-foreach="obj.loc_summery['Metodos_de_Pago_Invoice']" t-as="metodo_de_pago" t-key="metodo_de_pago">
-
+					<td style="float: left;">
+						<t t-esc="obj.loc_summery['Metodos_de_Pago'][metodo_de_pago]['qty']"/>	 
+					</td>
 					<td style="float: left;">
 						<t t-esc="obj.loc_summery['Metodos_de_Pago_Invoice'][metodo_de_pago]['payment_name']"/>	 
 					</td>
@@ -322,24 +326,28 @@
 			</div>
 			<table class='orderlines' style="margin: 0px auto;">
 				<colgroup>
-					<col width='70%' />
+					<col width='10%' />
+					<col width='60%' />
 					<col width='30%' />
 					<!--<col width='30%' />-->
 				</colgroup>
 				<thead>
 					<tr style="border-bottom: 2px solid black;">
+						<th>Qty</th>
 						<th>Nombre</th>
-						<th style="text-align: center;">Monto</th>
+						<th>Monto</th>
 						<!--<th class="pos-receipt-right-align">Available qty</th>-->
 					</tr>
 				</thead>
 				<tbody>
 				<tr t-foreach="obj.loc_summery['Metodos_de_Pago']" t-as="metodo_de_pago" t-key="metodo_de_pago">
-
+					<td style="float: left;">
+						<t t-esc="obj.loc_summery['Metodos_de_Pago'][metodo_de_pago]['qty']"/>	 
+					</td>
 					<td style="float: left;">
 						<t t-esc="obj.loc_summery['Metodos_de_Pago'][metodo_de_pago]['payment_name']"/>	 
 					</td>
-					<td class="text-center">
+					<td style="float: left;">
 						<t t-esc="obj.loc_summery['Metodos_de_Pago'][metodo_de_pago]['amount']"/>
 					</td>
 					<!--
