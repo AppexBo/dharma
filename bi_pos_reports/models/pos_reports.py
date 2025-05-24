@@ -296,7 +296,7 @@ class LocationSumm(models.Model):
 								'payment_id':payment.id,
 								'payment_name':payment.payment_method_id.name,
 								'amount' : payment.amount,
-								'qty': 0,
+								'qty': 1,
 							}})
 					else:
 						key_payment = payment.name
@@ -311,7 +311,7 @@ class LocationSumm(models.Model):
 								'payment_id':payment.id,
 								'payment_name':payment.payment_method_id.name,
 								'amount' : payment.amount,
-								'qty': 0,
+								'qty': 1,
 							}})
 			final_data.update({
 				'Lista_Productos': prod_data,
