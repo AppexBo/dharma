@@ -238,6 +238,7 @@ class LocationSumm(models.Model):
 						descuentos += line.discount
 						old_qty = prod_data[product]['qty']
 						if len(odr.refunded_order_ids) > 0:
+							_logger.info("Erick aqui sale un valor: %s", line.qty)
 							prod_data[product].update({
 								'qty_remb' : old_qty + line.qty,
 							})
