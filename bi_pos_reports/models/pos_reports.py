@@ -239,11 +239,11 @@ class LocationSumm(models.Model):
 						old_qty = prod_data[product]['qty']
 						if len(odr.refunded_order_ids) > 0:
 							prod_data[product].update({
-								'qty_remb' : old_qty+line.qty,
+								'qty_remb' : old_qty + line.qty,
 							})
 						else:
 							prod_data[product].update({
-								'qty' : old_qty+line.qty,
+								'qty' : old_qty + line.qty,
 							})
 					else:
 						descuentos += line.discount
@@ -255,7 +255,7 @@ class LocationSumm(models.Model):
 								prod_data.update({ product : {
 									'product_id': line.product_id.id,
 									'product_name': line.product_id.name,
-									#'qty' : 0,
+									'qty' : 0,
 									'qty_remb' : line.qty,
 								}})
 							else:
@@ -263,14 +263,14 @@ class LocationSumm(models.Model):
 									'product_id':line.product_id.id,
 									'product_name':line.product_id.name,
 									'qty' : line.qty,
-									#'qty_remb' : 0,
+									'qty_remb' : 0,
 								}})
 						else:
 							if len(odr.refunded_order_ids) > 0:
 								prod_data.update({ product : {
 									'product_id':line.product_id.id,
 									'product_name':line.product_id.name,
-									#'qty' : 0,
+									'qty' : 0,
 									'qty_remb' : line.qty,
 								}})
 							else:
@@ -278,7 +278,7 @@ class LocationSumm(models.Model):
 									'product_id':line.product_id.id,
 									'product_name':line.product_id.name,
 									'qty' : line.qty,
-									#'qty_remb' : 0,
+									'qty_remb' : 0,
 								}})
 					for category in categories:
 						key_category = category.id
