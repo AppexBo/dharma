@@ -161,7 +161,12 @@
 						<strong>Punto de Venta: </strong> <t t-esc='obj.loc_summery["Abierto_por"]'/>
 					</div>
 					<div>
-						<strong>Estado: </strong> <t t-esc='obj.loc_summery["Estado"]'/>
+						<strong>Estado: </strong> 
+						<t t-if="obj.loc_summery['Estado'] == 'opening_control'">Control de apertura</t>
+						<t t-elif="obj.loc_summery['Estado'] == 'opened'">En progreso</t>
+						<t t-elif="obj.loc_summery['Estado'] == 'closing_control'">Control de cierre</t>
+						<t t-elif="obj.loc_summery['Estado'] == 'closed'">Cerrado y registrado</t>
+						<t t-else=""><t t-esc="obj.loc_summery['Estado']"/></t>
 					</div>
 					<div>
 						<strong>F. Apertura: </strong> <t t-esc='obj.loc_summery["Fecha_de_Apertura"]'/>
@@ -227,7 +232,8 @@
 				<thead>
 					<tr style="border-bottom: 2px solid black;">
 						<th>Producto</th>
-						<th style="text-align: center;">Qty</th>
+						<th>Qty</th>
+						<th>Cant Remb.</th>
 						<!--<th class="pos-receipt-right-align">Available qty</th>-->
 					</tr>
 				</thead>
@@ -239,6 +245,9 @@
 					</td>
 					<td >
 						<t t-esc="obj.loc_summery['Lista_Productos'][product]['qty']"/>
+					</td>
+					<td >
+						<t t-esc="obj.loc_summery['Lista_Productos'][product]['qty_remb']"/>
 					</td>
 					<!--
 					<td  style="text-align: center;">
@@ -264,7 +273,8 @@
 				<thead>
 					<tr style="border-bottom: 2px solid black;">
 						<th>Categoría</th>
-						<th style="text-align: center;">Qty</th>
+						<th>Qty</th>
+						<th>Cant Remb.</th>
 						<!--<th class="pos-receipt-right-align">Available qty</th>-->
 					</tr>
 				</thead>
@@ -276,6 +286,9 @@
 					</td>
 					<td >
 						<t t-esc="obj.loc_summery['Lista_Categorias'][category]['qty']"/>
+					</td>
+					<td >
+						<t t-esc="obj.loc_summery['Lista_Categorias'][product]['qty_remb']"/>
 					</td>
 					<!--
 					<td  style="text-align: center;">

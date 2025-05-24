@@ -237,29 +237,53 @@ class LocationSumm(models.Model):
 					if product in prod_data:
 						descuentos += line.discount
 						old_qty = prod_data[product]['qty']
-						prod_data[product].update({
-							'qty' : old_qty+line.qty,
-						})
+						if len(odr.refunded_order_ids) > 0:
+							prod_data[product].update({
+								'qty_remb' : old_qty+line.qty,
+							})
+						else:
+							prod_data[product].update({
+								'qty' : old_qty+line.qty,
+							})
 					else:
 						descuentos += line.discount
 						if len(quants) > 1:
 							quantity = 0.0
 							for quant in quants:
 								quantity += quant.quantity
-
-							prod_data.update({ product : {
-								'product_id':line.product_id.id,
-								'product_name':line.product_id.name,
-								'qty' : line.qty,
-								'avail_qty':quantity,
-							}})
+							if len(odr.refunded_order_ids) > 0:
+								prod_data.update({ product : {
+									'product_id':line.product_id.id,
+									'product_name':line.product_id.name,
+									'qty' : 0,
+									'avail_qty':quantity,
+									'qty_remb' : line.qty,
+								}})
+							else:
+								prod_data.update({ product : {
+									'product_id':line.product_id.id,
+									'product_name':line.product_id.name,
+									'qty' : line.qty,
+									'avail_qty':quantity,
+									'qty_remb' : 0,
+								}})
 						else:
-							prod_data.update({ product : {
-								'product_id':line.product_id.id,
-								'product_name':line.product_id.name,
-								'qty' : line.qty,
-								'avail_qty':quants.quantity,
-							}})
+							if len(odr.refunded_order_ids) > 0:
+								prod_data.update({ product : {
+									'product_id':line.product_id.id,
+									'product_name':line.product_id.name,
+									'qty' : 0,
+									'avail_qty':quantity,
+									'qty_remb' : line.qty,
+								}})
+							else:
+								prod_data.update({ product : {
+									'product_id':line.product_id.id,
+									'product_name':line.product_id.name,
+									'qty' : line.qty,
+									'avail_qty':quants.quantity,
+									'qty_remb' : 0,
+								}})
 					for category in categories:
 						key_category = category.id
 						if key_category in categ_data:
