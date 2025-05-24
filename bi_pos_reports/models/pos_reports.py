@@ -253,6 +253,7 @@ class LocationSumm(models.Model):
 							#for quant in quants:
 							#	quantity += quant.quantity
 							if len(odr.refunded_order_ids) > 0:
+								_logger.info("Erick ---- valor: %s", line.qty)
 								prod_data.update({ product : {
 									'product_id': line.product_id.id,
 									'product_name': line.product_id.name,
@@ -268,6 +269,7 @@ class LocationSumm(models.Model):
 								}})
 						else:
 							if len(odr.refunded_order_ids) > 0:
+								_logger.info("Erick ---- valor: %s", line.qty)
 								prod_data.update({ product : {
 									'product_id':line.product_id.id,
 									'product_name':line.product_id.name,
@@ -338,6 +340,7 @@ class LocationSumm(models.Model):
 								'amount' : payment.amount,
 								'qty': 1,
 							}})
+			_logger.info("Erick ---- FINAL: %s", payment_data)
 			final_data.update({
 				'Lista_Productos': prod_data,
 				'Lista_Categorias': categ_data,
