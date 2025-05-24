@@ -227,10 +227,10 @@
 				<tbody>
 				<tr t-foreach="obj.loc_summery['Lista_Productos']" t-as="product" t-key="product">
 
-					<td style="float: left;">
+					<td >
 						<t t-esc="product"/>	 
 					</td>
-					<td class="text-center">
+					<td >
 						<t t-esc="obj.loc_summery['Lista_Productos'][product]['qty']"/>
 					</td>
 					<!--
