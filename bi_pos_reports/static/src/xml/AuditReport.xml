@@ -282,7 +282,43 @@
 				<strong>--------------------------------</strong>
 			</div>
 			<div style="text-align: center;">
-				<strong>Metodos de pago</strong>
+				<strong>Facturas</strong>
+			</div>
+			<table class='orderlines' style="margin: 0px auto;">
+				<colgroup>
+					<col width='70%' />
+					<col width='30%' />
+					<!--<col width='30%' />-->
+				</colgroup>
+				<thead>
+					<tr style="border-bottom: 2px solid black;">
+						<th>Nombre</th>
+						<th style="text-align: center;">Monto</th>
+						<!--<th class="pos-receipt-right-align">Available qty</th>-->
+					</tr>
+				</thead>
+				<tbody>
+				<tr t-foreach="obj.loc_summery['Metodos_de_Pago_Invoice']" t-as="metodo_de_pago" t-key="metodo_de_pago">
+
+					<td style="float: left;">
+						<t t-esc="obj.loc_summery['Metodos_de_Pago_Invoice'][metodo_de_pago]['payment_name']"/>	 
+					</td>
+					<td class="text-center">
+						<t t-esc="obj.loc_summery['Metodos_de_Pago_Invoice'][metodo_de_pago]['amount']"/>
+					</td>
+					<!--
+					<td  style="text-align: center;">
+						<t t-esc="obj.loc_summery['Lista_Categorias'][category]['avail_qty']"/>
+					</td>
+					-->
+				</tr>
+				</tbody>
+			</table>
+			<div style="text-align: left;">
+				<strong>--------------------------------</strong>
+			</div>
+			<div style="text-align: center;">
+				<strong>Recibos</strong>
 			</div>
 			<table class='orderlines' style="margin: 0px auto;">
 				<colgroup>
