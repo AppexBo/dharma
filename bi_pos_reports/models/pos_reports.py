@@ -233,9 +233,8 @@ class LocationSumm(models.Model):
 					)
 					product = line.product_id.name
 					categories = line.product_id.pos_categ_ids
-					
+					descuentos += (line.qty * line.price_unit) - line.price_subtotal_incl
 					if product in prod_data:
-						descuentos += line.discount		#presio unitario * cantidad - Subtotal
 						old_qty = prod_data[product]['qty']
 						old_qty_remb = prod_data[product]['qty_remb']
 						if len(odr.refunded_order_ids) > 0:
@@ -247,7 +246,6 @@ class LocationSumm(models.Model):
 								'qty' : old_qty + line.qty,
 							})
 					else:
-						descuentos += line.discount #presio unitario * cantidad - Subtotal
 						if len(quants) > 1:
 							if len(odr.refunded_order_ids) > 0:
 								prod_data.update({ product : {
@@ -335,7 +333,7 @@ class LocationSumm(models.Model):
 								'amount' : payment.amount,
 								'qty': 1,
 							}})
-			_logger.info("Erick ---- FINAL: %s", prod_data)
+			_logger.info("Erick ---- FINAL: %s", payment_data)
 			final_data.update({
 				'Lista_Productos': prod_data,
 				'Lista_Categorias': categ_data,

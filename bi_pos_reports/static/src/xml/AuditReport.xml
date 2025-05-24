@@ -252,17 +252,13 @@
 					<td >
 						<t t-esc="obj.loc_summery['Lista_Productos'][product]['product_unit_price'] * (obj.loc_summery['Lista_Productos'][product]['qty'] + obj.loc_summery['Lista_Productos'][product]['qty_remb'])"/>
 					</td>
-					<!--
-					<td  style="text-align: center;">
-						<t t-esc="obj.loc_summery['Lista_Productos'][product]['avail_qty']"/>
-					</td>
-					-->
 				</tr>
 				</tbody>
 			</table>
 
+			<!--
 			<div style="text-align: left;">
-				<strong>--------------------------------</strong>
+				<strong></strong>
 			</div>
 			<div style="text-align: center;">
 				<strong>Ventas por categoría</strong>
@@ -278,7 +274,7 @@
 						<th>Categoría</th>
 						<th>Qty</th>
 						<th>Remb.</th>
-						<!--<th class="pos-receipt-right-align">Available qty</th>-->
+						
 					</tr>
 				</thead>
 				<tbody>
@@ -293,14 +289,11 @@
 					<td >
 						<t t-esc="obj.loc_summery['Lista_Categorias'][category]['qty_remb']"/>
 					</td>
-					<!--
-					<td  style="text-align: center;">
-						<t t-esc="obj.loc_summery['Lista_Categorias'][category]['avail_qty']"/>
-					</td>
-					-->
+					
 				</tr>
 				</tbody>
 			</table>
+			-->
 			<div style="text-align: left;">
 				<strong>--------------------------------</strong>
 			</div>
