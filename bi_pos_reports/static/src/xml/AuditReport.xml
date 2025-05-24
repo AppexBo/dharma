@@ -286,8 +286,8 @@
 			</div>
 			<table class='orderlines' style="margin: 0px auto;">
 				<colgroup>
-					<col width='10%' />
-					<col width='60%' />
+					<col width='20%' />
+					<col width='50%' />
 					<col width='30%' />
 					<!--<col width='30%' />-->
 				</colgroup>
@@ -302,7 +302,7 @@
 				<tbody>
 				<tr t-foreach="obj.loc_summery['Metodos_de_Pago_Invoice']" t-as="metodo_de_pago" t-key="metodo_de_pago">
 					<td style="float: left;">
-						<t t-esc="obj.loc_summery['Metodos_de_Pago'][metodo_de_pago]['qty']"/>	 
+						<t t-esc="obj.loc_summery['Metodos_de_Pago_Invoice'][metodo_de_pago]['qty']"/>	 
 					</td>
 					<td style="float: left;">
 						<t t-esc="obj.loc_summery['Metodos_de_Pago_Invoice'][metodo_de_pago]['payment_name']"/>	 
@@ -326,8 +326,8 @@
 			</div>
 			<table class='orderlines' style="margin: 0px auto;">
 				<colgroup>
-					<col width='10%' />
-					<col width='60%' />
+					<col width='20%' />
+					<col width='50%' />
 					<col width='30%' />
 					<!--<col width='30%' />-->
 				</colgroup>
