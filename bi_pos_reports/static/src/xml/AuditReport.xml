@@ -182,6 +182,13 @@
 					<div>
 						<strong>Diferencia: </strong> <t t-esc='obj.loc_summery["Saldo_Inicial"] - obj.loc_summery["Saldo_Final"]'/>
 					</div>
+					
+					<div>
+						<strong>Tax: </strong> <t t-esc='obj.loc_summery["Tax"]'/>
+					</div>
+					<div>
+						<strong>Descuento: </strong> <t t-esc='obj.loc_summery["Descuento"]'/>
+					</div>
 					<div>
 						<strong>Total en Bruto: </strong> <t t-esc='obj.loc_summery["Total_en_Bruto"]'/>
 					</div>
@@ -361,9 +368,7 @@
 			<div style="text-align: left;">
 				<strong>--------------------------------</strong>
 			</div>
-			<div style="text-align: center;">
-				<strong>Descuentos y cortesías</strong>
-			</div>
+			
 			<hr style="border-bottom: 2px solid black;"/>
 		</div>
 	</t>

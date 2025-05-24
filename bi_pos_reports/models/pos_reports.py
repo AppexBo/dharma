@@ -188,7 +188,7 @@ class LocationSumm(models.Model):
 			'Saldo_Final': None,
 			'Descuento': None,
 			'Total_en_Bruto': None,
-			'Total_en_impuestos': None,
+			'Tax': None,
 			'Estado': None,
 			'Lista_Productos': [],
 			'Lista_Categorias': [],
@@ -202,7 +202,9 @@ class LocationSumm(models.Model):
 		categ_data = {}
 		payment_data = {}
 		payment_invoice_data = {} 
-		
+		tax_total = 0
+		descuentos = 0
+
 		product_ids = self.env['product.product'].search([])
 		if tab1 == True:
 			session_id = self.env['pos.session'].browse(int(select_session))
@@ -221,7 +223,7 @@ class LocationSumm(models.Model):
 				'Total_en_Bruto': session_id.total_payments_amount,
 			})
 			for odr in orders:
-				
+				tax_total +=  odr.amount_tax
 				for line in odr.lines:
 					quants = self.env['stock.quant'].search(
 						[
@@ -233,11 +235,13 @@ class LocationSumm(models.Model):
 					categories = line.product_id.pos_categ_ids
 					
 					if product in prod_data:
+						descuentos += line.discount
 						old_qty = prod_data[product]['qty']
 						prod_data[product].update({
 							'qty' : old_qty+line.qty,
 						})
 					else:
+						descuentos += line.discount
 						if len(quants) > 1:
 							quantity = 0.0
 							for quant in quants:
@@ -318,6 +322,8 @@ class LocationSumm(models.Model):
 				'Lista_Categorias': categ_data,
 				'Metodos_de_Pago': payment_data,
 				'Metodos_de_Pago_Invoice': payment_invoice_data,
+				'Tax': tax_total,
+				'Descuento': descuentos,
 			})
 			return final_data
 		else:
