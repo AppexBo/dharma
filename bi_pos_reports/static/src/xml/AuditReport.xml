@@ -225,15 +225,16 @@
 
 			<table class='orderlines' style="margin: 0px auto;">
 				<colgroup>
-					<col width='70%' />
-					<col width='30%' />
+					<col width='60%' />
+					<col width='20%' />
+					<col width='20%' />
 					<!--<col width='30%' />-->
 				</colgroup>
 				<thead>
 					<tr style="border-bottom: 2px solid black;">
 						<th>Producto</th>
 						<th>Qty</th>
-						<th>Cant Remb.</th>
+						<th>Remb.</th>
 						<!--<th class="pos-receipt-right-align">Available qty</th>-->
 					</tr>
 				</thead>
@@ -274,7 +275,7 @@
 					<tr style="border-bottom: 2px solid black;">
 						<th>Categoría</th>
 						<th>Qty</th>
-						<th>Cant Remb.</th>
+						<!--<th>Remb.</th>-->
 						<!--<th class="pos-receipt-right-align">Available qty</th>-->
 					</tr>
 				</thead>
