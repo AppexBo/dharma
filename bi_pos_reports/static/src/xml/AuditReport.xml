@@ -221,44 +221,7 @@
 				</div>
 			</t>
 
-			<div style="text-align: left;">
-				<strong>--------------------------------</strong>
-			</div>
-
-			<div style="text-align: center;">
-				<strong>Ventas por productos</strong>
-			</div>
-
-			<table class='orderlines' style="margin: 0px auto;">
-				<colgroup>
-					<col width='60%' />
-					<col width='20%' />
-					<col width='20%' />
-					<!--<col width='30%' />-->
-				</colgroup>
-				<thead>
-					<tr style="border-bottom: 2px solid black;">
-						<th>Producto</th>
-						<th>Qty</th>
-						<th>Monto.</th>
-						<!--<th class="pos-receipt-right-align">Available qty</th>-->
-					</tr>
-				</thead>
-				<tbody>
-				<tr t-foreach="obj.loc_summery['Lista_Productos']" t-as="product" t-key="product">
-
-					<td >
-						<t t-esc="product"/>	 
-					</td>
-					<td >
-						<t t-esc="obj.loc_summery['Lista_Productos'][product]['qty'] + obj.loc_summery['Lista_Productos'][product]['qty_remb']"/>
-					</td>
-					<td >
-						<t t-esc="(obj.loc_summery['Lista_Productos'][product]['product_unit_price'] * (obj.loc_summery['Lista_Productos'][product]['qty'] + obj.loc_summery['Lista_Productos'][product]['qty_remb'])).toFixed(2)"/>
-					</td>
-				</tr>
-				</tbody>
-			</table>
+			
 
 			<!--
 			<div style="text-align: left;">
@@ -375,6 +338,45 @@
 						<t t-esc="obj.loc_summery['Lista_Categorias'][category]['avail_qty']"/>
 					</td>
 					-->
+				</tr>
+				</tbody>
+			</table>
+			
+			<div style="text-align: left;">
+				<strong>--------------------------------</strong>
+			</div>
+
+			<div style="text-align: center;">
+				<strong>Ventas por productos</strong>
+			</div>
+
+			<table class='orderlines' style="margin: 0px auto;">
+				<colgroup>
+					<col width='60%' />
+					<col width='20%' />
+					<col width='20%' />
+					<!--<col width='30%' />-->
+				</colgroup>
+				<thead>
+					<tr style="border-bottom: 2px solid black;">
+						<th>Producto</th>
+						<th>Qty</th>
+						<th>Monto.</th>
+						<!--<th class="pos-receipt-right-align">Available qty</th>-->
+					</tr>
+				</thead>
+				<tbody>
+				<tr t-foreach="obj.loc_summery['Lista_Productos']" t-as="product" t-key="product">
+
+					<td >
+						<t t-esc="product"/>	 
+					</td>
+					<td >
+						<t t-esc="obj.loc_summery['Lista_Productos'][product]['qty'] + obj.loc_summery['Lista_Productos'][product]['qty_remb']"/>
+					</td>
+					<td >
+						<t t-esc="(obj.loc_summery['Lista_Productos'][product]['product_unit_price'] * (obj.loc_summery['Lista_Productos'][product]['qty'] + obj.loc_summery['Lista_Productos'][product]['qty_remb'])).toFixed(2)"/>
+					</td>
 				</tr>
 				</tbody>
 			</table>
