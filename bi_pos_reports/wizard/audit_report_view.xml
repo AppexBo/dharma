@@ -23,7 +23,7 @@
     <!-- action -->
     <record id="special_reports_action" model="ir.actions.act_window">
         <field name="name">Reporte de Caja</field>
-        <field name="res_model">report.movement.history</field>
+        <field name="res_model">cash.report.wizard</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
