@@ -304,7 +304,7 @@ class LocationSumm(models.Model):
 				payments = odr.payment_ids
 				for payment in payments:
 					if odr.state == 'invoiced':
-						key_payment = payment.name
+						key_payment = payment.payment_method_id.name
 						if key_payment in payment_invoice_data:
 							old_amount = payment_invoice_data[key_payment]['amount']
 							payment_invoice_data[key_payment].update({
@@ -319,8 +319,7 @@ class LocationSumm(models.Model):
 								'qty': 1,
 							}})
 					else:
-						key_payment = payment.name
-						_logger.info("Método de pago: %s", key_payment)
+						key_payment = payment.payment_method_id.name
 						if key_payment in payment_data:
 							old_amount = payment_data[key_payment]['amount']
 							payment_data[key_payment].update({
@@ -334,7 +333,6 @@ class LocationSumm(models.Model):
 								'amount' : payment.amount,
 								'qty': 1,
 							}})
-			_logger.info("Erick ---- FINAL: %s", payment_data)
 			final_data.update({
 				'Lista_Productos': prod_data,
 				'Lista_Categorias': categ_data,
