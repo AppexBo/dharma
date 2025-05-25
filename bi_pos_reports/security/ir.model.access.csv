@@ -10,3 +10,6 @@ access_z_report_wizard,access_z_report_wizard,model_z_report_wizard,point_of_sal
 access_pos_top_selling_wizard,access_pos_top_selling_wizard,model_pos_top_selling_wizard,point_of_sale.group_pos_manager,1,1,1,1
 access_pos_profit_loss_wizard,access_pos_profit_loss_wizard,model_pos_profit_loss_wizard,point_of_sale.group_pos_manager,1,1,1,1
 access_sale_excel_report,access_sale_excel_report,model_sale_excel_report,point_of_sale.group_pos_manager,1,1,1,1
+
+
+access_cash_report_wizard,access_cash_report_wizard,model_cash_report_wizard,point_of_sale.group_pos_manager,1,1,1,1
