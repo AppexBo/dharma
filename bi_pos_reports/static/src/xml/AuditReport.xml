@@ -184,22 +184,22 @@
 						<strong>Saldo Inicial: </strong> <t t-esc='obj.loc_summery["Saldo_Inicial"].toFixed(2)'/>
 					</div>
 					<div>
-						<strong>Saldo Final: </strong> <t t-esc='obj.loc_summery["Saldo_Final"]'/>
+						<strong>Saldo Final: </strong> <t t-esc='obj.loc_summery["Saldo_Final"].toFixed(2)'/>
 					</div>
 					<div>
-						<strong>Diferencia: </strong> <t t-esc='obj.loc_summery["Saldo_Final"] - obj.loc_summery["Saldo_Inicial"]'/>
+						<strong>Diferencia: </strong> <t t-esc='(obj.loc_summery["Saldo_Final"] - obj.loc_summery["Saldo_Inicial"]).toFixed(2)'/>
 					</div>
 					
 					<div>
-						<strong>Total Descuentos: </strong> <t t-esc='obj.loc_summery["Descuento"]'/>
+						<strong>Total Descuentos: </strong> <t t-esc='obj.loc_summery["Descuento"].toFixed(2)'/>
 					</div>
 
 					<div>
-						<strong>Total Impuestos: </strong> <t t-esc='obj.loc_summery["Tax"]'/>
+						<strong>Total Impuestos: </strong> <t t-esc='obj.loc_summery["Tax"].toFixed(2)'/>
 					</div>
 					
 					<div>
-						<strong>Total Ventas: </strong> <t t-esc='obj.loc_summery["Total_en_Bruto"]'/>
+						<strong>Total Ventas: </strong> <t t-esc='obj.loc_summery["Total_en_Bruto"].toFixed(2)'/>
 					</div>
 				</div>
 			</div>
@@ -252,7 +252,7 @@
 						<t t-esc="obj.loc_summery['Lista_Productos'][product]['qty'] + obj.loc_summery['Lista_Productos'][product]['qty_remb']"/>
 					</td>
 					<td >
-						<t t-esc="obj.loc_summery['Lista_Productos'][product]['product_unit_price'] * (obj.loc_summery['Lista_Productos'][product]['qty'] + obj.loc_summery['Lista_Productos'][product]['qty_remb'])"/>
+						<t t-esc="(obj.loc_summery['Lista_Productos'][product]['product_unit_price'] * (obj.loc_summery['Lista_Productos'][product]['qty'] + obj.loc_summery['Lista_Productos'][product]['qty_remb'])).toFixed(2)"/>
 					</td>
 				</tr>
 				</tbody>
@@ -326,7 +326,7 @@
 						<t t-esc="obj.loc_summery['Metodos_de_Pago_Invoice'][metodo_de_pago]['payment_name']"/>	 
 					</td>
 					<td >
-						<t t-esc="obj.loc_summery['Metodos_de_Pago_Invoice'][metodo_de_pago]['amount']"/>
+						<t t-esc="obj.loc_summery['Metodos_de_Pago_Invoice'][metodo_de_pago]['amount'].toFixed(2)"/>
 					</td>
 					<!--
 					<td  style="text-align: center;">
@@ -366,7 +366,7 @@
 						<t t-esc="obj.loc_summery['Metodos_de_Pago'][metodo_de_pago]['payment_name']"/>	 
 					</td>
 					<td >
-						<t t-esc="obj.loc_summery['Metodos_de_Pago'][metodo_de_pago]['amount']"/>
+						<t t-esc="obj.loc_summery['Metodos_de_Pago'][metodo_de_pago]['amount'].toFixed(2)"/>
 					</td>
 					<!--
 					<td  style="text-align: center;">
