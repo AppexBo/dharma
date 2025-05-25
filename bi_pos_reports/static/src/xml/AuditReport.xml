@@ -41,6 +41,7 @@
 							</div>
 						</div>
 					</li>
+					<!--
 					<li class="tab">
 						<input type="radio" name="tabs" id="tab2" />
 						<label for="tab2">Locations</label>   
@@ -62,6 +63,7 @@
 							</div>
 						</div>
 					</li>
+					-->
 				</ul>
             </main>
             <footer class="footer modal-footer">

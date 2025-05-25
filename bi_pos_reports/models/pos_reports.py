@@ -381,5 +381,41 @@ class LocationSumm(models.Model):
 			return prod_data
 		
 
+class PosCashReport(models.TransientModel):
+
+	_name='cash.report.wizard'
+	_description = "POS Cash Report Wizard"
+
+	pos_session_id = fields.Many2one(
+		'pos.session', 
+		string="POS Sesión",
+		required=True
+	)
+	#company_id = fields.Many2one('res.company',"Company")
+
+	#def generate_z_report(self):
+	#	data = {
+    #        'session_ids': self.pos_session_id
+    #    }
+	#	data.update(
+    #        self.get_sale_details(
+    #                data['start_date'], 
+    #                data['end_date'], 
+    #                data['location'], 
+    #                data['product_ids']
+    #        )
+    #    )
+	#	data =  {
+	#			'type': 'ir.actions.report',
+	#			'report_name': 'report_movement_history.report_moves_history',  # Reemplaza con el nombre de tu reporte
+	#			'report_type': 'qweb-pdf',
+	#			'data': {
+	#				'form': data,  # Aquí está tu diccionario con los datos
+	#			}, 
+	#			'context': self.env.context,
+	#		}		
+	#	return data
+		
+
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:    
