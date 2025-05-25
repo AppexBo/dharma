@@ -320,7 +320,7 @@ class LocationSumm(models.Model):
 							}})
 					else:
 						key_payment = payment.name
-						print("Método de pago:", key_payment)
+						_logger.info("Método de pago: %s", key_payment)
 						if key_payment in payment_data:
 							old_amount = payment_data[key_payment]['amount']
 							payment_data[key_payment].update({
