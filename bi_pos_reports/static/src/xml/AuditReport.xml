@@ -181,25 +181,25 @@
 					</div>
 
 					<div>
-						<strong>Saldo Inicial: </strong> <t t-esc="'{:.2f}'.format(obj.loc_summery['Saldo_Inicial'])"/>
+						<strong>Saldo Inicial: </strong> <t t-esc='obj.loc_summery["Saldo_Inicial"].toFixed(2)'/>
 					</div>
 					<div>
-						<strong>Saldo Final: </strong> <t t-esc="'{:.2f}'.format(obj.loc_summery['Saldo_Final'])"/>
+						<strong>Saldo Final: </strong> <t t-esc='obj.loc_summery["Saldo_Final"]'/>
 					</div>
 					<div>
-						<strong>Diferencia: </strong> <t t-esc="'{:.2f}'.format(obj.loc_summery['Saldo_Final'] - obj.loc_summery['Saldo_Inicial'])"/>
+						<strong>Diferencia: </strong> <t t-esc='obj.loc_summery["Saldo_Final"] - obj.loc_summery["Saldo_Inicial"]'/>
 					</div>
 					
 					<div>
-						<strong>Total Descuentos: </strong> <t t-esc="'{:.2f}'.format(obj.loc_summery['Descuento'])"/>
+						<strong>Total Descuentos: </strong> <t t-esc='obj.loc_summery["Descuento"]'/>
 					</div>
 
 					<div>
-						<strong>Total Impuestos: </strong> <t t-esc="'{:.2f}'.format(obj.loc_summery['Tax'])"/>
+						<strong>Total Impuestos: </strong> <t t-esc='obj.loc_summery["Tax"]'/>
 					</div>
 					
 					<div>
-						<strong>Total Ventas: </strong> <t t-esc="'{:.2f}'.format(obj.loc_summery['Total_en_Bruto'])"/>
+						<strong>Total Ventas: </strong> <t t-esc='obj.loc_summery["Total_en_Bruto"]'/>
 					</div>
 				</div>
 			</div>
