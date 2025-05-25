@@ -38,7 +38,7 @@
 		'views/pos_reports.xml',
 		'views/product_view.xml',
 
-		'views/audit_report_view.xml',
+		'wizard/audit_report_view.xml',
 		
 		#'wizard/pos_sale_summary.xml',
 		#'wizard/sales_summary_report.xml',
