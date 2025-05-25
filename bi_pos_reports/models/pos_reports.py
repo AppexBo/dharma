@@ -300,8 +300,8 @@ class LocationSumm(models.Model):
 								'qty' : line.qty,
 								'qty_remb': line.qty if len(odr.refunded_order_ids) > 0 else 0
 							}})
+
 				payments = odr.payment_ids
-				
 				for payment in payments:
 					if odr.state == 'invoiced':
 						key_payment = payment.name
@@ -320,6 +320,7 @@ class LocationSumm(models.Model):
 							}})
 					else:
 						key_payment = payment.name
+						print("Método de pago:", key_payment)
 						if key_payment in payment_data:
 							old_amount = payment_data[key_payment]['amount']
 							payment_data[key_payment].update({
