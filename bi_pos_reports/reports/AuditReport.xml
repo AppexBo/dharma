@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="moves_report_pdf" model="ir.actions.report">
+            <field name="name">Reporte de Caja</field>
+            <field name="model">cash.report.wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">bi_pos_reports.cash_report_pdf_doc</field>
+            <field name="report_file">bi_pos_reports.cash_report_pdf_doc</field>
+			<field name="binding_type">report</field>
+			<field name="paperformat_id" ref="bi_pos_reports.cash_report_pdf_format"/>
+        </record>
+
+        <template id="cash_report_pdf_doc">
+            <t t-set="company" t-value="env.company"/>
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row">
+                            <div class="col-4">
+                                <strong>Localización: </strong>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>    
+        </template>
+
+        <record id="cash_report_pdf_format" model="report.paperformat">
+            <field name="name">Cash Report PDF</field>
+            <field name="default" eval="True" />
+            <field name="format">custom</field>			
+            <field name="margin_top">40</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False" />
+            <field name="orientation">Portrait</field>
+            <field name="header_spacing">36</field>
+            <field name="dpi">110</field>
+        </record>
+    <data>
+</odoo>

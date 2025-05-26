@@ -38,7 +38,9 @@
 		'views/pos_reports.xml',
 		'views/product_view.xml',
 
+		#adiciones erick
 		'wizard/audit_report_view.xml',
+		'reports/AuditReport.xml',
 		
 		#'wizard/pos_sale_summary.xml',
 		#'wizard/sales_summary_report.xml',
