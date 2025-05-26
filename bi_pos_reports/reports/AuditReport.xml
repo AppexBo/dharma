@@ -80,25 +80,25 @@
                                     </div>
 
                                     <div>
-                                        <strong>Saldo Inicial: </strong> <t t-esc='form["Saldo_Inicial"].toFixed(2)'/>
+                                        <strong>Saldo Inicial: </strong> <t t-esc='form["Saldo_Inicial"]'/>
                                     </div>
                                     <div>
-                                        <strong>Saldo Final: </strong> <t t-esc='form["Saldo_Final"].toFixed(2)'/>
+                                        <strong>Saldo Final: </strong> <t t-esc='form["Saldo_Final"]'/>
                                     </div>
                                     <div>
-                                        <strong>Diferencia: </strong> <t t-esc='(form["Saldo_Final"] - form["Saldo_Inicial"]).toFixed(2)'/>
+                                        <strong>Diferencia: </strong> <t t-esc='(form["Saldo_Final"] - form["Saldo_Inicial"])'/>
                                     </div>
                                     
                                     <div>
-                                        <strong>Total Descuentos: </strong> <t t-esc='form["Descuento"].toFixed(2)'/>
+                                        <strong>Total Descuentos: </strong> <t t-esc='form["Descuento"]'/>
                                     </div>
 
                                     <div>
-                                        <strong>Total Impuestos: </strong> <t t-esc='form["Tax"].toFixed(2)'/>
+                                        <strong>Total Impuestos: </strong> <t t-esc='form["Tax"]'/>
                                     </div>
                                     
                                     <div>
-                                        <strong>Total Ventas: </strong> <t t-esc='form["Total_en_Bruto"].toFixed(2)'/>
+                                        <strong>Total Ventas: </strong> <t t-esc='form["Total_en_Bruto"]'/>
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
 
 
 
-                        
+
                     </div>
                 </t>
             </t>    
