@@ -3,16 +3,18 @@
     <data>
         <record id="cash_report_pdf_format" model="report.paperformat">
             <field name="name">Cash Report PDF</field>
-            <field name="default" eval="True" />
+            <field name="default" eval="False" />
+            <field name="page_height">50</field>  <!-- Altura en mm (típico para rollo de tickets) -->
+            <field name="page_width">80</field>   <!-- Ancho en mm (estándar para impresoras térmicas) -->
             <field name="format">custom</field>			
-            <field name="margin_top">40</field>
-            <field name="margin_bottom">10</field>
+            <field name="margin_top">5</field>
+            <field name="margin_bottom">5</field>
             <field name="margin_left">5</field>
             <field name="margin_right">5</field>
             <field name="header_line" eval="False" />
             <field name="orientation">Portrait</field>
-            <field name="header_spacing">36</field>
-            <field name="dpi">110</field>
+            <field name="header_spacing">0</field>
+            <field name="dpi">80</field>
         </record>
 
         <record id="moves_report_pdf" model="ir.actions.report">
