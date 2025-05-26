@@ -102,17 +102,124 @@
                                     </div>
                                 </div>
                             </div>
+                            <div style="text-align: left;">
+                                <strong>--------------------------------</strong>
+                            </div>
+                            <div class="pos-receipt-center-align">
+                                <strong>DETALLE</strong>
+                            </div>
+                            <div style="text-align: left;">
+                                <strong>--------------------------------</strong>
+                            </div>
+                            <div style="text-align: center;">
+                                <strong>Facturas</strong>
+                            </div>
+                            <table class='orderlines' style="margin: 0px auto;">
+                                <colgroup>
+                                    <col width='20%' />
+                                    <col width='50%' />
+                                    <col width='30%' />
+                                    <!--<col width='30%' />-->
+                                </colgroup>
+                                <thead>
+                                    <tr style="border-bottom: 2px solid black;">
+                                        <th>Qty</th>
+                                        <th>Nombre</th>
+                                        <th>Monto</th>
+                                        <!--<th class="pos-receipt-right-align">Available qty</th>-->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <tr t-foreach="form['Metodos_de_Pago_Invoice']" t-as="metodo_de_pago" t-key="metodo_de_pago">
+                                    <td >
+                                        <t t-esc="form['Metodos_de_Pago_Invoice'][metodo_de_pago]['qty']"/>	 
+                                    </td>
+                                    <td >
+                                        <t t-esc="form['Metodos_de_Pago_Invoice'][metodo_de_pago]['payment_name']"/>	 
+                                    </td>
+                                    <td >
+                                        <t t-esc="form['Metodos_de_Pago_Invoice'][metodo_de_pago]['amount']"/>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div style="text-align: left;">
+                                <strong>--------------------------------</strong>
+                            </div>
+                            <div style="text-align: center;">
+                                <strong>Recibos</strong>
+                            </div>
+                            <table class='orderlines' style="margin: 0px auto;">
+                                <colgroup>
+                                    <col width='20%' />
+                                    <col width='50%' />
+                                    <col width='30%' />
+                                    <!--<col width='30%' />-->
+                                </colgroup>
+                                <thead>
+                                    <tr style="border-bottom: 2px solid black;">
+                                        <th>Qty</th>
+                                        <th>Nombre</th>
+                                        <th>Monto</th>
+                                        <!--<th class="pos-receipt-right-align">Available qty</th>-->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <tr t-foreach="form['Metodos_de_Pago']" t-as="metodo_de_pago" t-key="metodo_de_pago">
+                                    <td >
+                                        <t t-esc="form['Metodos_de_Pago'][metodo_de_pago]['qty']"/>	 
+                                    </td>
+                                    <td >
+                                        <t t-esc="form['Metodos_de_Pago'][metodo_de_pago]['payment_name']"/>	 
+                                    </td>
+                                    <td >
+                                        <t t-esc="form['Metodos_de_Pago'][metodo_de_pago]['amount']"/>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div style="text-align: left;">
+                                <strong>--------------------------------</strong>
+                            </div>
 
+                            <div style="text-align: center;">
+                                <strong>Ventas por productos</strong>
+                            </div>
 
+                            <table class='orderlines' style="margin: 0px auto;">
+                                <colgroup>
+                                    <col width='60%' />
+                                    <col width='20%' />
+                                    <col width='20%' />
+                                    <!--<col width='30%' />-->
+                                </colgroup>
+                                <thead>
+                                    <tr style="border-bottom: 2px solid black;">
+                                        <th>Producto</th>
+                                        <th>Qty</th>
+                                        <th>Monto.</th>
+                                        <!--<th class="pos-receipt-right-align">Available qty</th>-->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <tr t-foreach="form['Lista_Productos']" t-as="product" t-key="product">
+
+                                    <td >
+                                        <t t-esc="product"/>	 
+                                    </td>
+                                    <td >
+                                        <t t-esc="form['Lista_Productos'][product]['qty'] + form['Lista_Productos'][product]['qty_remb']"/>
+                                    </td>
+                                    <td >
+                                        <t t-esc="(form['Lista_Productos'][product]['product_unit_price'] * (form['Lista_Productos'][product]['qty'] + form['Lista_Productos'][product]['qty_remb']))"/>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div style="text-align: left;">
+                                <strong>--------------------------------</strong>
+                            </div>
                         </div>
-
-
-
-
-
-
-
-
 
                     </div>
                 </t>
