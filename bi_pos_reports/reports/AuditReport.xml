@@ -30,14 +30,90 @@
             <t t-call="web.html_container">
                 <t t-call="web.external_layout">
                     <div class="page">
-                        <div class="row">
-                            <div class="col-4">
-                                <strong>Localización: </strong>
+                        <div class="pos-receipt">
+                            <strong>Localización: </strong>
 
-                                <span t-esc="str(form)"/>
+                            <span t-esc="str(form)"/>
 
+
+
+
+                            <div class="">
+                                <div style="text-align: center;">
+                                    <div>
+                                        <strong>INFORME</strong>
+                                    </div>
+                                    <div>
+                                        <strong>--------------------------------</strong>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="pos-receipt-contact">
+                                <div style="text-align: left;">
+                                    <!--
+                                    <div>
+                                        <strong>Impreso por: </strong> <t t-esc='pos.get_cashier().name'/>
+                                    </div>
+                                    -->
+                                    <div>
+                                        <strong>Abierta por: </strong> <t t-esc='form["Abierto_por"]'/>
+                                    </div>
+                                    <div>
+                                        <strong>Punto de Venta: </strong> <t t-esc='form["Punto_de_Venta"]'/>
+                                    </div>
+                                    <div>
+                                        <strong>Estado: </strong> 
+                                        <t t-if="form['Estado'] == 'opening_control'">Control de apertura</t>
+                                        <t t-elif="form['Estado'] == 'opened'">En progreso</t>
+                                        <t t-elif="form['Estado'] == 'closing_control'">Control de cierre</t>
+                                        <t t-elif="form['Estado'] == 'closed'">Cerrado y registrado</t>
+                                        <t t-else=""><t t-esc="form['Estado']"/></t>
+                                    </div>
+                                    <div>
+                                        <strong>F. Apertura: </strong> <t t-esc='form["Fecha_de_Apertura"]'/>
+                                    </div>
+                                    <div>
+                                        <strong>F. Cierre: </strong> 
+                                        <t t-if="form['Fecha_de_Cierre']">
+                                            <t t-esc='form["Fecha_de_Cierre"]'/>
+                                        </t>
+                                    </div>
+
+                                    <div>
+                                        <strong>Saldo Inicial: </strong> <t t-esc='form["Saldo_Inicial"].toFixed(2)'/>
+                                    </div>
+                                    <div>
+                                        <strong>Saldo Final: </strong> <t t-esc='form["Saldo_Final"].toFixed(2)'/>
+                                    </div>
+                                    <div>
+                                        <strong>Diferencia: </strong> <t t-esc='(form["Saldo_Final"] - form["Saldo_Inicial"]).toFixed(2)'/>
+                                    </div>
+                                    
+                                    <div>
+                                        <strong>Total Descuentos: </strong> <t t-esc='form["Descuento"].toFixed(2)'/>
+                                    </div>
+
+                                    <div>
+                                        <strong>Total Impuestos: </strong> <t t-esc='form["Tax"].toFixed(2)'/>
+                                    </div>
+                                    
+                                    <div>
+                                        <strong>Total Ventas: </strong> <t t-esc='form["Total_en_Bruto"].toFixed(2)'/>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
+
+
+
+
+
+
+
+
+                        
                     </div>
                 </t>
             </t>    
