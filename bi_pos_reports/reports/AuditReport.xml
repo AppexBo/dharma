@@ -39,5 +39,5 @@
             <field name="header_spacing">36</field>
             <field name="dpi">110</field>
         </record>
-    <data>
+    </data>
 </odoo>
