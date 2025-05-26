@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <record id="cash_report_pdf_format" model="report.paperformat">
+            <field name="name">Cash Report PDF</field>
+            <field name="default" eval="True" />
+            <field name="format">custom</field>			
+            <field name="margin_top">40</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False" />
+            <field name="orientation">Portrait</field>
+            <field name="header_spacing">36</field>
+            <field name="dpi">110</field>
+        </record>
+
         <record id="moves_report_pdf" model="ir.actions.report">
             <field name="name">Reporte de Caja</field>
             <field name="model">cash.report.wizard</field>
@@ -25,19 +39,6 @@
                 </t>
             </t>    
         </template>
-
-        <record id="cash_report_pdf_format" model="report.paperformat">
-            <field name="name">Cash Report PDF</field>
-            <field name="default" eval="True" />
-            <field name="format">custom</field>			
-            <field name="margin_top">40</field>
-            <field name="margin_bottom">10</field>
-            <field name="margin_left">5</field>
-            <field name="margin_right">5</field>
-            <field name="header_line" eval="False" />
-            <field name="orientation">Portrait</field>
-            <field name="header_spacing">36</field>
-            <field name="dpi">110</field>
-        </record>
+        
     </data>
 </odoo>
