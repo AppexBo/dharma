@@ -31,13 +31,7 @@
                 <t t-call="web.external_layout">
                     <div class="page">
                         <div class="pos-receipt">
-                            <strong>Localización: </strong>
-
-                            <span t-esc="str(form)"/>
-
-
-
-
+                            <!--<span t-esc="str(form)"/>-->
                             <div class="">
                                 <div style="text-align: center;">
                                     <div>
@@ -54,6 +48,7 @@
                                     <div>
                                         <strong>Impreso por: </strong> <t t-esc='env.user.name'/>
                                     </div>
+                                    
                                     <div>
                                         <strong>Abierta por: </strong> <t t-esc='form["Abierto_por"]'/>
                                     </div>
