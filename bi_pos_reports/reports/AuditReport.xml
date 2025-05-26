@@ -34,7 +34,7 @@
                             <div class="col-4">
                                 <strong>Localización: </strong>
 
-                                <span t-esc="str(o.form)"/>
+                                <span t-esc="str(form)"/>
 
                             </div>
                         </div>
