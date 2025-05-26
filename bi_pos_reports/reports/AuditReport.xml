@@ -5,7 +5,6 @@
             <field name="name">Cash Report PDF</field>
             <field name="default" eval="False" />
             <field name="page_width">80</field>   <!-- Ancho en mm (estándar para impresoras térmicas) -->
-            <field name="page_height">0</field> <!-- 0 indica altura dinámica -->
             <field name="format">custom</field>			
             <field name="margin_top">5</field>
             <field name="margin_bottom">5</field>
