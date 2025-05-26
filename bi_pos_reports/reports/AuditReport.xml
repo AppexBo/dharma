@@ -50,11 +50,10 @@
                             </div>
                             <div class="pos-receipt-contact">
                                 <div style="text-align: left;">
-                                    <!--
+                                    
                                     <div>
                                         <strong>Impreso por: </strong> <t t-esc='env.user.name'/>
                                     </div>
-                                    -->
                                     <div>
                                         <strong>Abierta por: </strong> <t t-esc='form["Abierto_por"]'/>
                                     </div>
