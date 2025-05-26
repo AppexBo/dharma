@@ -177,10 +177,6 @@ class LocationSumm(models.Model):
 
 	
 	def update_location_summery(self, location,select_session,tab1,tab2):
-		_logger.info(f"select_session: {location}")
-		_logger.info(f"select_session: {select_session}")
-		_logger.info(f"select_session: {tab1}")
-		_logger.info(f"select_session: {tab2}")
 		res = []
 		prod =[]
 		final_data ={
@@ -414,9 +410,9 @@ class PosCashReport(models.TransientModel):
 				'type': 'ir.actions.report',
 				'report_name': 'bi_pos_reports.cash_report_pdf_doc',  # Reemplaza con el nombre de tu reporte
 				'report_type': 'qweb-pdf',
-				#'data': {
-				#	'form': result,  # Aquí está tu diccionario con los datos
-				#}, 
+				'data': {
+					'form': result,  # Aquí está tu diccionario con los datos
+				}, 
 				'context': self.env.context,
 			}		
 		return data
