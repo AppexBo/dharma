@@ -52,7 +52,7 @@
                                 <div style="text-align: left;">
                                     <!--
                                     <div>
-                                        <strong>Impreso por: </strong> <t t-esc='pos.get_cashier().name'/>
+                                        <strong>Impreso por: </strong> <t t-esc='env.user.name'/>
                                     </div>
                                     -->
                                     <div>
