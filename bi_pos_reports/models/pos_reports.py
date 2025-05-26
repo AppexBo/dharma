@@ -404,8 +404,8 @@ class PosCashReport(models.TransientModel):
 		
 		location_model = self.env['pos.order.location']
 		result = location_model.update_location_summery(
-			location_valor, 
-			session_valor, 
+			None, 
+			self.pos_session_id, 
 			True, 
 			False
 		)
